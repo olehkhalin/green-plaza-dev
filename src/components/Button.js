@@ -9,7 +9,7 @@ const Button = ({ buttonType, targetType, link, children }) => (
     className={"button " + buttonType}
   >
     {children}
-    {buttonType === 'arrow' ? <ButtonArrow/>  : null}
+    {(buttonType === 'arrow' || buttonType === 'arrow-only') ? <ButtonArrow/>  : null}
   </a>
 )
 

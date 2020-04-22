@@ -12,10 +12,12 @@ import Gallery from "../components/gallery"
 import Form from "../components/form"
 import Contacts from "../components/contacts"
 import Footer from "../components/footer"
+import FirstScreen from "../components/firstScreen"
 
 const IndexPage = () => (
   <>
-    <div className="top-header"></div>
+    {/*<div className="top-header"></div>*/}
+    <FirstScreen />
     <Advantages />
     <Complex />
     <Tour />

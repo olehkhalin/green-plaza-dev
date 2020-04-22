@@ -1,4 +1,7 @@
 //@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700&display=swap")
+//@import "~@glidejs/glide/src/assets/sass/glide.core"
+@import "~slick-carousel/slick/slick.css"
+@import "~slick-carousel/slick/slick-theme.css"
 @import "./varibles.sass"
 @import "./breakpoints.scss"
 
@@ -103,6 +106,8 @@ h2
 	font-size: 1rem
 	text-decoration: none
 	font-weight: normal
+	cursor: pointer
+	display: inline-block
 	@include media("<=phone")
 		font-size: .625rem
 	&.bordered
@@ -133,7 +138,201 @@ h2
 			height: auto
 			@include media("<=phone")
 				width: 18px
+	&.arrow-only
+		display: flex
+		align-items: center
+		svg
+			width: 30px
+			height: auto
+			margin-left: 15px
+			@include media("<=phone")
+				width: 18px
+			path
+				fill: $black
 
+
+
+
+// First Screen
+.first-screen
+	min-height: 100vh
+	padding-bottom: 30px
+
+.header
+	position: absolute
+	width: 100%
+	height: 90px
+	z-index: 4
+	.logo
+	.contacts
+		text-align: right
+		flex: 1
+		a
+			font-weight: 300
+			color: $black
+			text-decoration: none
+			&:last-child
+				margin-left: 60px
+	.nav-toggle
+		cursor: pointer
+		margin-left: 245px
+		.hamburger-menu
+			width: 36px
+			margin-left: auto
+			span
+				margin-bottom: 6px
+				background: $adobe
+				height: 2px
+				border-radius: 3px
+				width: 100%
+				display: block
+				&:nth-child(2)
+					width: 80%
+					margin-left: auto
+				&:last-child
+					margin-bottom: 0
+
+
+
+.home-content
+	padding-top: 95px
+	height: 655px
+	//position: relative
+	&-title
+		z-index: 5
+		h1
+			font-size: 64px
+			font-weight: bold
+			line-height: 0.91
+			color: $adobe
+			margin: 0
+			padding: 0
+			text-transform: uppercase
+		h4
+			font-size: 42px
+			font-weight: 600
+			color: $black
+			margin: 0
+			padding: 0
+			text-transform: uppercase
+			margin-top: 10px
+			margin-bottom: 8px
+		h5
+			font-size: 36px
+			font-weight: 600
+			color: $black
+			padding: 0
+			margin: 0
+	.button.bordered
+		margin-top: 42px
+
+.home-carousel
+	width: 66.666%
+	position: absolute
+	top: 95px
+	right: 0
+	height: 560px
+	overflow: hidden
+	&-arrows
+		position: absolute
+		top: 0
+		right: 32px
+		display: flex
+		align-items: center
+		z-index: 6
+	&-arrow
+		opacity: .6
+		cursor: pointer
+		&:first-child
+			margin-right: 88px
+		&:hover
+			opacity: 1
+	&-more
+		position: absolute
+		top: calc(100% + 40px)
+		right: 32px
+	&-wrapper
+		position: relative
+		height: 100%
+		&-position
+			position: absolute
+			top: 0
+			left: 0
+			height: 100%
+			display: flex
+			align-items: center
+	//.slick-slide
+	//	opacity: 0.3
+	//	transition: opacity 0.5s
+	//.slick-current,
+	//.slick-current-clone-animate
+	//	opacity: 1
+	.slick-current, .slick-current-clone-animate
+		.home-carousel-item
+			&-image
+				height: 100%
+				width: 100%
+	&-item
+		display: flex !important
+		flex-direction: column
+		justify-content: center
+		margin-right: 60px
+		margin-left: 60px
+		height: 560px
+		width: 445px !important
+		flex-shrink: 0
+		outline: none
+		&-image
+			height: 409px
+			width: 325px
+			margin-top: auto
+			margin-bottom: auto
+			margin-top: auto
+			margin-bottom: auto
+			overflow: hidden
+			position: relative
+			transition: all .5s
+		.gatsby-image-wrapper
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+		img
+			object-fit: cover
+			width: 100%
+			height: 100%
+.home-promotion
+	min-width: 600px
+	cursor: pointer
+	width: 50%
+	border: 1px solid $adobe
+	border-left: none
+	display: flex
+	margin-top: -73px
+	&-image
+		width: 165px
+		flex-shrink: 0
+		position: relative
+		border-right: 1px solid $adobe
+		.gatsby-image-wrapper
+			width: 100%
+			height: 100%
+			position: absolute !important
+	&-content
+		display: flex
+		flex-direction: column
+		padding: 25px 38px
+		h4
+			font-size: 20px
+			font-weight: 600
+			text-transform: uppercase
+			margin-bottom: 12px
+		p
+			font-size: 16px
+			margin: 0
+			span
+				color: $adobe
 
 
 // Advantages

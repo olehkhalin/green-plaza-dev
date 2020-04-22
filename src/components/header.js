@@ -1,42 +1,41 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+// import { Link } from "gatsby"
+// import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+import GreenPlazaLogo from "../icons/logo.svg"
+
+// const Header = ({ siteTitle }) => (
+const Header = () => (
+  <header className="header">
+    <div className="container">
+      <div className="row v-center space-between">
+        <div className="logo">
+          <GreenPlazaLogo />
+        </div>
+        <div className="contacts">
+          <a href="#" target="_blank">г. Актау, 17 мкр., д. 6 </a>
+          <a href="tel:+77292470001">+7 (7292) 470 001</a>
+        </div>
+        <div className="nav-toggle">
+          <div
+            className="hamburger-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 )
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
+// Header.propTypes = {
+//   siteTitle: PropTypes.string,
+// }
+//
+// Header.defaultProps = {
+//   siteTitle: ``,
+// }
 
 export default Header
