@@ -1,19 +1,25 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import Header from "./header"
 import HomeContent from "./homeContent"
 import Image from "./image"
 import Slider from "react-slick"
 import HomePromotion from "./homePromotion"
-// import HomeCarousel from "./homeCarousel"
 
 const FirstScreen = () => {
-  // const [buttonNextState, setButtonNextState] = useState(false)
-  // const [buttonPrevState, setButtonPrevState] = useState(false)
   const slider1 = useRef();
+
+  const time = 3;
+  let isPause;
+  let timer;
+  let percentTime;
+  let progressBar;
+  let progressBarCurrent;
+  let progressBarAll;
+  let allSlidesCount;
+
 
   const settings = {
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
@@ -31,6 +37,9 @@ const FirstScreen = () => {
         direction = (nextSlide - currentSlide > 0) ? "left" : "right";
       }
 
+      // progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
+      // startProgressbar();
+
       if (direction === 'right') {
         document.querySelector('.slick-cloned[data-index="' + (nextSlide + slideCountZeroBased + 1) + '"]').classList.add('slick-current-clone-animate');
       }
@@ -40,26 +49,53 @@ const FirstScreen = () => {
     },
     afterChange: (currentSlide, nextSlide) => {
       document.querySelector('.slick-current-clone-animate').classList.remove('slick-current-clone-animate');
-      // document.querySelector('.slick-current-clone-animate').classList.remove('slick-current-clone-animate');
-      // $('.slick-current-clone-animate', $carousel).removeClass('slick-current-clone-animate');
     }
   };
 
   const nextButtonClicked = () => {
     slider1.current.slickNext();
-    // setButtonNextState(true)
-    // setTimeout(() => {
-    //   setButtonNextState(false)
-    // }, 100)
   }
 
   const prevButtonClicked = () => {
     slider1.current.slickPrev();
-    // setButtonPrevState(true)
-    // setTimeout(() => {
-    //   setButtonPrevState(false)
-    // }, 100)
   }
+
+
+  useEffect(() => {
+    progressBar = document.querySelector('.home-carousel-progress-bar-inner.dark');
+
+    progressBarAll = document.querySelector('.home-carousel-progress-num.last');
+    allSlidesCount = slider1.current.props.children.length;
+    progressBarAll.innerText = allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount;
+
+    progressBarCurrent = document.querySelector('.home-carousel-progress-num.current');
+
+    startProgressbar();
+  }, [])
+
+  const startProgressbar = () => {
+    resetProgressbar();
+    percentTime = 0;
+    isPause = false;
+    timer = setInterval(interval, 10);
+  }
+
+  const interval = () => {
+    if (isPause === false) {
+      percentTime += 1 / (time+0.1);
+      progressBar.style.height = `${percentTime}%`;
+      if(percentTime >= 100) {
+        slider1.current.slickNext();
+        startProgressbar();
+      }
+    }
+  }
+
+  const resetProgressbar = () => {
+    progressBar.style.height = `0%`;
+    clearTimeout(timer);
+  }
+
 
   return (
     <div className="first-screen">
@@ -68,7 +104,7 @@ const FirstScreen = () => {
         nxtBtnClk={() => nextButtonClicked()}
         prvBtnClk={() => prevButtonClicked()}
       />
-      <div className="home-carousel">
+      <div className="home-carousel" onMouseEnter={() => {isPause = true}}  onMouseLeave={() => {isPause = false}}>
         <Slider {...settings} ref={slider => (slider1.current = slider)}>
           <div className="home-carousel-item">
             <div className="home-carousel-item-image">
