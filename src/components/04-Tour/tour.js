@@ -2,7 +2,7 @@ import React from "react"
 
 import TourCard from "./tourCard"
 
-import RhombusIcon from "../icons/rhombus.svg"
+import RhombusIcon from "../../icons/rhombus.svg"
 
 const toursArray = [
   {

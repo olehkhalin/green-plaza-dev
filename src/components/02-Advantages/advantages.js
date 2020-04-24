@@ -2,7 +2,7 @@ import React from "react"
 
 import AdvantagesCard from "./advantagesCard"
 
-import locationIcon from "../icons/advantages/location.svg"
+import locationIcon from "../../icons/advantages/location.svg"
 
 const advantagesArray = [
   {

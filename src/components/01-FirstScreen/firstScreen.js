@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react"
-import Header from "./header"
-import HomeContent from "./homeContent"
-import Image from "./image"
 import Slider from "react-slick"
+import Header from "../header"
+import HomeContent from "./homeContent"
+import Image from "../image"
 import HomePromotion from "./homePromotion"
 
 const FirstScreen = () => {
@@ -37,8 +37,8 @@ const FirstScreen = () => {
         direction = (nextSlide - currentSlide > 0) ? "left" : "right";
       }
 
-      progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
-      startProgressbar();
+      // progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
+      // startProgressbar();
 
       if (direction === 'right') {
         document.querySelector('.slick-cloned[data-index="' + (nextSlide + slideCountZeroBased + 1) + '"]').classList.add('slick-current-clone-animate');

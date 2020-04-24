@@ -1,7 +1,8 @@
 import React from "react"
 
-import Infrastructure from "../icons/infrastructure.svg"
-import ResidentialComplexPlan from "../icons/residential-complex-plan.svg"
+import Infrastructure from "../../icons/infrastructure.svg"
+import ResidentialComplexPlan from "../../icons/residential-complex-plan.svg"
+import ComplexFlats from "./complexFlats"
 
 const Complex = () => (
   <section className="section light complex">
@@ -17,6 +18,9 @@ const Complex = () => (
           <Infrastructure />
           <ResidentialComplexPlan/>
         </div>
+      </div>
+      <div className="row">
+        <ComplexFlats />
       </div>
     </div>
   </section>

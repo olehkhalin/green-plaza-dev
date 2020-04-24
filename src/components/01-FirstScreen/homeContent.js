@@ -1,7 +1,7 @@
 import React from "react"
-import ArrowLeft from "../icons/arrow-left.svg"
-import ArrowRight from "../icons/arrow-right.svg"
-import Button from "./Button"
+import ArrowLeft from "../../icons/arrow-left.svg"
+import ArrowRight from "../../icons/arrow-right.svg"
+import ButtonArrow from "../../icons/button-arrow.svg"
 
 const HomeContent = ({nxtBtnClk, prvBtnClk}) => (
   <div className="home-content">
@@ -11,7 +11,7 @@ const HomeContent = ({nxtBtnClk, prvBtnClk}) => (
           <h1>Green plaza</h1>
           <h4>жилой комплекс</h4>
           <h5>в 17-м микрорайоне г. Актау</h5>
-          <Button buttonType="bordered">посмотреть квартиры</Button>
+          <a href="#" className="button bordered">посмотреть квартиры</a>
           <div className="home-carousel-progress">
             <div className="home-carousel-progress-num current">01</div>
             <div className="home-carousel-progress-bar">
@@ -26,7 +26,7 @@ const HomeContent = ({nxtBtnClk, prvBtnClk}) => (
           <div className="home-carousel-arrow right" onClick={() => nxtBtnClk()}><ArrowRight /></div>
         </div>
         <div className="home-carousel-more">
-          <Button buttonType="arrow-only">смотреть еще</Button>
+          <a href="#" className="button arrow-only">смотреть еще<ButtonArrow/></a>
         </div>
       </div>
     </div>

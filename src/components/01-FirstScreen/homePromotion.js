@@ -1,6 +1,6 @@
 import React from "react"
 
-import Image from "./image"
+import Image from "../image"
 
 const HomePromotion = ({ buttonType, targetType, link, children }) => (
   <div className="home-promotion">

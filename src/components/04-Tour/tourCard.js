@@ -1,5 +1,5 @@
 import React from "react"
-import Button from "./Button"
+import ButtonArrow from "../../icons/button-arrow.svg"
 
 const TourCard = ({ tourItem }) => (
   <div className="tour-card-wrapper">
@@ -8,10 +8,10 @@ const TourCard = ({ tourItem }) => (
         <div className="tour-card-title">{tourItem.title}</div>
         <img src={tourItem.icon} alt="" />
       </div>
-      <Button buttonType="arrow" targetType="blank" link="https://google.com">
+      <a className="button arrow" target="_blank" href="https://google.com">
         смотреть тур
-      </Button>
-      {/*<h3 className="advantages-card-header">{tourItem.title}</h3>*/}
+        <ButtonArrow />
+      </a>
     </div>
   </div>
 )

@@ -13,16 +13,21 @@ const Header = () => (
           <GreenPlazaLogo />
         </div>
         <div className="contacts">
-          <a href="#" target="_blank">г. Актау, 17 мкр., д. 6 </a>
+          <a href="#" target="_blank">
+            г. Актау, 17 мкр., д. 6{" "}
+          </a>
           <a href="tel:+77292470001">+7 (7292) 470 001</a>
         </div>
-        <div className="nav-toggle">
-          <div
-            className="hamburger-menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
+        <div className="left-side">
+          <div className="langs">
+            <a href="#" className="langs-item active">Ru</a><span>|</span><a href="#" className="langs-item">Kz</a>
+          </div>
+          <div className="nav-toggle">
+            <div className="hamburger-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
       </div>

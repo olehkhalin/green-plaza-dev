@@ -1,7 +1,7 @@
 import React from "react"
 
-import Image from "./image"
-import Button from "./Button"
+import Image from "../image"
+import Button from "../Button"
 
 const Form = () => (
   <section className="section dark form">

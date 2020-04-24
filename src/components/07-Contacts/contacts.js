@@ -1,6 +1,6 @@
 import React from "react"
 
-import RhombusIcon from "../icons/rhombus.svg"
+import RhombusIcon from "../../icons/rhombus.svg"
 
 const Contacts = () => (
   <section className="section light contacts">
@@ -49,9 +49,9 @@ const Contacts = () => (
           <div className="contacts-item">
             <h3 className="contacts-item-header"><RhombusIcon/>Режим работы</h3>
             <ul className="contacts-item-list">
-              <li>ПН-ПТ 09:00 - 18:00</li>
-              <li>СБ 10:00 - 17:00</li>
-              <li>ВС выходной</li>
+              <li><span>ПН-ПТ 09:00 - 18:00</span></li>
+              <li><span>СБ 10:00 - 17:00</span></li>
+              <li><span>ВС выходной</span></li>
             </ul>
           </div>
         </div>
