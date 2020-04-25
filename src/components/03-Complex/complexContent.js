@@ -14,7 +14,7 @@ const ComplexContent = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    draggable: false,
+    draggable: true,
     arrows: false,
     beforeChange: (currentSlide, nextSlide) => {
       let direction,
