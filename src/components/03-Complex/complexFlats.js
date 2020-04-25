@@ -25,8 +25,8 @@ const ComplexFlats = () => {
         </TabList>
       </div>
 
-      <TabPanel className="complex-flats-items-wrapper">
-        <ComplexContent/>
+      <TabPanel>
+          <ComplexContent/>
       </TabPanel>
       <TabPanel className="complex-flats-items-wrapper">
         <h2>Any content 2</h2>
