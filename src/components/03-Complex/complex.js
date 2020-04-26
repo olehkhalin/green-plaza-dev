@@ -19,7 +19,7 @@ const Complex = () => (
           <ResidentialComplexPlan/>
         </div>
       </div>
-      <div className="row">
+      <div className="row" id="flats">
         <ComplexFlats />
       </div>
     </div>

@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-smoothscroll`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

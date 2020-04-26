@@ -1,12 +1,76 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 
 import Slider from "react-slick"
 import Image from "../image"
 import { TabPanel } from "react-tabs"
 import ArrowLeft from "../../icons/arrow-left.svg"
 import ArrowRight from "../../icons/arrow-right.svg"
+import ComplexItem from "./complexFlatsItem"
+import ComplexItemMore from "./complexFlatsItemMore"
+import ComplexFlats from "./complexFlats"
+import ComplexFlatsFloor from "./complexFlatsFloor"
+
+const complexesArray = [1, 2, 3, 4, 5];
 
 const ComplexContent = () => {
+  const [state, setState] = useState({
+    initial: false,
+    clicked: null,
+  });
+  const [disabled, setDisabled] = useState(false)
+  const handleComplex = () => {
+    disableComplex();
+    if (state.initial === false) {
+      setState({
+        initial: null,
+        clicked: true,
+      })
+    } else if (state.clicked === true) {
+      setState({
+        clicked: !state
+      })
+    } else if (state.clicked === false) {
+      setState({
+        clicked: !state.clicked
+      })
+    }
+  }
+  const disableComplex = () => {
+    setDisabled(!disabled)
+    setTimeout(() => {
+      setDisabled(false)
+    }, 1200)
+  }
+
+  const [stateFlats, setStateFlats] = useState({
+    initial: false,
+    clicked: null,
+  });
+  const [disabledFlats, setDisabledFlats] = useState(false)
+  const handleFlats = () => {
+    disableFlats();
+    if (stateFlats.initial === false) {
+      setStateFlats({
+        initial: null,
+        clicked: true,
+      })
+    } else if (stateFlats.clicked === true) {
+      setStateFlats({
+        clicked: !stateFlats
+      })
+    } else if (stateFlats.clicked === false) {
+      setStateFlats({
+        clicked: !stateFlats.clicked
+      })
+    }
+  }
+  const disableFlats = () => {
+    setDisabledFlats(!disabledFlats)
+    setTimeout(() => {
+      setDisabledFlats(false)
+    }, 1200)
+  }
+
   const slider1 = useRef()
 
   const settings = {
@@ -73,57 +137,17 @@ const ComplexContent = () => {
         </div>
       </div>
       <Slider {...settings} ref={slider => (slider1.current = slider)}>
-        <div className="complex-flats-item">
-          <div className="complex-flats-item-image">
-            <Image />
-            <div className="complex-flats-item-content">
-              <h3>3 ком. квартира 117.0м²</h3>
-              <a href="#" className="button line">
-                смотреть планировку
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="complex-flats-item">
-          <div className="complex-flats-item-image">
-            <Image />
-            <div className="complex-flats-item-content">
-              <h3>3 ком. квартира 117.0м²</h3>
-              <a href="#" className="button line">
-                смотреть планировку
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="complex-flats-item">
-          <div className="complex-flats-item-image">
-            <Image />
-            <div className="complex-flats-item-promotion">Акция -20%</div>
-            <div className="complex-flats-item-content">
-              <h3>3 ком. квартира 117.0м²</h3>
-              <a href="#" className="button line">
-                смотреть планировку
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="complex-flats-item">
-          <div className="complex-flats-item-image">
-            <Image />
-            <div className="complex-flats-item-content">
-              <h3>3 ком. квартира 117.0м²</h3>
-              <a href="#" className="button line">
-                смотреть планировку
-              </a>
-            </div>
-          </div>
-        </div>
+        { complexesArray.map(el => (
+          <ComplexItem clicked={() => handleComplex()}/>
+        ))}
       </Slider>
       <div className="button-wrapper">
-        <a href="#" className="button bordered">
+        <a className="button bordered" onClick={() => handleFlats()}>
           планировка этажа
         </a>
       </div>
+      <ComplexItemMore state={state} disabled={disabled} clicked={() => handleComplex()} />
+      <ComplexFlatsFloor state={stateFlats} disabled={disabledFlats} clicked={() => handleFlats()} />
     </div>
   )
 }

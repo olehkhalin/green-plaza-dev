@@ -88,7 +88,7 @@ const advantagesArray = [
 ]
 
 const Advantages = () => (
-  <section className="section dark advantages">
+  <section className="section dark advantages" id="complex">
     <div className="container">
       <div className="row v-center space-between">
         <h2>

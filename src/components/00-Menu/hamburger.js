@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 import menuImage1 from "../../images/menu_image1.jpg"
 import menuImage2 from "../../images/menu_image2.jpg"
@@ -9,7 +10,7 @@ import menuImage4 from "../../images/menu_image4.jpg"
 import RhombusIcon from "../../icons/rhombus.svg"
 import Image from "../image"
 
-const Hamburger = ({ state }) => {
+const Hamburger = ({ state, clicked }) => {
   let menu = useRef(null)
   let revealMenu = useRef(null)
   let revealMenuBackground = useRef(null)
@@ -74,50 +75,50 @@ const Hamburger = ({ state }) => {
     gsap.to(backgroundImage, {
       duration: 0,
       opacity: 1,
-      delay: .4,
+      delay: 0.4,
       background: `url(${image}) center center`,
     })
     gsap.to(backgroundImageInner, {
       duration: 0.4,
       width: 0,
-      delay: .4,
+      delay: 0.4,
       // skewY: 0,
       ease: "power3.inOut",
     })
     gsap.to(backgroundImage, {
       duration: 0.4,
       scale: 1,
-      delay: .4,
-      // skewY: 0,
+      delay: 0.4,
       ease: "power3.inOut",
     })
-    // gsap.from(backgroundImage, {
-    //   duration: 0.4,
-    //   skewY: 2,
-    //   transformOrigin: "right top",
-    // })
   }
 
   const handleItemReturn = () => {
     gsap.to(backgroundImageInner, {
       duration: 0.4,
       width: "100%",
-      // skewY: 0,
       ease: "power3.inOut",
     })
     gsap.to(backgroundImageInner, {
       duration: 0.4,
-      delay: .4,
+      delay: 0.4,
       width: "100%",
-      // skewY: 0,
       ease: "power3.inOut",
     })
     gsap.to(backgroundImage, {
       duration: 0.4,
       scale: 1.4,
-      // skewY: 0,
       ease: "power3.inOut",
     })
+  }
+
+  const scrollToMenu = (e, id) => {
+    e.preventDefault();
+    clicked();
+    setTimeout(() => {
+
+      scrollTo(e, id);
+    }, 600);
   }
 
   return (
@@ -130,11 +131,15 @@ const Hamburger = ({ state }) => {
         <div className="container">
           <div className="row v-center space-between">
             <div className="menu-wrapper">
-              <div
-                className="menu-photos"
-              >
-                <div className="menu-photos-image" ref={el => (backgroundImage = el)}></div>
-                <div className="menu-photos-inner" ref={el => (backgroundImageInner = el)}></div>
+              <div className="menu-photos">
+                <div
+                  className="menu-photos-image"
+                  ref={el => (backgroundImage = el)}
+                ></div>
+                <div
+                  className="menu-photos-inner"
+                  ref={el => (backgroundImageInner = el)}
+                ></div>
               </div>
               <div className="menu-links">
                 <nav>
@@ -142,7 +147,13 @@ const Hamburger = ({ state }) => {
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a href="#" ref={el => (line1 = el)} onMouseEnter={() => handleItem(menuImage1)} onMouseLeave={handleItemReturn}>
+                        <a
+                          href="#"
+                          ref={el => (line1 = el)}
+                          onMouseEnter={() => handleItem(menuImage1)}
+                          onMouseLeave={handleItemReturn}
+                          onClick={e => scrollToMenu(e, "#complex")}
+                        >
                           О комплексе
                         </a>
                       </div>
@@ -150,7 +161,13 @@ const Hamburger = ({ state }) => {
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a href="#" ref={el => (line2 = el)} onMouseEnter={() => handleItem(menuImage2)} onMouseLeave={handleItemReturn}>
+                        <a
+                          href="#"
+                          ref={el => (line2 = el)}
+                          onMouseEnter={() => handleItem(menuImage2)}
+                          onMouseLeave={handleItemReturn}
+                          onClick={e => scrollToMenu(e, "#flats")}
+                        >
                           Планировки
                         </a>
                       </div>
@@ -158,7 +175,13 @@ const Hamburger = ({ state }) => {
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a href="#" ref={el => (line3 = el)} onMouseEnter={() => handleItem(menuImage3)} onMouseLeave={handleItemReturn}>
+                        <a
+                          href="#"
+                          ref={el => (line3 = el)}
+                          onMouseEnter={() => handleItem(menuImage3)}
+                          onMouseLeave={handleItemReturn}
+                          onClick={e => scrollToMenu(e, "#gallery")}
+                        >
                           Галерея
                         </a>
                       </div>
@@ -166,7 +189,13 @@ const Hamburger = ({ state }) => {
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a href="#" ref={el => (line4 = el)} onMouseEnter={() => handleItem(menuImage4)} onMouseLeave={handleItemReturn}>
+                        <a
+                          href="#"
+                          ref={el => (line4 = el)}
+                          onMouseEnter={() => handleItem(menuImage4)}
+                          onMouseLeave={handleItemReturn}
+                          onClick={e => scrollToMenu(e, "#contacts")}
+                        >
                           Контакты
                         </a>
                       </div>

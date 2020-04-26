@@ -1,9 +1,10 @@
 import React from "react"
+import scrollTo from "gatsby-plugin-smoothscroll"
 import ArrowLeft from "../../icons/arrow-left.svg"
 import ArrowRight from "../../icons/arrow-right.svg"
 import ButtonArrow from "../../icons/button-arrow.svg"
 
-const HomeContent = ({nxtBtnClk, prvBtnClk}) => (
+const HomeContent = ({ nxtBtnClk, prvBtnClk }) => (
   <div className="home-content">
     <div className="container">
       <div className="row v-center space-between">
@@ -11,7 +12,13 @@ const HomeContent = ({nxtBtnClk, prvBtnClk}) => (
           <h1>Green plaza</h1>
           <h4>жилой комплекс</h4>
           <h5>в 17-м микрорайоне г. Актау</h5>
-          <a href="#" className="button bordered">посмотреть квартиры</a>
+          <a
+            href="#"
+            className="button bordered"
+            onClick={e => scrollTo(e, "#flats")}
+          >
+            посмотреть квартиры
+          </a>
           <div className="home-carousel-progress">
             <div className="home-carousel-progress-num current">01</div>
             <div className="home-carousel-progress-bar">
@@ -22,11 +29,25 @@ const HomeContent = ({nxtBtnClk, prvBtnClk}) => (
           </div>
         </div>
         <div className="home-carousel-arrows">
-          <div className="home-carousel-arrow left" onClick={()=>prvBtnClk()}><ArrowLeft/></div>
-          <div className="home-carousel-arrow right" onClick={() => nxtBtnClk()}><ArrowRight /></div>
+          <div className="home-carousel-arrow left" onClick={() => prvBtnClk()}>
+            <ArrowLeft />
+          </div>
+          <div
+            className="home-carousel-arrow right"
+            onClick={() => nxtBtnClk()}
+          >
+            <ArrowRight />
+          </div>
         </div>
         <div className="home-carousel-more">
-          <a href="#" className="button arrow-only">смотреть еще<ButtonArrow/></a>
+          <a
+            href="#"
+            className="button arrow-only"
+            onClick={() => scrollTo("#flats")}
+          >
+            смотреть еще
+            <ButtonArrow />
+          </a>
         </div>
       </div>
     </div>

@@ -116,6 +116,12 @@ h2
 		&:hover
 			background-color: $adobe
 			color: $white
+	&.main
+		background-color: $adobe
+		color: $white
+		&:hover
+			background-color: transparent
+			color: $black
 	&.arrow
 		width: 100%
 		padding: 9px
@@ -860,6 +866,109 @@ h2
 				line-height: 24px
 				color: $pale-brown
 				transition: margin-left .3s
+
+.complex-more
+	z-index: 100
+	position: fixed
+	top: 0
+	right: 0
+	width: 100%
+	height: 100%
+	display: none
+	overflow-y: auto
+	&-secondary-background-color
+		position: fixed
+		top: 0
+		right: 0
+		width: 100%
+		height: 100%
+		background-color: $black
+		z-index: -1
+	&-layer
+		//min-height: 600px
+		position: absolute
+		background-color: $pale
+		height: 100%
+		width: 100%
+		top: 0
+		right: 0
+		overflow: hidden
+		.button-close
+			padding: 10px
+			width: 56px
+			margin: -10px
+			background: none
+			border: none
+			cursor: pointer
+			outline: none
+			position: absolute
+			top: 50px
+			right: 0
+			span
+				margin-bottom: 6px
+				background-color: $adobe
+				height: 3px
+				border-radius: 3px
+				width: 100%
+				display: block
+				transition: transform .3s, background-color .3s .5s
+				&:nth-child(2)
+					opacity: 0
+				&:nth-child(1)
+					transform: translateY(9px) rotate(45deg)
+					transform-origin: center
+				&:nth-child(3)
+					transform: translateY(-9px) rotate(-45deg)
+					transform-origin: center
+				&:last-child
+					margin-bottom: 0
+	&-scroll
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+	&-wrapper
+		display: flex
+		width: 100%
+		align-items: center
+		justify-content: space-between
+		flex-wrap: wrap
+		padding: 40px 0
+		position: relative
+	&-header
+		width: 100%
+		display: flex
+		margin-bottom: 30px
+		&-item
+			width: 50%
+			font-weight: 600
+			font-size: 36px
+			h2
+				margin: 0
+				padding: 0
+				text-transform: none
+			h3
+				margin: 0
+				padding: 0
+				color: $adobe
+	&-photos
+		width: 50%
+		opacity: 0
+	&-content
+		width: 50%
+		&-table
+			margin-bottom: 60px
+			svg
+				width: 100%
+		&-buttons
+			display: flex
+			justify-content: space-between
+			.button
+				width: calc(50% - 15px)
+				padding-left: 0
+				padding-right: 0
+
 
 
 // 04 - Tours

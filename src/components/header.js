@@ -1,12 +1,37 @@
 // import { Link } from "gatsby"
 // import PropTypes from "prop-types"
 import React, { useState } from "react"
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import GreenPlazaLogo from "../icons/logo.svg"
 import Hamburger from "./00-Menu/hamburger"
 
 // const Header = ({ siteTitle }) => (
 const Header = () => {
+
+  const [headerStyle, setHeaderStyle] = useState({
+    transition: "all 200ms ease-in",
+  })
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isVisible = currPos.y > prevPos.y
+
+      const shouldBeStyle = {
+        transition: `all 200ms ${isVisible ? "ease-in" : "ease-out"}`,
+        transform: isVisible
+          ? "none"
+          : `translate(0, -${
+            document.querySelector(".header").offsetHeight
+          }px)`,
+      }
+
+      if (JSON.stringify(shouldBeStyle) === JSON.stringify(headerStyle)) return
+
+      setHeaderStyle(shouldBeStyle)
+    },
+    [headerStyle]
+  )
+
   const [state, setState] = useState({
     initial: false,
     clicked: null,
@@ -45,7 +70,7 @@ const Header = () => {
   }
 
   return (
-    <header className="header">
+    <header className="header" style={{ ...headerStyle }}>
       <div className="container">
         <div className="row v-center space-between">
           <div className="logo">
@@ -77,7 +102,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Hamburger state={state} />
+      <Hamburger state={state} clicked={handleMenu} />
     </header>
   )
 }

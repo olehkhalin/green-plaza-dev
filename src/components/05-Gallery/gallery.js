@@ -5,7 +5,7 @@ import Image from "../image"
 const galleryImages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 const Gallery = () => (
-  <section className="section light gallery">
+  <section className="section light gallery" id="gallery">
     <div className="container">
       <div className="row v-center space-between">
         <h2>
