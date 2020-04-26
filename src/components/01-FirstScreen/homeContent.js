@@ -13,9 +13,9 @@ const HomeContent = ({ nxtBtnClk, prvBtnClk }) => (
           <h4>жилой комплекс</h4>
           <h5>в 17-м микрорайоне г. Актау</h5>
           <a
-            href="#"
+            // href="#"
             className="button bordered"
-            onClick={e => scrollTo(e, "#flats")}
+            onClick={() => scrollTo("#flats")}
           >
             посмотреть квартиры
           </a>
@@ -41,7 +41,7 @@ const HomeContent = ({ nxtBtnClk, prvBtnClk }) => (
         </div>
         <div className="home-carousel-more">
           <a
-            href="#"
+            // href="#"
             className="button arrow-only"
             onClick={() => scrollTo("#flats")}
           >

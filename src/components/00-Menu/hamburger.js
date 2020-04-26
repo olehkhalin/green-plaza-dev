@@ -117,7 +117,7 @@ const Hamburger = ({ state, clicked }) => {
     clicked();
     setTimeout(() => {
 
-      scrollTo(e, id);
+      scrollTo(id);
     }, 600);
   }
 

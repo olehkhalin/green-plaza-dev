@@ -37,8 +37,8 @@ const FirstScreen = () => {
         direction = (nextSlide - currentSlide > 0) ? "left" : "right";
       }
 
-      progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
-      startProgressbar();
+      // progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
+      // startProgressbar();
 
       if (direction === 'right') {
         document.querySelector('.slick-cloned[data-index="' + (nextSlide + slideCountZeroBased + 1) + '"]').classList.add('slick-current-clone-animate');
