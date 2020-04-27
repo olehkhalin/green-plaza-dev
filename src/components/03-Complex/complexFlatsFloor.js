@@ -9,8 +9,8 @@ const ComplexFlatsFloor = ({state, disabled, clicked}) => {
 
   return (
     <Modal state={state} disabled={disabled} clicked={clicked}>
-      <div className="complex-more-header">
-      <div className="complex-more-header-item">
+      <div className="modal-header">
+      <div className="modal-header-item">
         <h2>Планировка этажа домов № 9, 11, 14, 16, 17</h2>
       </div>
       </div>

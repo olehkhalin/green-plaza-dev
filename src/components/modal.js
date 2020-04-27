@@ -50,13 +50,13 @@ const Modal = ({state, disabled, clicked, children}) => {
   }, [state])
 
   return (
-    <div className="complex-more" ref={el => (complex = el)}>
-      <div className="complex-more-secondary-background-color" ref={el => (revealComplexBackground = el)}></div>
-      <div className="complex-more-layer" ref={el => (revealComplex = el)}>
+    <div className="modal" ref={el => (complex = el)}>
+      <div className="modal-secondary-background-color" ref={el => (revealComplexBackground = el)}></div>
+      <div className="modal-layer" ref={el => (revealComplex = el)}>
         <div className="container">
           <div className="row v-center space-between">
-            <div className="complex-more-scroll">
-              <div className="complex-more-wrapper">
+            <div className="modal-scroll">
+              <div className="modal-wrapper">
                 <button className="button-close" onClick={clicked} disabled={disabled}>
                   <span></span>
                   <span></span>
