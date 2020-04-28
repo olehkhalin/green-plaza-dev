@@ -10,9 +10,9 @@ const ComplexItem = ({clicked}) => {
           <Image />
           <div className="complex-flats-item-content">
             <h3>3 ком. квартира 117.0м²</h3>
-            <a href="#" className="button line">
+            <button className="button line">
               смотреть планировку
-            </a>
+            </button>
           </div>
         </div>
       </div>

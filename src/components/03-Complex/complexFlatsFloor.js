@@ -2,7 +2,7 @@ import React from "react"
 
 import ComplexMoreTable from "../../icons/complex-more.svg"
 import Modal from "../modal"
-import Image from "../image"
+import Image2 from "../image2"
 import ComplexItemMore from "./complexFlatsItemMore"
 
 const ComplexFlatsFloor = ({state, disabled, clicked}) => {
@@ -15,7 +15,7 @@ const ComplexFlatsFloor = ({state, disabled, clicked}) => {
       </div>
       </div>
       <div className="complex-floor-image">
-        <Image/>
+        <Image2/>
       </div>
     </Modal>
   )

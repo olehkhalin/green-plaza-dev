@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import ComplexMoreTable from "../../icons/complex-more.svg"
 import Modal from "../modal"
-import Image from "../image"
+import Image from "../image2"
 import ComplexItemMore from "./complexFlatsItemMore"
 
 const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
