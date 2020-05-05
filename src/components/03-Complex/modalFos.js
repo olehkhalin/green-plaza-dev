@@ -6,7 +6,7 @@ import Image from "../image"
 import ComplexItemMore from "./complexFlatsItemMore"
 import MainForm from "../mainForm"
 
-const ModalFos = ({state, disabled, clicked}) => {
+const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
 
   return (
     <Modal state={state} disabled={disabled} clicked={clicked}>
@@ -23,7 +23,7 @@ const ModalFos = ({state, disabled, clicked}) => {
           <div className="form-content-label plan">
             <span className="form-content-text">Вам понравилась эта планирвка</span>
             <div className="form-content-input">
-              <span>Дом № 5,20</span><span>4 ком. квартира -182,0 м²</span>
+              <span>Дом № {building}</span><span>{title} - {quadrature}</span>
             </div>
           </div>
         </div>

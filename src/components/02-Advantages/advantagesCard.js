@@ -1,6 +1,6 @@
 import React from "react"
 
-const AdvantagesCard = ({advantageItem}) => (
+const AdvantagesCard = ({advantageItem, icon}) => (
   <div className="advantages-card-wrapper">
     <div className="advantages-card">
       <div className="advantages-card-inner">
@@ -10,7 +10,7 @@ const AdvantagesCard = ({advantageItem}) => (
           ))}
         </ul>
         <div className="advantages-card-front">
-          <div className="advantages-card-icon"><img src={advantageItem.icon} alt=""/></div>
+          <div className="advantages-card-icon">{icon}</div>
           <h3 className="advantages-card-header">{advantageItem.title}</h3>
         </div>
         <div className="advantages-card-back">

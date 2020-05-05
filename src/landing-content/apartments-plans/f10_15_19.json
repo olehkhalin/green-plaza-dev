@@ -1,0 +1,134 @@
+[
+  {
+    "numbers": "10, 15, 19",
+    "flats": [
+      {
+        "title": "1 ком. квартира",
+        "quadrature": "61м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/0.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/0.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "80м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/1.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/1.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "80м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/2.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/2.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "75м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/3.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/3.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "75м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/4.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/4.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "77м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/5.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/5.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "80м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/6.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/6.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "80 м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/7.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/7.pdf",
+        "promotion": false
+      },
+      {
+        "title": "3 ком. квартира",
+        "quadrature": "99.6м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/8.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/8.pdf",
+        "promotion": false
+      },
+      {
+        "title": "3 ком. квартира",
+        "quadrature": "107м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/9.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/9.pdf",
+        "promotion": false
+      },
+      {
+        "title": "3 ком. квартира",
+        "quadrature": "107м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/10.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/10.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "136м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/11.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/11.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "142.5м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/12.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/12.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "142.5м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/13.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/13.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "142.6м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/14.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/14.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "175м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/15.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/15.pdf",
+        "promotion": false
+      },
+      {
+        "title": "5 ком. квартира",
+        "quadrature": "216м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/16.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/16.pdf",
+        "promotion": false
+      },
+      {
+        "title": "1 ком. квартира",
+        "quadrature": "62м²",
+        "image": "../../images/apartments-plans/10-15-19/flats/17.png",
+        "pdf": "../../images/apartments-plans/10-15-19/pdfs/17.pdf",
+        "promotion": false
+      }
+    ],
+    "floor": "../../images/apartments-plans/10-15-19/floor.png"
+  }
+]

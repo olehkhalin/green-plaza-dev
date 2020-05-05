@@ -1,14 +1,15 @@
 import React from "react"
 import ButtonArrow from "../../icons/button-arrow.svg"
+import QRCode from "qrcode.react"
 
-const TourCard = ({ tourItem }) => (
+const TourCard = ({ title, link }) => (
   <div className="tour-card-wrapper">
     <div className="tour-card">
       <div className="tour-card-icon">
-        <div className="tour-card-title">{tourItem.title}</div>
-        <img src={tourItem.icon} alt="" />
+        <div className="tour-card-title">{title}</div>
+        <QRCode value={link} renderAs="svg" level="L" size="80%" />
       </div>
-      <a className="button arrow" target="_blank" href="https://google.com">
+      <a className="button arrow" target="_blank" href={link}>
         смотреть тур
         <ButtonArrow />
       </a>

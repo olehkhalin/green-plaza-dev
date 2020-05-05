@@ -1,0 +1,10 @@
+[
+  {
+    "image": "../images/form/image1.jpg",
+    "alt": "Alternative text"
+  },
+  {
+    "image": "../images/form/image2.jpg",
+    "alt": "Alternative text"
+  }
+]

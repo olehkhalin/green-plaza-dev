@@ -4,19 +4,41 @@ import Header from "../header"
 import HomeContent from "./homeContent"
 import Image from "../image"
 import HomePromotion from "./homePromotion"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 const FirstScreen = () => {
-  const slider1 = useRef();
+  const data = useStaticQuery(graphql`
+    query {
+      mainScreenJson {
+        promotion {
+          enable
+        }
+        images {
+          alt
+          image {
+            id
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  const time = 3;
-  let isPause;
-  let timer;
-  let percentTime;
-  let progressBar;
-  let progressBarCurrent;
-  let progressBarAll;
-  let allSlidesCount;
+  const slider1 = useRef()
 
+  const time = 3
+  let isPause
+  let timer
+  let percentTime
+  let progressBar
+  let progressBarCurrent
+  let progressBarAll
+  let allSlidesCount
 
   const settings = {
     infinite: true,
@@ -25,77 +47,93 @@ const FirstScreen = () => {
     variableWidth: true,
     draggable: false,
     beforeChange: (currentSlide, nextSlide) => {
-      let
-        direction,
-        slideCountZeroBased = slider1.current.props.children.length - 1;
+      let direction,
+        slideCountZeroBased = slider1.current.props.children.length - 1
 
       if (nextSlide === currentSlide) {
-        direction = "same";
+        direction = "same"
       } else if (Math.abs(nextSlide - currentSlide) === 1) {
-        direction = (nextSlide - currentSlide > 0) ? "right" : "left";
+        direction = nextSlide - currentSlide > 0 ? "right" : "left"
       } else {
-        direction = (nextSlide - currentSlide > 0) ? "left" : "right";
+        direction = nextSlide - currentSlide > 0 ? "left" : "right"
       }
 
       // progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
       // startProgressbar();
 
-      if (direction === 'right') {
-        document.querySelector('.slick-cloned[data-index="' + (nextSlide + slideCountZeroBased + 1) + '"]').classList.add('slick-current-clone-animate');
+      if (direction === "right") {
+        document
+          .querySelector(
+            '.slick-cloned[data-index="' +
+              (nextSlide + slideCountZeroBased + 1) +
+              '"]'
+          )
+          .classList.add("slick-current-clone-animate")
       }
-      if (direction === 'left') {
-        document.querySelector('.slick-cloned[data-index="' + (nextSlide - slideCountZeroBased - 1) + '"]').classList.add('slick-current-clone-animate');
+      if (direction === "left") {
+        document
+          .querySelector(
+            '.slick-cloned[data-index="' +
+              (nextSlide - slideCountZeroBased - 1) +
+              '"]'
+          )
+          .classList.add("slick-current-clone-animate")
       }
     },
     afterChange: (currentSlide, nextSlide) => {
-      document.querySelector('.slick-current-clone-animate').classList.remove('slick-current-clone-animate');
-    }
-  };
+      document
+        .querySelector(".slick-current-clone-animate")
+        .classList.remove("slick-current-clone-animate")
+    },
+  }
 
   const nextButtonClicked = () => {
-    slider1.current.slickNext();
+    slider1.current.slickNext()
   }
 
   const prevButtonClicked = () => {
-    slider1.current.slickPrev();
+    slider1.current.slickPrev()
   }
 
-
   useEffect(() => {
-    progressBar = document.querySelector('.home-carousel-progress-bar-inner.dark');
+    progressBar = document.querySelector(
+      ".home-carousel-progress-bar-inner.dark"
+    )
 
-    progressBarAll = document.querySelector('.home-carousel-progress-num.last');
-    allSlidesCount = slider1.current.props.children.length;
-    progressBarAll.innerText = allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount;
+    progressBarAll = document.querySelector(".home-carousel-progress-num.last")
+    allSlidesCount = slider1.current.props.children.length
+    progressBarAll.innerText =
+      allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount
 
-    progressBarCurrent = document.querySelector('.home-carousel-progress-num.current');
+    progressBarCurrent = document.querySelector(
+      ".home-carousel-progress-num.current"
+    )
 
-    startProgressbar();
+    startProgressbar()
   }, [])
 
   const startProgressbar = () => {
-    resetProgressbar();
-    percentTime = 0;
-    isPause = false;
-    timer = setInterval(interval, 10);
+    resetProgressbar()
+    percentTime = 0
+    isPause = false
+    timer = setInterval(interval, 10)
   }
 
   const interval = () => {
     if (isPause === false) {
-      percentTime += 1 / (time+0.1);
-      progressBar.style.height = `${percentTime}%`;
-      if(percentTime >= 100) {
-        slider1.current.slickNext();
-        startProgressbar();
+      percentTime += 1 / (time + 0.1)
+      progressBar.style.height = `${percentTime}%`
+      if (percentTime >= 100) {
+        slider1.current.slickNext()
+        startProgressbar()
       }
     }
   }
 
   const resetProgressbar = () => {
-    progressBar.style.height = `0%`;
-    clearTimeout(timer);
+    progressBar.style.height = `0%`
+    clearTimeout(timer)
   }
-
 
   return (
     <div className="first-screen">
@@ -104,31 +142,29 @@ const FirstScreen = () => {
         nxtBtnClk={() => nextButtonClicked()}
         prvBtnClk={() => prevButtonClicked()}
       />
-      <div className="home-carousel" onMouseEnter={() => {isPause = true}}  onMouseLeave={() => {isPause = false}}>
+      <div
+        className="home-carousel"
+        onMouseEnter={() => {
+          isPause = true
+        }}
+        onMouseLeave={() => {
+          isPause = false
+        }}
+      >
         <Slider {...settings} ref={slider => (slider1.current = slider)}>
-          <div className="home-carousel-item">
-            <div className="home-carousel-item-image">
-              <Image/>
+          {data.mainScreenJson.images.map(image => (
+            <div className="home-carousel-item" key={image.image.id}>
+              <div className="home-carousel-item-image">
+                <Img
+                  fluid={image.image.childImageSharp.fluid}
+                  alt={image.alt}
+                />
+              </div>
             </div>
-          </div>
-          <div className="home-carousel-item">
-            <div className="home-carousel-item-image">
-              <Image/>
-            </div>
-          </div>
-          <div className="home-carousel-item">
-            <div className="home-carousel-item-image">
-              <Image/>
-            </div>
-          </div>
-          <div className="home-carousel-item">
-            <div className="home-carousel-item-image">
-              <Image/>
-            </div>
-          </div>
+          ))}
         </Slider>
       </div>
-      <HomePromotion/>
+      <HomePromotion />
     </div>
   )
 }

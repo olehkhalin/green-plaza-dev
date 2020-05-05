@@ -14,7 +14,7 @@ const Header = () => {
   })
   useScrollPosition(
     ({ prevPos, currPos }) => {
-      const isVisible = currPos.y > prevPos.y
+      const isVisible = currPos.y > prevPos.y || currPos.y > -50
 
       const shouldBeStyle = {
         transition: `all 200ms ${isVisible ? "ease-in" : "ease-out"}`,
@@ -62,6 +62,7 @@ const Header = () => {
   }
 
   const disableMenu = () => {
+    document.querySelector('html').classList.toggle('lock-scroll');
     setDisabled(!disabled)
     setTimeout(() => {
       setDisabled(false)

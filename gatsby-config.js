@@ -5,14 +5,21 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/landing-content`,
+      },
+    },
     `gatsby-plugin-smoothscroll`,
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /icons/
-        }
-      }
+          include: /icons/,
+        },
+      },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,

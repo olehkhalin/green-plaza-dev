@@ -1,0 +1,50 @@
+[
+  {
+    "numbers": "18",
+    "flats": [
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "88.5м²",
+        "image": "../../images/apartments-plans/18/flats/0.png",
+        "pdf": "../../images/apartments-plans/18/pdfs/0.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "74м²",
+        "image": "../../images/apartments-plans/18/flats/1.png",
+        "pdf": "../../images/apartments-plans/18/pdfs/1.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "75м²",
+        "image": "../../images/apartments-plans/18/flats/2.png",
+        "pdf": "../../images/apartments-plans/18/pdfs/2.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "85м²",
+        "image": "../../images/apartments-plans/18/flats/3.png",
+        "pdf": "../../images/apartments-plans/18/pdfs/3.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "88м²",
+        "image": "../../images/apartments-plans/18/flats/4.png",
+        "pdf": "../../images/apartments-plans/18/pdfs/4.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "80м²",
+        "image": "../../images/apartments-plans/18/flats/5.png",
+        "pdf": "../../images/apartments-plans/18/pdfs/5.pdf",
+        "promotion": false
+      }
+    ],
+    "floor": "../../images/apartments-plans/18/floor.png"
+  }
+]

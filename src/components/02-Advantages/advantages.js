@@ -1,110 +1,61 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
 import AdvantagesCard from "./advantagesCard"
 
-import locationIcon from "../../icons/advantages/location.svg"
+import LocationIcon from "../../icons/advantages/location.svg"
+import EcologyIcon from "../../icons/advantages/ecology.svg"
+import ArchitectureIcon from "../../icons/advantages/architecture.svg"
+import EngineeringIcon from "../../icons/advantages/engineering.svg"
+import ParkingIcon from "../../icons/advantages/parking.svg"
+import ChildrenIcon from "../../icons/advantages/children.svg"
+import SportIcon from "../../icons/advantages/sport.svg"
+import SecurityIcon from "../../icons/advantages/security.svg"
+import CleaningIcon from "../../icons/advantages/cleaning.svg"
 
-const advantagesArray = [
-  {
-    icon: `../icons/advantages/location.svg`,
-    title: `Выгодное расположение и развитая инфраструктура`,
-    list: [
-      `Приморский бульвар в шаговой доступности`,
-      `Вид на море с первого этажа`,
-      `На территории: кафе, рестораны, детский сад, продуктовые магазины, автомойка, парикмахерские, СПА-салоны, поликлиника и аптеки и т.д.`,
-      `Рядом: ЦОН, нотариус, отделения банков`,
-    ],
-  },
-  {
-    icon: "sdaf",
-    title: `Экологически благоприятный район`,
-    list: [
-      `Расположение на возвышенности вблизи Каспия создает комфортный микроклимат`,
-      `Внутренний двор — это большой зелёный парк на территории 3га с роскошными фонтанами, мраморными античными скульптурами, гранитными дорожками, беседками с балюстрадой и удобными
-скамейками`,
-    ],
-  },
-  {
-    icon: "sdaf",
-    title: `Авторская архитектура`,
-    list: [
-      `Высокие потолки`,
-      `Европейский дизайн`,
-      `Отделка керамическим кирпичом`,
-      `Элементы из природного камня Аглая`,
-      `Продуманное освещение`,
-      `Дизайнерское зонирование площадок дворов`,
-    ],
-  },
-  {
-    icon: "sdaf",
-    title: `Европейский инжиниринг`,
-    list: [
-      `Японские бесшумные лифты Mistubishi`,
-      `Месячный резерв воды с системой очистки и итальянскими насосами`,
-      `Аварийный электрогенератор на случай отключения электричества`,
-      `Собственная газовая котельная`,
-      `Трансформаторная подстанция`,
-      `Высокоскоростной интернет`,
-    ],
-  },
-  {
-    icon: "sdaf",
-    title: `Место для вашего авто`,
-    list: [`Подземная парковка`],
-  },
-  {
-    icon: "sdaf",
-    title: `Развлечения для детей`,
-    list: [
-      `Несколько детских площадок с уникальным покрытием`,
-      `Безопасныи качелями, горками, турниками`,
-      `Отсутствие острых углов`,
-    ],
-  },
-  {
-    icon: "sdaf",
-    title: `Спортивные площадки для всех возрастов`,
-    list: [
-      `Футбольное поле и баскетбольная площадка`,
-      `Классические турники и брусья`,
-      `Тренажеры для прокачки мышц пресса`,
-      `Уличные тренажеры для мышц ног, туловища и рук`,
-    ],
-  },
-  {
-    icon: "sdaf",
-    title: `Круглосуточная охрана`,
-    list: [`Круглосуточная охрана и камеры на всей территории`],
-  },
-  {
-    icon: "sdaf",
-    title: `Круглосуточный сервис и озеленение`,
-    list: [
-      `Сервисная служба из более чем 30 профессионалов, включая: электриков, сантехников, садовников уборщиц и т.д.`,
-      `Ежедневная уборка внутридворовых территории, подъездов и лифтов`,
-    ],
-  },
+const advantagesIcons = [
+  <LocationIcon/>,
+  <EcologyIcon/>,
+  <ArchitectureIcon/>,
+  <EngineeringIcon/>,
+  <ParkingIcon/>,
+  <ChildrenIcon/>,
+  <SportIcon/>,
+  <SecurityIcon/>,
+  <CleaningIcon/>
 ]
 
-const Advantages = () => (
-  <section className="section dark advantages" id="complex">
-    <div className="container">
-      <div className="row v-center space-between">
-        <h2>
-          <span className="h2-line">Преимущества жилого комплекса</span>
-          <span className="h2-line h2-color">GREEN PLAZA</span>
-        </h2>
-      </div>
-      <div className="row v-center space-between">
-        <div className="advantages-cards-container">
-          {advantagesArray.map((advantageItem, index) => (
-            <AdvantagesCard advantageItem={advantageItem} key={index} />
-          ))}
+const Advantages = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allAdvantagesJson {
+        nodes {
+          title
+          list
+        }
+      }
+    }
+  `)
+
+  return (
+    <section className="section dark advantages" id="complex">
+      <div className="container">
+        <div className="row v-center space-between">
+          <h2>
+            <span className="h2-line">Преимущества жилого комплекса</span>
+            <span className="h2-line h2-color">GREEN PLAZA</span>
+          </h2>
+        </div>
+        <div className="row v-center space-between">
+          <div className="advantages-cards-container">
+            {data.allAdvantagesJson.nodes.map((advantageItem, index) => (
+              <AdvantagesCard advantageItem={advantageItem} key={index} icon={advantagesIcons[index]} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export default Advantages

@@ -3,8 +3,19 @@ import React, { useState } from "react"
 import ComplexMoreTable from "../../icons/complex-more.svg"
 import Modal from "../modal"
 import ModalFos from "./modalFos"
+import Img from "gatsby-image"
 
-const ComplexItemMore = ({state, disabled, clicked}) => {
+const ComplexItemMore = ({state, disabled, clicked, flat, building}) => {
+
+  let title, quadrature, image, promotion, publicURL;
+
+  if(flat) {
+    title = flat.title
+    quadrature = flat.quadrature
+    image = flat.image
+    promotion = flat.promotion
+    publicURL = flat.pdf.publicURL
+  }
 
   const [stateFos, setStateFos] = useState({
     initial: false,
@@ -35,6 +46,7 @@ const ComplexItemMore = ({state, disabled, clicked}) => {
     }
   }
   const disableFos = () => {
+    document.querySelector('html').classList.toggle('lock-scroll');
     setDisabledFos(!disabledFos)
     setTimeout(() => {
       setDisabledFos(false)
@@ -46,11 +58,16 @@ const ComplexItemMore = ({state, disabled, clicked}) => {
     <Modal state={state} disabled={disabled} clicked={clicked}>
       <div className="complex-more-photos">
         <div className="modal-header-item">
-          <h2>4 ком. квартира - 182.0м²</h2>
+          <h2>{title} - {quadrature}</h2>
         </div>
+        {flat ? (
+          <Img
+            fluid={image.childImageSharp.fluid}
+          />
+        ) : null}
       </div>
       <div className="complex-more-content">
-        <div className="modal-header-item promotion">
+        <div className={"modal-header-item promotion" + (!promotion ? " hidden" : '')}>
           <h2>АКЦИЯ -20%</h2>
         </div>
         <div className="complex-more-content-table">
@@ -60,13 +77,14 @@ const ComplexItemMore = ({state, disabled, clicked}) => {
           <button className="button bordered main" onClick={() => handleFos()}>
             связаться с менеджером
           </button>
-          <a href="#" className="button bordered">
+          {}
+          <a href={publicURL} download className="button bordered">
             скачать планировку
           </a>
         </div>
       </div>
     </Modal>
-      <ModalFos state={stateFos} disabled={disabledFos} clicked={() => handleFos()}  />
+      <ModalFos state={stateFos} disabled={disabledFos} clicked={() => handleFos()} title={title} quadrature={quadrature} building={building} />
     </>
   )
 }

@@ -1,0 +1,36 @@
+[
+  {
+    "numbers": "20",
+    "flats": [
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "75м²",
+        "image": "../../images/apartments-plans/20/flats/0.png",
+        "pdf": "../../images/apartments-plans/20/pdfs/0.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "182м²",
+        "image": "../../images/apartments-plans/20/flats/1.png",
+        "pdf": "../../images/apartments-plans/20/pdfs/1.pdf",
+        "promotion": false
+      },
+      {
+        "title": "4 ком. квартира",
+        "quadrature": "177м²",
+        "image": "../../images/apartments-plans/20/flats/2.png",
+        "pdf": "../../images/apartments-plans/20/pdfs/2.pdf",
+        "promotion": false
+      },
+      {
+        "title": "2 ком. квартира",
+        "quadrature": "74м²",
+        "image": "../../images/apartments-plans/20/flats/3.png",
+        "pdf": "../../images/apartments-plans/20/pdfs/3.pdf",
+        "promotion": false
+      }
+    ],
+    "floor": "../../images/apartments-plans/20/floor.png"
+  }
+]

@@ -18,6 +18,8 @@ html
 	color: $black
 	font-size: 16px
 	overflow-x: hidden
+	&.lock-scroll
+		overflow: hidden
 
 .container
 	width: 1560px
@@ -415,7 +417,7 @@ h2
 	&-title
 		z-index: 5
 		h1
-			font-size: 64px
+			font-size: 55px
 			font-weight: bold
 			line-height: 0.91
 			color: $adobe
@@ -423,7 +425,7 @@ h2
 			padding: 0
 			text-transform: uppercase
 		h4
-			font-size: 42px
+			font-size: 40px
 			font-weight: 600
 			color: $black
 			margin: 0
@@ -432,7 +434,7 @@ h2
 			margin-top: 10px
 			margin-bottom: 8px
 		h5
-			font-size: 36px
+			font-size: 30px
 			font-weight: 600
 			color: $black
 			padding: 0
@@ -441,7 +443,7 @@ h2
 		margin-top: 42px
 
 .home-carousel
-	width: 66.666%
+	width: 60%
 	position: absolute
 	top: 95px
 	right: 0
@@ -459,7 +461,7 @@ h2
 		cursor: pointer
 		transition: opacity .3s
 		&:first-child
-			margin-right: 88px
+			margin-right: 30px
 		&:hover
 			opacity: 1
 	&-more
@@ -695,6 +697,11 @@ h2
 		transition: opacity .3s
 		&:hover
 			opacity: .6
+
+.complex-floor-image
+	width: 80%
+	margin-left: auto
+	margin-right: auto
 // SVG
 
 // Complex popup
@@ -827,7 +834,7 @@ h2
 					.gatsby-image-wrapper
 						margin-left: 0
 				&-content
-					h2
+					h3
 						font-size: 36px
 					.button.line
 						font-size: 16px
@@ -980,6 +987,7 @@ h2
 			outline: none
 			position: absolute
 			top: 50px
+			z-index: 5
 			right: 0
 			span
 				margin-bottom: 6px
@@ -1032,6 +1040,8 @@ h2
 			&.promotion
 				h2
 					color: $adobe
+				&.hidden
+					opacity: 0
 
 .complex-more
 	&-photos
@@ -1106,13 +1116,18 @@ h2
 		&-icon
 			padding: 12px
 			background-color: $white
-			width: max-content
+			//width: max-content
 			//margin-left: auto
 			margin-bottom: 25px
 			position: relative
 			z-index: 1
 			width: 160px // comment it
 			height: 160px // comment it
+			display: flex
+			justify-content: center
+			align-items: center
+			//svg
+			//	width: 80% !important
 			@include media("<=phone")
 				width: 84px // comment it
 				height: 84px // comment it

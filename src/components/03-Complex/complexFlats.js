@@ -16,21 +16,21 @@ const tabs = [
 
 const ComplexFlats = () => {
   return (
-    <Tabs className="complex-flats">
+    <Tabs className="complex-flats" id="flats">
       <div className="complex-flats-tabs-wrapper">
         <TabList className="complex-flats-tabs-container">
           {tabs.map(cplx => (
-            <Tab className="complex-flats-tab"><ComplexTab>{cplx}</ComplexTab></Tab>
+            <Tab className="complex-flats-tab" key={cplx}><ComplexTab>{cplx}</ComplexTab></Tab>
           ))}
         </TabList>
       </div>
 
-      <TabPanel>
-          <ComplexContent/>
-      </TabPanel>
-      <TabPanel className="complex-flats-items-wrapper">
-        <h2>Any content 2</h2>
-      </TabPanel>
+
+      {tabs.map(cplx => (
+        <TabPanel key={cplx}>
+            <ComplexContent complex={cplx}/>
+        </TabPanel>
+      ))}
     </Tabs>
   )
 }

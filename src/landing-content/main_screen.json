@@ -1,0 +1,35 @@
+[
+  {
+    "promotion": {
+      "enable": true,
+      "body": {
+        "image": "../images/main/promotion.png",
+        "title": "2-х комнатная квартира со скидкой",
+        "amount": 20,
+        "term": "только до 1-го мая!"
+      }
+    },
+    "images": [
+      {
+        "image": "../images/main/image1.jpg",
+        "alt": "Alternative text"
+      },
+      {
+        "image": "../images/main/image2.jpg",
+        "alt": "Alternative text"
+      },
+      {
+        "image": "../images/main/image3.jpg",
+        "alt": "Alternative text"
+      },
+      {
+        "image": "../images/main/image4.jpg",
+        "alt": "Alternative text"
+      },
+      {
+        "image": "../images/main/image5.jpg",
+        "alt": "Alternative text"
+      }
+    ]
+  }
+]

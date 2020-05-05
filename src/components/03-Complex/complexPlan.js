@@ -29,6 +29,7 @@ const ComplexPlan = () => {
     }
   }
   const disableComplex = () => {
+    document.querySelector('html').classList.toggle('lock-scroll');
     setDisabledComplex(!disabledComplex)
     setTimeout(() => {
       setDisabledComplex(false)
@@ -279,7 +280,7 @@ const ComplexPlan = () => {
           d="M215.645 581H211.514V564.406C211.514 562.426 211.561 560.855 211.654 559.695C211.385 559.977 211.051 560.287 210.652 560.627C210.266 560.967 208.953 562.045 206.715 563.861L204.641 561.242L212.199 555.301H215.645V581ZM240.535 561.207C240.535 562.836 240.061 564.195 239.111 565.285C238.162 566.363 236.826 567.09 235.104 567.465V567.605C237.166 567.863 238.713 568.508 239.744 569.539C240.775 570.559 241.291 571.918 241.291 573.617C241.291 576.09 240.418 578 238.672 579.348C236.926 580.684 234.441 581.352 231.219 581.352C228.371 581.352 225.969 580.889 224.012 579.963V576.289C225.102 576.828 226.256 577.244 227.475 577.537C228.693 577.83 229.865 577.977 230.99 577.977C232.982 577.977 234.471 577.607 235.455 576.869C236.439 576.131 236.932 574.988 236.932 573.441C236.932 572.07 236.387 571.062 235.297 570.418C234.207 569.773 232.496 569.451 230.164 569.451H227.932V566.094H230.199C234.301 566.094 236.352 564.676 236.352 561.84C236.352 560.738 235.994 559.889 235.279 559.291C234.564 558.693 233.51 558.395 232.115 558.395C231.143 558.395 230.205 558.535 229.303 558.816C228.4 559.086 227.334 559.619 226.104 560.416L224.082 557.533C226.438 555.799 229.174 554.932 232.291 554.932C234.881 554.932 236.902 555.488 238.355 556.602C239.809 557.715 240.535 559.25 240.535 561.207Z"
           fill="#BF794B"
         />
-        <g className="complex-pointer" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className="" >
           <path
             d="M1238 97.7882L1173 30L1104 97.7882L1173 164L1238 97.7882Z"
             fill="#96574F"
@@ -392,7 +393,7 @@ const ComplexPlan = () => {
             fill="#FFFCFC"
           />
         </g>
-        <g className="complex-pointer 20" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 20" >
           <rect
             x="1301"
             y="463"
@@ -588,7 +589,7 @@ const ComplexPlan = () => {
             fill="#FFFCFC"
           />
         </g>
-        <g className="complex-pointer 8" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 8" >
           <rect
             x="781"
             y="793"
@@ -613,7 +614,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 7" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 7" >
           <rect
             x="781"
             y="663"
@@ -638,7 +639,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 6" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 6" >
           <rect
             x="781"
             y="463"
@@ -662,7 +663,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 5" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 5" >
           <rect
             x="911"
             y="463"
@@ -686,7 +687,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 4" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 4" >
           <path
             d="M938.654 282.259L876.247 217L810 282.259L876.247 346L938.654 282.259Z"
             fill="#FFFCFC"
@@ -707,7 +708,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 3" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 3" >
           <path
             d="M1136.44 282.259L1074.03 217L1007.78 282.259L1074.03 346L1136.44 282.259Z"
             fill="#FFFCFC"
@@ -728,7 +729,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 2" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 2" >
           <path
             d="M1334.22 282.259L1271.81 217L1205.56 282.259L1271.81 346L1334.22 282.259Z"
             fill="#FFFCFC"
@@ -749,7 +750,7 @@ const ComplexPlan = () => {
             fill="#BF794B"
           />
         </g>
-        <g className="complex-pointer 1" onClick={() => handleComplex("1, 2, 3, 4, 5")}>
+        <g className=" 1" >
           <path
             d="M1532 282.259L1469.59 217L1403.35 282.259L1469.59 346L1532 282.259Z"
             fill="#FFFCFC"
