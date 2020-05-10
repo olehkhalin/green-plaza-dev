@@ -61,28 +61,28 @@ const FirstScreen = () => {
       // startProgressbar();
 
       if (direction === "right") {
-        document
-          .querySelector(
-            '.slick-cloned[data-index="' +
-              (nextSlide + slideCountZeroBased + 1) +
-              '"]'
-          )
-          .classList.add("slick-current-clone-animate")
+        // document
+        //   .querySelector(
+        //     '.slick-cloned[data-index="' +
+        //       (nextSlide + slideCountZeroBased + 1) +
+        //       '"]'
+        //   )
+        //   .classList.add("slick-current-clone-animate")
       }
       if (direction === "left") {
-        document
-          .querySelector(
-            '.slick-cloned[data-index="' +
-              (nextSlide - slideCountZeroBased - 1) +
-              '"]'
-          )
-          .classList.add("slick-current-clone-animate")
+        // document
+        //   .querySelector(
+        //     '.slick-cloned[data-index="' +
+        //       (nextSlide - slideCountZeroBased - 1) +
+        //       '"]'
+        //   )
+        //   .classList.add("slick-current-clone-animate")
       }
     },
     afterChange: (currentSlide, nextSlide) => {
-      document
-        .querySelector(".slick-current-clone-animate")
-        .classList.remove("slick-current-clone-animate")
+      // document
+      //   .querySelector(".slick-current-clone-animate")
+      //   .classList.remove("slick-current-clone-animate")
     },
   }
 
@@ -95,18 +95,18 @@ const FirstScreen = () => {
   }
 
   useEffect(() => {
-    progressBar = document.querySelector(
-      ".home-carousel-progress-bar-inner.dark"
-    )
+    // progressBar = document.querySelector(
+    //   ".home-carousel-progress-bar-inner.dark"
+    // )
 
-    progressBarAll = document.querySelector(".home-carousel-progress-num.last")
-    allSlidesCount = slider1.current.props.children.length
-    progressBarAll.innerText =
-      allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount
+    // progressBarAll = document.querySelector(".home-carousel-progress-num.last")
+    // allSlidesCount = slider1.current.props.children.length
+    // progressBarAll.innerText =
+    //   allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount
 
-    progressBarCurrent = document.querySelector(
-      ".home-carousel-progress-num.current"
-    )
+    // progressBarCurrent = document.querySelector(
+    //   ".home-carousel-progress-num.current"
+    // )
 
     startProgressbar()
   }, [])
