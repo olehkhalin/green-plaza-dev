@@ -2,10 +2,6 @@
   "pk": "contacts",
   "phones": [
     {
-      "phone_number": "+3654320000",
-      "id": "5b1ci7vb8"
-    },
-    {
       "id": "0",
       "phone_number": "+7 (7292) 470001"
     },
