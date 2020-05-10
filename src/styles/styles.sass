@@ -69,14 +69,18 @@ h2
 	font-size: 2.25rem
 	margin-bottom: 100px
 	@include media("<=phone")
-		font-size: 1rem
+		font-size: 1.25rem
 		margin-bottom: 30px
+		line-height: 1.2
 	.h2-line
 		display: block
 		&:nth-child(2)
 			margin-left: 90px
 			@include media("<=phone")
 				margin-left: 0
+				margin-left: 3px
+		@include media("<=phone")
+			display: inline
 
 .section
 	&.dark
@@ -104,17 +108,17 @@ h2
 	font-weight: normal
 	cursor: pointer
 	display: inline-block
-	@include media("<=phone")
-		font-size: .625rem
+	//@include media("<=phone")
+	//	font-size: .625rem
 	&.bordered
 		padding: 19px 45px
 		line-height: 1
 		text-align: center
 		border: solid 1px $adobe
 		transition: background-color .3s, color .3s
+		background-color: transparent
 		@include media("<=phone")
-			padding: 8px 20px
-			font-size: .625rem
+			padding: 12px 20px
 		&:hover
 			background-color: $adobe
 			color: $white
@@ -133,9 +137,9 @@ h2
 		transition: background-color .3s
 		@include media("<=phone")
 			padding: 5px
-			width: calc(100% + 9px)
+			width: calc(100%)
 			line-height: 1.4
-			margin-left: -9px
+			font-size: 0.875rem
 		svg
 			position: absolute
 			right: 0
@@ -154,6 +158,8 @@ h2
 		display: flex
 		align-items: center
 		transition: color .3s
+		background-color: transparent
+		border: none
 		svg
 			width: 30px
 			height: auto
@@ -199,29 +205,52 @@ h2
 	width: 100%
 	height: 90px
 	z-index: 10
+	@include media("<=phone")
+		height: 60px
 	.logo
 		height: 100%
 		svg
 			height: 100%
 			width: auto
+			@include media("<=phone")
+				width: 80px
+				height: auto
 	.contacts
 		text-align: center
 		flex: 1
+		@include media("<=phone")
+			position: absolute
+			left: 50%
+			top: 27px
+			transform: translateX(-50%)
+			font-size: 0.875rem
 		a
 			color: $black
 			text-decoration: none
+			@include media("<=phone")
+				&:first-child
+					display: none
 			&:last-child
 				margin-left: 60px
+				@include media("<=phone")
+					margin-left: 0
 	.left-side
 		display: flex
 		align-items: flex-end
 	.langs
 		text-transform: uppercase
+		@include media("<=phone")
+			position: absolute
+			left: 50%
+			transform: translateX(-50%)
+			top: 5px
 		&-item
 			font-size: 16px
 			text-decoration: none
 			color: $black
 			padding: 5px
+			@include media("<=phone")
+				font-size: 0.875rem
 			&.active
 				color: $adobe
 				cursor: default
@@ -310,6 +339,8 @@ h2
 			height: 560px
 			position: relative
 			overflow: hidden
+			@include media("<=phone")
+				display: none
 			.gatsby-image-wrapper
 				height: 100%
 				width: 100%
@@ -330,10 +361,16 @@ h2
 		&links
 			width: 50%
 			//height: 100%
+			@include media("<=phone")
+				width: 100%
+				display: flex
 			nav
 				height: 100%
 				display: flex
 				align-items: center
+				@include media("<=phone")
+					margin-left: auto
+					margin-right: auto
 			ul
 				list-style-type: none
 				padding: 0
@@ -344,6 +381,9 @@ h2
 				display: flex
 				flex-direction: column
 				justify-content: space-between
+				@include media("<=phone")
+					align-items: center
+					justify-content: center
 				li
 					margin: 0
 					padding: 0
@@ -351,7 +391,7 @@ h2
 					width: max-content
 					.link-wrapper
 						overflow: hidden
-					a
+					button
 						font-family: Montserrat
 						font-weight: 600
 						font-size: 42px
@@ -364,6 +404,11 @@ h2
 						background-color: #c89f85
 						transition: color .3s .3s
 						display: inline-block
+						border: none
+						cursor: pointer
+						@include media("<=phone")
+							font-size: 1.25rem
+							text-align: center
 					svg
 						position: absolute
 						top: 50%
@@ -382,11 +427,13 @@ h2
 						top: 50%
 						z-index: -1
 						transition: transform .5s .2s
+						@include media("<=phone")
+							width: 100vw
 					&.active
-						a
+						button
 							cursor: default
 					&:hover, &.active
-						a
+						button
 							color: $white
 						&::after
 							transform: translateX(0%)
@@ -401,11 +448,21 @@ h2
 			bottom: 40px
 			text-align: center
 			font-size: 24px
+			left: 50%
+			transform: translateX(-50%)
+			@include media("<=phone")
+				font-size: 1rem
 			&-item
 				padding: 5px
 				line-height: 1.4
 				text-decoration: none
 				color: $black
+				background-color: transparent
+				border: none
+				font-size: 24px
+				cursor: pointer
+				@include media("<=phone")
+					font-size: 1rem
 				&.active
 					color: $white
 					cursor: default
@@ -414,6 +471,8 @@ h2
 .home-content
 	padding-top: 95px
 	height: 655px
+	@include media("<=phone")
+		height: auto
 	&-title
 		z-index: 5
 		h1
@@ -424,6 +483,8 @@ h2
 			margin: 0
 			padding: 0
 			text-transform: uppercase
+			@include media("<=phone")
+				font-size: 2rem
 		h4
 			font-size: 40px
 			font-weight: 600
@@ -433,12 +494,18 @@ h2
 			text-transform: uppercase
 			margin-top: 10px
 			margin-bottom: 8px
+			@include media("<=phone")
+				font-size: 1.25rem
+				margin-bottom: 0
 		h5
 			font-size: 30px
 			font-weight: 600
 			color: $black
 			padding: 0
 			margin: 0
+			@include media("<=phone")
+				font-size: 1.25rem
+				margin-bottom: 330px
 	.button.bordered
 		margin-top: 42px
 
@@ -449,6 +516,9 @@ h2
 	right: 0
 	height: 560px
 	overflow: hidden
+	@include media("<=phone")
+		top: 147px
+		width: 100%
 	&-arrows
 		position: absolute
 		top: 0
@@ -460,6 +530,8 @@ h2
 		opacity: .6
 		cursor: pointer
 		transition: opacity .3s
+		background-color: transparent
+		border: none
 		&:first-child
 			margin-right: 30px
 		&:hover
@@ -526,6 +598,9 @@ h2
 		width: 445px !important
 		flex-shrink: 0
 		outline: none
+		@include media("<=phone")
+			width: 223px !important
+			height: 275px
 		&-image
 			height: 409px
 			width: 325px
@@ -536,6 +611,9 @@ h2
 			overflow: hidden
 			position: relative
 			transition: all .5s
+			@include media("<=phone")
+				width: 150px
+				height: 195px
 		.gatsby-image-wrapper
 			position: absolute
 			top: 0
@@ -589,11 +667,21 @@ h2
 			margin-right: -15px
 			margin-top: -46px
 			padding-bottom: -46px
-			width: 100%
+			width: calc(100% + 30px)
 			flex-wrap: wrap
+			@include media("<=phone")
+				margin: -10px
+				width: calc(100% + 20px)
 		&-wrapper
 			width: 33%
 			padding: 46px 40px
+			@include media("<=phone")
+				width: 50%
+				padding: 10px
+				&.full
+					width: 80%
+					margin-left: auto
+					margin-right: auto
 			&:nth-child(3n+2)
 				.advantages-card
 					&::before
@@ -607,27 +695,31 @@ h2
 		height: 100%
 		z-index: 1
 		position: relative
-		transform-style: preserve-3d
-		perspective: 1200px
-		&::before
-			content: ''
-			position: absolute
-			border: 1px solid $white
-			top: -25px
-			left: -25px
-			width: 100%
-			height: 100%
-			z-index: -1
-		&:hover
-			.advantages-card-inner
-				transform: rotateY(180deg)
+		@include media(">=phone")
+			transform-style: preserve-3d
+			perspective: 1200px
+		@include media(">=phone")
+			&::before
+				content: ''
+				position: absolute
+				border: 1px solid $white
+				top: -25px
+				left: -25px
+				width: 100%
+				height: 100%
+				z-index: -1
+		@include media(">=phone")
+			&:hover
+				.advantages-card-inner
+					transform: rotateY(180deg)
 		&-inner
 			width: 100%
 			height: 100%
-			min-height: 200px
 			transform-style: preserve-3d
 			transition: .7s linear
 			position: relative
+			@include media("<=phone")
+				height: 140px
 		&-front, &-back
 			position: absolute
 			top: 0
@@ -645,23 +737,37 @@ h2
 			justify-content: center
 			align-items: center
 			transform: rotateY(0deg)
+			@include media("<=phone")
+				background-color: transparent
+				border: 1px solid $white
 		&-back
 			transform: rotateY(-180deg)
 			display: flex
 			align-items: center
+			@include media("<=phone")
+				display: none
 		&-icon
-			width: 80px
-			height: 80px
-			margin-bottom: 16px
+			width: 115px
+			height: auto
+			margin-bottom: 15px
+			@include media("<=phone")
+				width: 80px
+				margin-bottom: 10px
 			svg
 				width: 100%
 				height: auto
+				@include media("<=phone")
+					path
+						fill: $white
 		&-header
 			color: $black
 			font-family: Montserrat
 			font-size: 1.125rem
 			font-weight: 600
 			margin: 0
+			@include media("<=phone")
+				font-size: 0.875rem
+				color: $white
 		&-list
 			margin: 0
 			padding: 0
@@ -669,6 +775,8 @@ h2
 			&.inner
 				opacity: 0
 				padding: 25px 15px
+				@include media("<=phone")
+					display: none
 			li
 				padding-left: 20px
 				position: relative
@@ -702,10 +810,18 @@ h2
 	width: 80%
 	margin-left: auto
 	margin-right: auto
+	@include media("<=phone")
+		width: 100%
+		margin-top: 30px
 // SVG
 
 // Complex popup
 .complex-plan
+	@include media("<=phone")
+		&s
+			>div:first-child
+				margin-bottom: 60px
+
 	&-container
 		display: flex
 		flex-direction: column
@@ -713,6 +829,9 @@ h2
 		h3
 			font-size: 36px
 			margin-bottom: 23px
+			@include media("<=phone")
+				font-size: 1rem
+				margin-bottom: 20px
 	&-floor
 		display: flex
 		flex-direction: column
@@ -720,10 +839,14 @@ h2
 			width: 75%
 			margin-left: auto
 			margin-right: auto
+			@include media("<=phone")
+				width: 100%
 	&-flats
 		display: flex
 		flex-direction: column
 		margin-top: 75px
+		@include media("<=phone")
+			margin-top: 40px
 		&-wrapper
 			display: flex
 			width: 100%
@@ -735,12 +858,21 @@ h2
 			flex-direction: column
 			align-items: center
 			margin-bottom: 75px
+			@include media("<=phone")
+				width: 50%
+				margin-bottom: 45px
 			&-image
 				width: 80%
 				margin-bottom: 30px
+				@include media("<=phone")
+					width: calc(100% - 28px)
 			.button
 				background-color: transparent
 				position: relative
+				@include media("<=phone")
+					font-size: .75rem
+					padding-left: 15px
+					padding-right: 15px
 				span
 					position: absolute
 					top: 50%
@@ -776,6 +908,8 @@ h2
 	&-flats
 		width: 100%
 		margin-top: 145px
+		@include media("<=phone")
+			margin-top: 60px
 		&-tab
 			&s-wrapper
 				overflow-x: auto
@@ -783,6 +917,9 @@ h2
 				-ms-overflow-style: none
 				&::-webkit-scrollbar
 					display: none
+				@include media("<=phone")
+					width: calc(100% + 32px)
+					margin-left: -16px
 			&s-container
 				//width: 100%
 				margin: 0
@@ -801,8 +938,15 @@ h2
 			white-space: nowrap
 			font-family: Montserrat
 			font-weight: 600
+			@include media("<=phone")
+				padding: 17px 15px
+				font-size: .875rem
 			svg
 				margin-right: 20px
+				@include media("<=phone")
+					margin-right: 5px
+					width: 22px
+					height: auto
 			&::after
 				position: absolute
 				bottom: 0
@@ -829,15 +973,24 @@ h2
 				&-image
 					height: 100%
 					width: 90%
+					@include media("<=phone")
+						height: 298px
+						width: 228px
 					&::before
 						right: -50px
+						@include media("<=phone")
+							right: -35px
 					.gatsby-image-wrapper
 						margin-left: 0
 				&-content
 					h3
 						font-size: 36px
+						@include media("<=phone")
+							font-size: 1.25rem
 					.button.line
 						font-size: 16px
+						@include media("<=phone")
+							font-size: .75rem
 				&-promotion
 					margin-left: 0
 		.slick-list
@@ -851,18 +1004,28 @@ h2
 					display: flex
 					align-items: center
 					z-index: 6
+					@include media("<=phone")
+						bottom: 65px
+						top: auto
+						right: auto
+						left: 50%
+						transform: translateX(-50%)
 				&-arrow
 					opacity: .6
 					cursor: pointer
 					transition: opacity .3s
 					&:first-child
 						margin-right: 88px
+						@include media("<=phone")
+							margin-right: 30px
 					&:hover
 						opacity: 1
 			&s-wrapper
 				//width: 100vw
 				margin-top: 65px
 				position: relative
+				@include media("<=phone")
+					margin-top: 50px
 				.button
 					&-wrapper
 						width: 100%
@@ -878,6 +1041,9 @@ h2
 			flex-shrink: 0
 			outline: none
 			cursor: pointer
+			@include media("<=phone")
+				width: calc(100vw - 32px) !important
+				height: 298px
 			&-image
 				height: 435px
 				width: 320px
@@ -885,10 +1051,11 @@ h2
 				margin-bottom: auto
 				margin-left: auto
 				margin-right: auto
-
-				//overflow: hidden
 				position: relative
 				transition: all .5s
+				@include media("<=phone")
+					width: 228px
+					height: 298px
 				&::before
 					position: absolute
 					content: ''
@@ -898,6 +1065,9 @@ h2
 					right: -70px
 					transition: right .3s
 					background-color: $pale-brown
+					@include media("<=phone")
+						bottom: -35px
+						right: -35px
 			.gatsby-image-wrapper
 				position: absolute
 				top: 0
@@ -926,6 +1096,9 @@ h2
 					color: $pale-brown
 					margin-bottom: 20px
 					transition: font-size .3s
+					@include media("<=phone")
+						font-size: 1.25rem
+						margin-bottom: 10px
 				.button.line
 					font-size: 12px
 					position: relative
@@ -989,6 +1162,8 @@ h2
 			top: 50px
 			z-index: 5
 			right: 0
+			@include media("<=phone")
+				top: 40px
 			span
 				margin-bottom: 6px
 				background-color: $adobe
@@ -1007,12 +1182,18 @@ h2
 					transform-origin: center
 				&:last-child
 					margin-bottom: 0
+		.row
+			position: relative
 	&-scroll
 		position: absolute
 		top: 0
 		left: 0
-		width: 100%
 		height: 100%
+		padding: 0 32px
+		margin-left: auto
+		margin-right: auto
+		@include media("<=phone")
+			padding: 0 16px
 	&-wrapper
 		display: flex
 		width: 100%
@@ -1021,16 +1202,25 @@ h2
 		flex-wrap: wrap
 		padding: 40px 0
 		position: relative
+		@include media("<=phone")
+			padding: 30px 0
+			min-height: 100%
 	&-header
 		width: calc(100% - 60px)
 		display: flex
+		@include media("<=phone")
+			width: calc(100% - 40px)
 		&.small
 			width: 54%
+			@include media("<=phone")
+				width: calc(100% - 40px)
 		&-item
 			width: 100%
 			margin-bottom: 30px
 			font-weight: 600
 			font-size: 36px
+			@include media("<=phone")
+				margin-bottom: 20px
 			h2
 				margin: 0
 				padding: 0
@@ -1042,17 +1232,27 @@ h2
 					color: $adobe
 				&.hidden
 					opacity: 0
+					@include media("<=phone")
+						display: none
 
 .complex-more
 	&-photos
 		width: 50%
 		//opacity: 0
+		@include media("<=phone")
+			width: 100%
 	&-content
 		width: 50%
+		@include media("<=phone")
+			width: 100%
 		&-table
 			margin-bottom: 60px
+			@include media("<=phone")
+				margin-top: 30px
+				margin-bottom: 30px
 			svg
 				width: 100%
+				height: auto
 		&-buttons
 			display: flex
 			justify-content: space-between
@@ -1060,6 +1260,9 @@ h2
 				width: calc(50% - 15px)
 				padding-left: 0
 				padding-right: 0
+				@include media("<=phone")
+					width: calc(50% - 10px)
+					font-size: .75rem
 
 
 
@@ -1087,25 +1290,28 @@ h2
 				text-align: left
 				@include media("<=phone")
 					padding-left: 0
-					margin-top: 40px
+					margin-top: 70px
 				.tour-card
 					margin-left: 0
 					@include media("<=phone")
 						margin-left: auto
-					//&-icon
-					//	margin-right: auto
-					//	margin-left: 0
 					&-title
 						left: 100%
-						min-width: 180px
+						//min-width: 180px
 						padding-left: 20px
 						padding-right: auto
 						@include media("<=phone")
-							padding-left: 6px
+							padding-left: 0
 							text-align: left
-							top: 50%
+							left: calc(50% - 15px)
 						&::after
 							left: 0
+					@include media("<=phone")
+						&-icon
+							&::after
+								right: auto
+								left: 100%
+								top: 50%
 		display: flex
 		width: max-content
 		flex-direction: column
@@ -1116,8 +1322,6 @@ h2
 		&-icon
 			padding: 12px
 			background-color: $white
-			//width: max-content
-			//margin-left: auto
 			margin-bottom: 25px
 			position: relative
 			z-index: 1
@@ -1126,12 +1330,9 @@ h2
 			display: flex
 			justify-content: center
 			align-items: center
-			//svg
-			//	width: 80% !important
 			@include media("<=phone")
-				width: 84px // comment it
-				height: 84px // comment it
-				margin-bottom: 8px
+				width: 134px // comment it
+				height: 134px // comment it
 			&::before
 				content: ''
 				width: 100%
@@ -1142,8 +1343,17 @@ h2
 				left: -18px
 				z-index: -1
 				@include media("<=phone")
-					top: -9px
-					left: -9px
+					top: -15px
+					left: -15px
+			@include media("<=phone")
+				&::after
+					position: absolute
+					width: 50vw
+					content: ''
+					background-color: $white
+					height: 1px
+					right: calc(100% + 15px)
+					top: calc(50% - 15px)
 		&-title
 			position: absolute
 			right: calc(100% + 18px)
@@ -1154,11 +1364,14 @@ h2
 			font-size: 1.5rem
 			line-height: 33px
 			@include media("<=phone")
-				font-size: .625rem
+				font-size: .75rem
 				line-height: 14px
-				right: calc(100% + 9px)
-				top: calc(50% - 9px)
-				padding-right: 6px
+				bottom: calc(100% + 18px)
+				top: auto
+				right: auto
+				left: calc(50% - 15px)
+				transform: translateX(-50%)
+				padding-right: 0
 			&::after
 				position: absolute
 				bottom: 0
@@ -1167,6 +1380,8 @@ h2
 				background-color: $white
 				height: 1px
 				right: 0
+				@include media("<=phone")
+					display: none
 	&-info
 		display: flex
 		max-width: 420px
@@ -1178,8 +1393,8 @@ h2
 		font-size: 1.125rem
 		@include media("<=phone")
 			margin-top: 0
-			margin-bottom: 30px
-			font-size: .625rem
+			margin-bottom: 50px
+			font-size: 1rem
 			line-height: 1.4
 			width: 85%
 		&-icon
@@ -1204,8 +1419,12 @@ h2
 			margin: -15px
 			width: calc(100% + 30px)
 			@include media("<=phone")
-				width: calc(100% + 8px)
-				margin: -4px
+				position: relative
+				width: calc(100vw + 8px)
+				left: 50%
+				right: 50%
+				margin-left: calc(-50vw - 4px)
+				margin-right: -50vw
 		&-wrapper
 			padding: 15px
 			width: 60%
@@ -1216,7 +1435,7 @@ h2
 		height: 435px
 		overflow: hidden
 		@include media("<=phone")
-			height: 115px
+			height: 135px
 		.gatsby-image-wrapper
 			height: 100%
 		img
@@ -1270,7 +1489,7 @@ h2
 		background-color: $white
 		padding: 45px 35px
 		@include media("<=phone")
-			padding: 20px 32px
+			padding: 35px 30px
 	&-content
 		padding-left: 15px
 		@include media("<=phone")
@@ -1284,23 +1503,29 @@ h2
 			position: relative
 			margin-bottom: 35px
 			@include media("<=phone")
-				margin-bottom: 24px
+				margin-bottom: 30px
 			&.email
 				width: 50%
 				padding-right: 12px
+				@include media("<=phone")
+					width: 100%
+					padding-right: 0
 			&.phone
 				width: 50%
 				padding-left: 12px
+				@include media("<=phone")
+					width: 100%
+					padding-left: 0
 				.form-content-text
 					left: 27px
 			&.message
 				@include media("<=phone")
-					margin-bottom: 16px
+					margin-bottom: 20px
 				.form-content-input
 					height: 155px
 					resize: none
 					@include media("<=phone")
-						height: 54px
+						height: 65px
 		&-text
 			position: absolute
 			top: 0
@@ -1311,7 +1536,7 @@ h2
 			font-size: 1.125rem
 			font-weight: 600
 			@include media("<=phone")
-				font-size: .625rem
+				font-size: 0.875rem
 		&-input
 			padding: 19px 17px
 			width: 100%
@@ -1319,11 +1544,10 @@ h2
 			background-color: transparent
 			outline: none
 			border: solid 1px $adobe
-			//font-family: OpenSans
 			font-size: 1rem
 			@include media("<=phone")
-				padding: 8px 11px
-				font-size: .5rem
+				padding: 10px 15px
+				font-size: .75rem
 				line-height: 1.4
 			&::placeholder
 				color: rgba(40, 40, 40, 0.6)
@@ -1377,8 +1601,8 @@ h2
 			padding: 0
 			margin-bottom: 20px
 			@include media("<=phone")
-				font-size: .625rem
-				margin-bottom: 2px
+				font-size: 0.875rem
+				margin-bottom: 7px
 			svg
 				width: 20px
 				height: auto
@@ -1386,9 +1610,6 @@ h2
 				top: 50%
 				transform: translateY(-50%)
 				right: calc(100% + 10px)
-				@include media("<=phone")
-					width: 14px
-					right: calc(100% + 6px)
 				path
 					fill: $adobe
 		&-list
@@ -1402,7 +1623,7 @@ h2
 				margin: 0
 				padding: 0
 				@include media("<=phone")
-					font-size: .5rem
+					font-size: 0.75rem
 					line-height: 1.4
 				a, span
 					text-decoration: none
@@ -1420,11 +1641,23 @@ h2
 	width: 100%
 	margin-top: 30px
 	display: flex
+	flex-wrap: wrap
+	//@include media("<=phone")
+	//	width: 80%
+	//	margin-left: auto
+	//	margin-right: auto
 	.modal-fos-form
 		width: 50%
+		@include media("<=phone")
+			width: 100%
+			order: 2
 	.modal-fos-form-plan
 		width: 50%
 		padding-left: 95px
+		@include media("<=phone")
+			width: 100%
+			order: 1
+			padding-left: 0
 		.form-content-input
 			font-weight: 600
 			line-height: 1.2

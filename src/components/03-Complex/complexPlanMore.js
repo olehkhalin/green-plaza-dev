@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 
-import ComplexMoreTable from "../../icons/complex-more.svg"
 import Modal from "../modal"
-import Image from "../image2"
 import ComplexItemMore from "./complexFlatsItemMore"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
@@ -24,6 +22,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                   quadrature
                   promotion
                   image {
+                      id
                       childImageSharp {
                           fluid {
                               ...GatsbyImageSharpFluid
@@ -49,6 +48,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                   quadrature
                   promotion
                   image {
+                      id
                       childImageSharp {
                           fluid {
                               ...GatsbyImageSharpFluid
@@ -74,6 +74,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                   quadrature
                   promotion
                   image {
+                      id
                       childImageSharp {
                           fluid {
                               ...GatsbyImageSharpFluid
@@ -99,6 +100,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                   quadrature
                   promotion
                   image {
+                      id
                       childImageSharp {
                           fluid {
                               ...GatsbyImageSharpFluid
@@ -124,6 +126,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                   quadrature
                   promotion
                   image {
+                      id
                       childImageSharp {
                           fluid {
                               ...GatsbyImageSharpFluid
@@ -173,7 +176,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
       setCurrentFlat(flat)
     } else if (stateItem.clicked === true) {
       setStateItem({
-        clicked: !stateItem,
+        clicked: !stateItem.clicked,
       })
     } else if (stateItem.clicked === false) {
       clicked()
@@ -198,7 +201,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
       <Modal state={state} disabled={disabled} clicked={clicked}>
         <div className="modal-header">
           <div className="modal-header-item">
-            <h2>Планировка этажа домов № {complexNumbers}</h2>
+            <h2>Планировка квартир домов № {complexNumbers}</h2>
           </div>
         </div>
         <div className="complex-plan-container">
@@ -212,7 +215,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
             <h3>Планировки квартир</h3>
             <div className="complex-plan-flats-wrapper">
               {cplxArray.flats.map(flat => (
-                <div className="complex-plan-flats-item" key={flat.title}>
+                <div className="complex-plan-flats-item" key={flat.image.id}>
                   <div className="complex-plan-flats-item-image">
                     <Img
                       fluid={flat.image.childImageSharp.fluid}
@@ -222,65 +225,10 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                     className="button bordered"
                     onClick={() => handleItem(flat)}
                   >
-                    смотреть планировки {flat.promotion ? (<span>Акция -20%</span>) : null}
+                    смотреть планировку {flat.promotion ? (<span>Акция -20%</span>) : null}
                   </button>
                 </div>
               ))}
-              {/*<div className="complex-plan-flats-item">*/}
-              {/*  <div className="complex-plan-flats-item-image">*/}
-              {/*    <Image />*/}
-              {/*  </div>*/}
-              {/*  <button*/}
-              {/*    className="button bordered"*/}
-              {/*    onClick={() => handleItem()}*/}
-              {/*  >*/}
-              {/*    смотреть планировки*/}
-              {/*  </button>*/}
-              {/*</div>*/}
-              {/*<div className="complex-plan-flats-item">*/}
-              {/*  <div className="complex-plan-flats-item-image">*/}
-              {/*    <Image />*/}
-              {/*  </div>*/}
-              {/*  <button*/}
-              {/*    className="button bordered"*/}
-              {/*    onClick={() => handleItem()}*/}
-              {/*  >*/}
-              {/*    смотреть планировки*/}
-              {/*  </button>*/}
-              {/*</div>*/}
-              {/*<div className="complex-plan-flats-item">*/}
-              {/*  <div className="complex-plan-flats-item-image">*/}
-              {/*    <Image />*/}
-              {/*  </div>*/}
-              {/*  <button*/}
-              {/*    className="button bordered"*/}
-              {/*    onClick={() => handleItem()}*/}
-              {/*  >*/}
-              {/*    смотреть планировки*/}
-              {/*  </button>*/}
-              {/*</div>*/}
-              {/*<div className="complex-plan-flats-item">*/}
-              {/*  <div className="complex-plan-flats-item-image">*/}
-              {/*    <Image />*/}
-              {/*  </div>*/}
-              {/*  <button*/}
-              {/*    className="button bordered"*/}
-              {/*    onClick={() => handleItem()}*/}
-              {/*  >*/}
-              {/*    смотреть планировки*/}
-              {/*  </button>*/}
-              {/*</div>*/}
-              {/*<div className="complex-plan-flats-item">*/}
-              {/*  <div className="complex-plan-flats-item-image">*/}
-              {/*    <Image />*/}
-              {/*  </div>*/}
-              {/*  <button*/}
-              {/*    className="button bordered"*/}
-              {/*    onClick={() => handleItem()}*/}
-              {/*  >*/}
-              {/*    смотреть планировки*/}
-              {/*  </button>*/}
-              {/*</div>*/}
             </div>
           </div>
         </div>

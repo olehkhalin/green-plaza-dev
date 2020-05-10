@@ -5,11 +5,22 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-tinacms",
+      options: {
+        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-json",],
+        sidebar: {
+          hidden: process.env.NODE_ENV === "production",
+          position: "displace"
+        },
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/landing-content`,
+        name: 'data',
       },
     },
     `gatsby-plugin-smoothscroll`,

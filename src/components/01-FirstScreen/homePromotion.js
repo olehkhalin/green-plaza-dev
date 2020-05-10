@@ -1,6 +1,5 @@
 import React from "react"
 
-import Image from "../image"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
@@ -13,7 +12,7 @@ const HomePromotion = () => {
             image {
               childImageSharp {
                 fluid {
-                  src
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -31,13 +30,20 @@ const HomePromotion = () => {
       <div className="home-promotion-image">
         <Img
           fluid={data.mainScreenJson.promotion.body.image.childImageSharp.fluid}
-          alt={data.mainScreenJson.promotion.body.title + ` ` + data.mainScreenJson.promotion.body.amount + `% ` + data.mainScreenJson.promotion.body.term}
+          alt={
+            data.mainScreenJson.promotion.body.title +
+            ` ` +
+            data.mainScreenJson.promotion.body.amount +
+            `% ` +
+            data.mainScreenJson.promotion.body.term
+          }
         />
       </div>
       <div className="home-promotion-content">
         <h4>Акция</h4>
         <p>
-          {data.mainScreenJson.promotion.body.title} <span>{data.mainScreenJson.promotion.body.amount}%</span>
+          {data.mainScreenJson.promotion.body.title}{" "}
+          <span>{data.mainScreenJson.promotion.body.amount}%</span>
           <br /> {data.mainScreenJson.promotion.body.term}
         </p>
       </div>

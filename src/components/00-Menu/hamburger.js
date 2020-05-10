@@ -8,7 +8,6 @@ import menuImage3 from "../../images/menu_image3.jpg"
 import menuImage4 from "../../images/menu_image4.jpg"
 
 import RhombusIcon from "../../icons/rhombus.svg"
-import Image from "../image"
 
 const Hamburger = ({ state, clicked }) => {
   let menu = useRef(null)
@@ -147,57 +146,53 @@ const Hamburger = ({ state, clicked }) => {
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a
-                          href="#"
+                        <button
                           ref={el => (line1 = el)}
                           onMouseEnter={() => handleItem(menuImage1)}
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#complex")}
                         >
                           О комплексе
-                        </a>
+                        </button>
                       </div>
                     </li>
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a
-                          href="#"
+                        <button
                           ref={el => (line2 = el)}
                           onMouseEnter={() => handleItem(menuImage2)}
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#flats")}
                         >
                           Планировки
-                        </a>
+                        </button>
                       </div>
                     </li>
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a
-                          href="#"
+                        <button
                           ref={el => (line3 = el)}
                           onMouseEnter={() => handleItem(menuImage3)}
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#gallery")}
                         >
                           Галерея
-                        </a>
+                        </button>
                       </div>
                     </li>
                     <li>
                       <RhombusIcon />
                       <div className="link-wrapper">
-                        <a
-                          href="#"
+                        <button
                           ref={el => (line4 = el)}
                           onMouseEnter={() => handleItem(menuImage4)}
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#contacts")}
                         >
                           Контакты
-                        </a>
+                        </button>
                       </div>
                     </li>
                   </ul>
@@ -205,13 +200,13 @@ const Hamburger = ({ state, clicked }) => {
               </div>
             </div>
             <div className="menu-languages">
-              <a href="#" className="menu-languages-item active">
+              <button disabled={true} className="menu-languages-item active">
                 Русский
-              </a>
+              </button>
               <span>|</span>
-              <a href="#" className="menu-languages-item">
+              <button className="menu-languages-item">
                 Қазақ
-              </a>
+              </button>
             </div>
           </div>
         </div>

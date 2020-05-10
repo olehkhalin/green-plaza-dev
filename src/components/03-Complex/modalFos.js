@@ -1,9 +1,8 @@
 import React from "react"
 
-import ComplexMoreTable from "../../icons/complex-more.svg"
+import { BrowserView, MobileView } from "react-device-detect"
+
 import Modal from "../modal"
-import Image from "../image"
-import ComplexItemMore from "./complexFlatsItemMore"
 import MainForm from "../mainForm"
 
 const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
@@ -19,7 +18,8 @@ const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
         <div className="modal-fos-form">
           <MainForm/>
         </div>
-        <div className="modal-fos-form-plan">
+        {/*<BrowserView>*/}
+          <div className="modal-fos-form-plan">
           <div className="form-content-label plan">
             <span className="form-content-text">Вам понравилась эта планирвка</span>
             <div className="form-content-input">
@@ -27,6 +27,7 @@ const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
             </div>
           </div>
         </div>
+        {/*</BrowserView>*/}
       </div>
     </Modal>
   )

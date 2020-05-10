@@ -9,10 +9,10 @@ const Gallery = () => {
       allGalleryJson {
         nodes {
           image {
-            base
+            id
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -32,9 +32,8 @@ const Gallery = () => {
         </div>
         <div className="row v-center space-between">
           <div className="gallery-cards-container">
-            {console.log(data.allGalleryJson)}
             {data.allGalleryJson.nodes.map(galleryItem => (
-              <div className="gallery-card-wrapper">
+              <div className="gallery-card-wrapper" key={galleryItem.image.id}>
                 <div className="gallery-card">
                   <Img
                     fluid={galleryItem.image.childImageSharp.fluid}

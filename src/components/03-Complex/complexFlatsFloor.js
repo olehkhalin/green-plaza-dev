@@ -1,9 +1,6 @@
 import React from "react"
 
-import ComplexMoreTable from "../../icons/complex-more.svg"
 import Modal from "../modal"
-import Image2 from "../image2"
-import ComplexItemMore from "./complexFlatsItemMore"
 import Img from "gatsby-image"
 
 const ComplexFlatsFloor = ({state, disabled, clicked, image, title}) => {

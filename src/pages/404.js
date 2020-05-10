@@ -1,14 +1,28 @@
 import React from "react"
+import { Link } from "gatsby"
+import "../styles/404.sass"
 
-import Layout from "../components/layout"
+import RhombusIcon from "../icons/rhombus.svg"
 import SEO from "../components/seo"
 
 const NotFoundPage = () => (
-  <Layout>
+  <>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+    <main className="error-page">
+      <div className="container">
+        <div className="row v-center space-between">
+          <div className="error-container">
+            <div className="error-icon">
+              4 <span><RhombusIcon /></span> 4
+            </div>
+            <h1>Страница не найдена</h1>
+            <p>Извините, мы не можем найти страницу,<br />которую вы искали</p>
+            <Link to="/" className="button bordered">вернуться на главную</Link>
+          </div>
+        </div>
+      </div>
+    </main>
+  </>
 )
 
 export default NotFoundPage

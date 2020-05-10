@@ -1,4 +1,5 @@
 import React from "react"
+import "../components/layout.css"
 import "../styles/styles.sass"
 // import { Link } from "gatsby"
 

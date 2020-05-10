@@ -1,8 +1,5 @@
 import React from "react"
 
-import Image from "./image"
-import Button from "./Button"
-
 const Footer = () => (
   <footer className="footer">
     <div className="container">

@@ -2,8 +2,6 @@ import React from "react"
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ComplexTab from "./complexTab"
-import Slider from "react-slick"
-import Image from "../image"
 import ComplexContent from "./complexContent"
 
 const tabs = [

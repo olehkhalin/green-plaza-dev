@@ -6,7 +6,6 @@ import MainForm from "../mainForm"
 import { graphql, useStaticQuery } from "gatsby"
 
 const Form = () => {
-
   const data = useStaticQuery(graphql`
     query {
       allFormJson {
@@ -15,7 +14,7 @@ const Form = () => {
             base
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -30,9 +29,9 @@ const Form = () => {
       <div className="container">
         <div className="row v-center space-between">
           <h2>
-          <span className="h2-line">
-            <span className="h2-color">Оставьте заявку</span> на консультацию
-          </span>
+            <span className="h2-line">
+              <span className="h2-color">Оставьте заявку</span> на консультацию
+            </span>
             <span className="h2-line">и мы перезвоним вам</span>
           </h2>
         </div>
@@ -42,13 +41,17 @@ const Form = () => {
               <div className="form-images-wrapper">
                 <div className="form-images-top">
                   <Img
-                    fluid={data.allFormJson.nodes[0].image.childImageSharp.fluid}
+                    fluid={
+                      data.allFormJson.nodes[0].image.childImageSharp.fluid
+                    }
                     alt={data.allFormJson.nodes[0].alt}
                   />
                 </div>
                 <div className="form-images-bottom">
                   <Img
-                    fluid={data.allFormJson.nodes[1].image.childImageSharp.fluid}
+                    fluid={
+                      data.allFormJson.nodes[1].image.childImageSharp.fluid
+                    }
                     alt={data.allFormJson.nodes[1].alt}
                   />
                 </div>
@@ -56,7 +59,7 @@ const Form = () => {
             </div>
             <div className="form-content">
               <div className="form-wrapper">
-                <MainForm/>
+                <MainForm />
               </div>
               {/*<form>*/}
               {/*  <label htmlFor="name" className="form-content-label name">*/}

@@ -12,13 +12,12 @@ const HomeContent = ({ nxtBtnClk, prvBtnClk }) => (
           <h1>Green plaza</h1>
           <h4>жилой комплекс</h4>
           <h5>в 17-м микрорайоне г. Актау</h5>
-          <a
-            // href="#"
+          <button
             className="button bordered"
             onClick={() => scrollTo("#flats")}
           >
             посмотреть квартиры
-          </a>
+          </button>
           <div className="home-carousel-progress">
             <div className="home-carousel-progress-num current">01</div>
             <div className="home-carousel-progress-bar">
@@ -29,25 +28,24 @@ const HomeContent = ({ nxtBtnClk, prvBtnClk }) => (
           </div>
         </div>
         <div className="home-carousel-arrows">
-          <div className="home-carousel-arrow left" onClick={() => prvBtnClk()}>
+          <button className="home-carousel-arrow left" onClick={() => prvBtnClk()}>
             <ArrowLeft />
-          </div>
-          <div
+          </button>
+          <button
             className="home-carousel-arrow right"
             onClick={() => nxtBtnClk()}
           >
             <ArrowRight />
-          </div>
+          </button>
         </div>
         <div className="home-carousel-more">
-          <a
-            // href="#"
+          <button
             className="button arrow-only"
             onClick={() => scrollTo("#flats")}
           >
             смотреть еще
             <ButtonArrow />
-          </a>
+          </button>
         </div>
       </div>
     </div>

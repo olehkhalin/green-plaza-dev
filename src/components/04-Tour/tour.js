@@ -5,19 +5,6 @@ import TourCard from "./tourCard"
 import RhombusIcon from "../../icons/rhombus.svg"
 import { graphql, useStaticQuery } from "gatsby"
 
-const toursArray = [
-  {
-    icon: `../icons/advantages/location.svg`,
-    title: `смотреть квартиры`,
-    link: `https://google.com`,
-  },
-  {
-    icon: `../icons/advantages/location.svg`,
-    title: `смотреть подъезды`,
-    link: `https://google.com`,
-  },
-]
-
 const Tour = () => {
   const data = useStaticQuery(graphql`
     query {

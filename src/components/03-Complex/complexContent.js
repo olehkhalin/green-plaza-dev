@@ -1,17 +1,13 @@
 import React, { useRef, useState } from "react"
 
 import Slider from "react-slick"
-import Image from "../image"
-import { TabPanel } from "react-tabs"
 import ArrowLeft from "../../icons/arrow-left.svg"
 import ArrowRight from "../../icons/arrow-right.svg"
 import ComplexItem from "./complexFlatsItem"
 import ComplexItemMore from "./complexFlatsItemMore"
-import ComplexFlats from "./complexFlats"
 import ComplexFlatsFloor from "./complexFlatsFloor"
 import { graphql, useStaticQuery } from "gatsby"
 
-const complexesArray = [1, 2, 3, 4, 5]
 
 const ComplexContent = ({ complex }) => {
   const data = useStaticQuery(graphql`
@@ -30,6 +26,7 @@ const ComplexContent = ({ complex }) => {
           quadrature
           promotion
           image {
+            id
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid
@@ -55,6 +52,7 @@ const ComplexContent = ({ complex }) => {
           quadrature
           promotion
           image {
+            id
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid
@@ -80,6 +78,7 @@ const ComplexContent = ({ complex }) => {
           quadrature
           promotion
           image {
+            id
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid
@@ -105,6 +104,7 @@ const ComplexContent = ({ complex }) => {
           quadrature
           promotion
           image {
+            id
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid
@@ -130,6 +130,7 @@ const ComplexContent = ({ complex }) => {
           quadrature
           promotion
           image {
+            id
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid
@@ -279,28 +280,28 @@ const ComplexContent = ({ complex }) => {
   return (
     <div className="complex-flats-items-wrapper">
       <div className="complex-flats-items-arrows">
-        <div
+        <button
           className="complex-flats-items-arrow left"
           onClick={() => prevButtonClicked()}
         >
           <ArrowLeft />
-        </div>
-        <div
+        </button>
+        <button
           className="complex-flats-items-arrow right"
           onClick={() => nextButtonClicked()}
         >
           <ArrowRight />
-        </div>
+        </button>
       </div>
       <Slider {...settings} ref={slider => (slider1.current = slider)}>
         {cplxArray.flats.map(flat => (
-          <ComplexItem flat={flat} clicked={() => handleComplex(flat)} />
+          <ComplexItem key={flat.image.id} flat={flat} clicked={() => handleComplex(flat)} />
         ))}
       </Slider>
       <div className="button-wrapper">
-        <a className="button bordered" onClick={() => handleFlats()}>
+        <button className="button bordered" onClick={() => handleFlats()}>
           планировка этажа
-        </a>
+        </button>
       </div>
       <ComplexItemMore
         state={state}

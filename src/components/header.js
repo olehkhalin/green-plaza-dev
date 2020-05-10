@@ -79,7 +79,7 @@ const Header = () => {
           </div>
           <div className="contacts">
             <a href="#" target="_blank">
-              г. Актау, 17 мкр., д. 6{" "}
+              г. Актау, 17 мкр., д. 6
             </a>
             <a href="tel:+77292470001">+7 (7292) 470 001</a>
           </div>

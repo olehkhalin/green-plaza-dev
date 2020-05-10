@@ -1,7 +1,12 @@
 import React from "react"
+import {
+  BrowserView,
+  MobileView,
+} from "react-device-detect";
+
 
 import Infrastructure from "../../icons/infrastructure.svg"
-import ResidentialComplexPlan from "../../icons/residential-complex-plan.svg"
+import InfrastructureMobile from "../../icons/infrastructure-mobile.svg"
 import ComplexFlats from "./complexFlats"
 import ComplexPlan from "./complexPlan"
 
@@ -16,7 +21,12 @@ const Complex = () => (
       </div>
       <div className="row">
         <div className="complex-plans">
-          <Infrastructure />
+          <BrowserView>
+            <Infrastructure />
+          </BrowserView>
+          <MobileView>
+            <InfrastructureMobile />
+          </MobileView>
           <ComplexPlan/>
         </div>
       </div>

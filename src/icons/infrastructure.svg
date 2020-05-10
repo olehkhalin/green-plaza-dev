@@ -1,5 +1,5 @@
 <svg width="1115" height="897" viewBox="0 0 1115 897" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
+<g clip-path="url(#clip0_zcxvre)">
 <rect x="185.86" y="175.992" width="451.748" height="14.002" fill="#CEBEAE"/>
 <rect x="185.86" y="81.6624" width="681.675" height="13.265" fill="#CEBEAE"/>
 <rect x="863.136" y="352.121" width="270.459" height="13.265" transform="rotate(-90 863.136 352.121)" fill="#CEBEAE"/>
@@ -178,7 +178,7 @@
 <circle cx="15.6359" cy="801.658" r="14.7389" fill="#BF794B"/>
 <path d="M20.1987 806.008H18.4974V808.763H16.5197V806.008H10.7508V804.445L16.5197 796.103H18.4974V804.324H20.1987V806.008ZM16.5197 804.324V801.155C16.5197 800.026 16.5485 799.102 16.6061 798.383H16.537C16.3758 798.763 16.1225 799.223 15.777 799.764L12.6421 804.324H16.5197Z" fill="#FFFCFC"/>
 <defs>
-<clipPath id="clip0">
+<clipPath id="clip0_zcxvre">
 <rect x="157.129" y="0.598633" width="798.112" height="587.346" fill="white"/>
 </clipPath>
 </defs>

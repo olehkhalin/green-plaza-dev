@@ -7,9 +7,9 @@ const TourCard = ({ title, link }) => (
     <div className="tour-card">
       <div className="tour-card-icon">
         <div className="tour-card-title">{title}</div>
-        <QRCode value={link} renderAs="svg" level="L" size="80%" />
+        <QRCode value={link} renderAs="svg" level="L" />
       </div>
-      <a className="button arrow" target="_blank" href={link}>
+      <a className="button arrow" target="_blank" rel="noopener noreferrer" href={link}>
         смотреть тур
         <ButtonArrow />
       </a>

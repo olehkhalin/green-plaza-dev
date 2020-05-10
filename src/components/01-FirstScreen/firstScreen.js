@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react"
 import Slider from "react-slick"
 import Header from "../header"
 import HomeContent from "./homeContent"
-import Image from "../image"
 import HomePromotion from "./homePromotion"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
@@ -20,7 +19,7 @@ const FirstScreen = () => {
             id
             childImageSharp {
               fluid {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -124,7 +123,7 @@ const FirstScreen = () => {
       percentTime += 1 / (time + 0.1)
       progressBar.style.height = `${percentTime}%`
       if (percentTime >= 100) {
-        slider1.current.slickNext()
+        // slider1.current.slickNext()
         startProgressbar()
       }
     }

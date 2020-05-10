@@ -34,7 +34,7 @@ const ComplexItemMore = ({state, disabled, clicked, flat, building}) => {
       }, 700)
     } else if (stateFos.clicked === true) {
       setStateFos({
-        clicked: !stateFos
+        clicked: !stateFos.clicked
       })
     } else if (stateFos.clicked === false) {
       clicked();
