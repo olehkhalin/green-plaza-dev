@@ -1,17 +1,17 @@
 import React from "react"
-import {EqualHeightElement} from "react-equal-height"
+// import {EqualHeightElement} from "react-equal-height"
 
 const AdvantagesCard = ({advantageItem, icon, isFirst = false}) => (
   <div className={"advantages-card-wrapper" + (isFirst ? (' full') : '')}>
       <div className="advantages-card">
         <div className="advantages-card-inner">
-          <EqualHeightElement name="Name">
+          {/*<EqualHeightElement name="Name">*/}
             <ul className="advantages-card-list inner">
               {advantageItem.list.map(el => (
                 <li key={el}>{el}</li>
               ))}
             </ul>
-          </EqualHeightElement>
+          {/*</EqualHeightElement>*/}
           <div className="advantages-card-front">
             <div className="advantages-card-icon">{icon}</div>
             <h3 className="advantages-card-header">{advantageItem.title}</h3>
