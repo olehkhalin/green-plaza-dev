@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Equalizer from "react-equalizer"
 // import { EqualHeight, EqualHeightElement } from "react-equal-height"
 
 import AdvantagesCard from "./advantagesCard"
@@ -91,6 +92,22 @@ const Advantages = () => {
     },
   ]
 
+  useEffect(() => {
+    const cards = document.querySelectorAll(".advantages-card-inner .header")
+    console.log(cards)
+    let maxHeight = 0
+
+    cards.forEach(card => {
+      const newHeight = card.offsetHeight
+      if (newHeight > maxHeight) maxHeight = newHeight
+      console.log(maxHeight)
+    })
+
+    cards.forEach(card => {
+      card.height = `${maxHeight}px`
+    })
+  }, [])
+
   return (
     <section className="section dark advantages" id="complex">
       <div className="container">
@@ -103,6 +120,7 @@ const Advantages = () => {
         <div className="row v-center space-between">
           <div className="advantages-cards-container">
             {/*<EqualHeight>*/}
+            <Equalizer byRow={false}>
               {advantagesArray.map((advantageItem, index) => (
                 <AdvantagesCard
                   advantageItem={advantageItem}
@@ -111,6 +129,7 @@ const Advantages = () => {
                   icon={advantagesIcons[index]}
                 />
               ))}
+            </Equalizer>
             {/*</EqualHeight>*/}
           </div>
         </div>

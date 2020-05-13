@@ -662,16 +662,18 @@ h2
 .advantages
 	&-card
 		&s-container
-			display: flex
-			margin-left: -15px
-			margin-right: -15px
-			margin-top: -46px
-			padding-bottom: -46px
-			width: calc(100% + 30px)
-			flex-wrap: wrap
-			@include media("<=phone")
-				margin: -10px
-				width: calc(100% + 20px)
+			width: 100%
+			>div
+				display: flex
+				margin-left: -15px
+				margin-right: -15px
+				margin-top: -46px
+				padding-bottom: -46px
+				width: calc(100% + 30px)
+				flex-wrap: wrap
+				@include media("<=phone")
+					margin: -10px
+					width: calc(100% + 20px)
 		&-wrapper
 			width: 33%
 			padding: 46px 40px
@@ -727,27 +729,6 @@ h2
 				padding: 25px 15px
 				@include media("<=phone")
 					display: none
-			ul
-				margin: 0
-				padding: 0
-				list-style-type: none
-				z-index: 3
-				position: relative
-				li
-					padding-left: 20px
-					position: relative
-					margin: 0
-					&:not(:last-child)
-						margin-bottom: 10px
-					&::before
-						content: ''
-						position: absolute
-						left: 0
-						top: 11px
-						transform: translateY(-50%) rotate(45deg)
-						width: 10px
-						height: 10px
-						background-color: $adobe
 		&-front, &-back
 			position: absolute
 			top: 0
@@ -776,6 +757,27 @@ h2
 			z-index: 3
 			@include media("<=phone")
 				display: none
+			ul
+				margin: 0
+				padding: 0
+				list-style-type: none
+				z-index: 3
+				position: relative
+				li
+					padding-left: 20px
+					position: relative
+					margin: 0
+					&:not(:last-child)
+						margin-bottom: 10px
+					&::before
+						content: ''
+						position: absolute
+						left: 0
+						top: 11px
+						transform: translateY(-50%) rotate(45deg)
+						width: 10px
+						height: 10px
+						background-color: $adobe
 		&-icon
 			width: 115px
 			height: auto
@@ -798,6 +800,25 @@ h2
 			@include media("<=phone")
 				font-size: 0.875rem
 				color: $white
+
+.advantages-card-mobile
+	z-index: 20
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background-color: rgba(0,0,0,.4)
+	.advantages-card-back
+		padding: 30px 45px
+		display: flex
+		background-color: $white
+		width: calc(100% - 30px)
+		height: auto
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
 
 
 
@@ -908,9 +929,10 @@ h2
 		> div > svg
 			width: 100%
 			height: auto
-			max-height: 80vh
-			&:first-child
-				margin-bottom: 100px
+			@include media(">=phone")
+				max-height: 80vh
+				&:first-child
+					margin-bottom: 100px
 	&-flats
 		width: 100%
 		margin-top: 145px
@@ -1712,4 +1734,4 @@ h2
 	padding: 47px 0
 	@include media("<=phone")
 		padding: 9px 0
-		font-size: .5rem
+		font-size: .75rem
