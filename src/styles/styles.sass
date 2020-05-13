@@ -675,6 +675,7 @@ h2
 		&-wrapper
 			width: 33%
 			padding: 46px 40px
+			position: relative
 			@include media("<=phone")
 				width: 50%
 				padding: 10px
@@ -690,14 +691,11 @@ h2
 			&:nth-child(3n+3)
 				.advantages-card
 					&::before
-						right: -25px
+						right: -27px
 						left: auto
 		height: 100%
 		z-index: 1
 		position: relative
-		@include media(">=phone")
-			transform-style: preserve-3d
-			perspective: 1200px
 		@include media(">=phone")
 			&::before
 				content: ''
@@ -707,7 +705,10 @@ h2
 				left: -25px
 				width: 100%
 				height: 100%
-				z-index: -1
+				z-index: -5
+		@include media(">=phone")
+			transform-style: preserve-3d
+			perspective: 1200px
 		@include media(">=phone")
 			&:hover
 				.advantages-card-inner
@@ -718,8 +719,35 @@ h2
 			transform-style: preserve-3d
 			transition: .7s linear
 			position: relative
+			z-index: 3
 			@include media("<=phone")
 				height: 140px
+			.hidden
+				opacity: 0
+				padding: 25px 15px
+				@include media("<=phone")
+					display: none
+			ul
+				margin: 0
+				padding: 0
+				list-style-type: none
+				z-index: 3
+				position: relative
+				li
+					padding-left: 20px
+					position: relative
+					margin: 0
+					&:not(:last-child)
+						margin-bottom: 10px
+					&::before
+						content: ''
+						position: absolute
+						left: 0
+						top: 11px
+						transform: translateY(-50%) rotate(45deg)
+						width: 10px
+						height: 10px
+						background-color: $adobe
 		&-front, &-back
 			position: absolute
 			top: 0
@@ -729,6 +757,7 @@ h2
 			padding: 25px 15px
 			background-color: $white
 			backface-visibility: hidden
+			z-index: 3
 		&-front
 			z-index: 2
 			text-align: center
@@ -744,6 +773,7 @@ h2
 			transform: rotateY(-180deg)
 			display: flex
 			align-items: center
+			z-index: 3
 			@include media("<=phone")
 				display: none
 		&-icon
@@ -768,30 +798,6 @@ h2
 			@include media("<=phone")
 				font-size: 0.875rem
 				color: $white
-		&-list
-			margin: 0
-			padding: 0
-			list-style-type: none
-			&.inner
-				opacity: 0
-				padding: 25px 15px
-				@include media("<=phone")
-					display: none
-			li
-				padding-left: 20px
-				position: relative
-				margin: 0
-				&:not(:last-child)
-					margin-bottom: 10px
-				&::before
-					content: ''
-					position: absolute
-					left: 0
-					top: 11px
-					transform: translateY(-50%) rotate(45deg)
-					width: 10px
-					height: 10px
-					background-color: $adobe
 
 
 
@@ -899,7 +905,7 @@ h2
 .complex
 	&-plans
 		width: 100%
-		> svg
+		> div > svg
 			width: 100%
 			height: auto
 			max-height: 80vh
@@ -1014,6 +1020,9 @@ h2
 					opacity: .6
 					cursor: pointer
 					transition: opacity .3s
+					border: none
+					background-color: transparent
+					outline: none
 					&:first-child
 						margin-right: 88px
 						@include media("<=phone")
@@ -1192,6 +1201,7 @@ h2
 		padding: 0 32px
 		margin-left: auto
 		margin-right: auto
+		width: 100%
 		@include media("<=phone")
 			padding: 0 16px
 	&-wrapper
@@ -1238,15 +1248,36 @@ h2
 .complex-more
 	&-photos
 		width: 50%
+		padding-right: 15px
 		//opacity: 0
 		@include media("<=phone")
 			width: 100%
+			padding-right: 0
 	&-content
 		width: 50%
+		padding-left: 15px
 		@include media("<=phone")
 			width: 100%
+			padding-left: 0
 		&-table
 			margin-bottom: 60px
+			table
+				border: 1px solid $adobe
+				th, td
+					text-align: center
+					border-bottom: 1px solid $adobe
+					padding: 15px
+					font-family: Montserrat
+					font-weight: 500
+					font-size: 20px
+					line-height: 24px
+					&:not(:last-child)
+						border-right: 1px solid $adobe
+				tfoot
+					td
+						font-weight: 600
+						&:not(:last-child)
+							border-right: none
 			@include media("<=phone")
 				margin-top: 30px
 				margin-bottom: 30px
@@ -1428,6 +1459,7 @@ h2
 		&-wrapper
 			padding: 15px
 			width: 60%
+			flex-grow: 1
 			@include media("<=phone")
 				padding: 4px
 			&:nth-child(4n+2), &:nth-child(4n+3)
@@ -1612,7 +1644,7 @@ h2
 				right: calc(100% + 10px)
 				path
 					fill: $adobe
-		&-list
+		&-list, ul
 			margin: 0
 			padding: 0
 			li

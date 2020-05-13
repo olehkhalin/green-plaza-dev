@@ -6,14 +6,18 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-tinacms",
+      // ...
+      resolve: '@directus/gatsby-source-directus',
       options: {
-        plugins: ["gatsby-tinacms-git", "gatsby-tinacms-json",],
-        sidebar: {
-          hidden: process.env.NODE_ENV === "production",
-          position: "displace"
+        url: 'http://64.225.107.47/',
+        project: 'green-plaza',
+        auth: {
+          // Note: you should extract the login information
+          // to environment variables.
+          email: 'green-plaza@rova.agency',
+          password: 'green-pass-302$5-pl',
         },
-      },
+      }
     },
     `gatsby-transformer-json`,
     {

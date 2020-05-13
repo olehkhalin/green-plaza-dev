@@ -14,8 +14,7 @@ const ComplexFlatsFloor = ({state, disabled, clicked, image, title}) => {
       </div>
       <div className="complex-floor-image">
         <Img
-          fluid={image.childImageSharp.fluid}
-          objectFit="contain"
+          fluid={image.localFile.childImageSharp.fluid}
         />
       </div>
     </Modal>

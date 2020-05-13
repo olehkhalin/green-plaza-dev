@@ -4,158 +4,219 @@ import Modal from "../modal"
 import ComplexItemMore from "./complexFlatsItemMore"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import moment from "moment"
+import { orderBy } from "lodash"
 
 const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
   const data = useStaticQuery(graphql`
-      query {
-          f911141617Json {
-              numbers
-              floor {
-                  childImageSharp {
-                      fluid {
-                          ...GatsbyImageSharpFluid
-                      }
-                  }
+    query {
+      directusFlats911141617 {
+        floor_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 720) {
+                ...GatsbyImageSharpFluid_withWebp
               }
-              flats {
-                  title
-                  quadrature
-                  promotion
-                  image {
-                      id
-                      childImageSharp {
-                          fluid {
-                              ...GatsbyImageSharpFluid
-                          }
-                      }
-                  }
-                  pdf {
-                      publicURL
-                  }
-              }
+            }
           }
-          f101519Json {
-              numbers
-              floor {
-                  childImageSharp {
-                      fluid {
-                          ...GatsbyImageSharpFluid
-                      }
-                  }
+        }
+        flats {
+          id
+          sort
+          rooms
+          quadrature
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 720) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
               }
-              flats {
-                  title
-                  quadrature
-                  promotion
-                  image {
-                      id
-                      childImageSharp {
-                          fluid {
-                              ...GatsbyImageSharpFluid
-                          }
-                      }
-                  }
-                  pdf {
-                      publicURL
-                  }
-              }
+            }
           }
-          f1213Json {
-              numbers
-              floor {
-                  childImageSharp {
-                      fluid {
-                          ...GatsbyImageSharpFluid
-                      }
-                  }
-              }
-              flats {
-                  title
-                  quadrature
-                  promotion
-                  image {
-                      id
-                      childImageSharp {
-                          fluid {
-                              ...GatsbyImageSharpFluid
-                          }
-                      }
-                  }
-                  pdf {
-                      publicURL
-                  }
-              }
+          pdf {
+            localFile {
+              publicURL
+            }
           }
-          f18Json {
-              numbers
-              floor {
-                  childImageSharp {
-                      fluid {
-                          ...GatsbyImageSharpFluid
-                      }
-                  }
-              }
-              flats {
-                  title
-                  quadrature
-                  promotion
-                  image {
-                      id
-                      childImageSharp {
-                          fluid {
-                              ...GatsbyImageSharpFluid
-                          }
-                      }
-                  }
-                  pdf {
-                      publicURL
-                  }
-              }
+          rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
           }
-          f20Json {
-              numbers
-              floor {
-                  childImageSharp {
-                      fluid {
-                          ...GatsbyImageSharpFluid
-                      }
-                  }
-              }
-              flats {
-                  title
-                  quadrature
-                  promotion
-                  image {
-                      id
-                      childImageSharp {
-                          fluid {
-                              ...GatsbyImageSharpFluid
-                          }
-                      }
-                  }
-                  pdf {
-                      publicURL
-                  }
-              }
-          }
+        }
       }
+      directusFlats101519 {
+        floor_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 720) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        flats {
+          id
+          sort
+          rooms
+          quadrature
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 720) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          pdf {
+            localFile {
+              publicURL
+            }
+          }
+          rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+        }
+      }
+      directusFlats1213 {
+        floor_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 720) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        flats {
+          id
+          sort
+          rooms
+          quadrature
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 720) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          pdf {
+            localFile {
+              publicURL
+            }
+          }
+          rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+        }
+      }
+      directusFlats18 {
+        floor_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 720) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        flats {
+          id
+          sort
+          rooms
+          quadrature
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 720) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          pdf {
+            localFile {
+              publicURL
+            }
+          }
+          rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+        }
+      }
+      directusFlats20 {
+        floor_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 720) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        flats {
+          id
+          sort
+          rooms
+          quadrature
+          image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 720) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          pdf {
+            localFile {
+              publicURL
+            }
+          }
+          rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+        }
+      }
+    }
   `)
 
-  let cplxArray = data.f911141617Json;
+  let cplxArray = data.directusFlats911141617, flatsArr
 
   if (complexNumbers === `9, 11, 14, 16, 17`) {
-    cplxArray = data.f911141617Json
+    cplxArray = data.directusFlats911141617
   } else if (complexNumbers === `10, 15, 19`) {
-    cplxArray = data.f101519Json
+    cplxArray = data.directusFlats101519
   } else if (complexNumbers === `12, 13`) {
-    cplxArray = data.f1213Json
+    cplxArray = data.directusFlats1213
   } else if (complexNumbers === `18`) {
-    cplxArray = data.f18Json
+    cplxArray = data.directusFlats18
   } else if (complexNumbers === `20`) {
-    cplxArray = data.f20Json
+    cplxArray = data.directusFlats20
   }
-
-
+  flatsArr = orderBy(
+    cplxArray.flats,
+    // eslint-disable-next-line
+    [object => new moment(object.sort)],
+    ["asc"]
+  )
 
   const [stateItem, setStateItem] = useState({
     initial: false,
@@ -189,7 +250,7 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
     }
   }
   const disableItem = () => {
-    document.querySelector('html').classList.toggle('lock-scroll');
+    document.querySelector("html").classList.toggle("lock-scroll")
     setDisabledItem(!disabledItem)
     setTimeout(() => {
       setDisabledItem(false)
@@ -207,25 +268,22 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
         <div className="complex-plan-container">
           <div className="complex-plan-floor">
             <h3>Планировка этажа</h3>
-            <Img
-              fluid={cplxArray.floor.childImageSharp.fluid}
-            />
+            <Img fluid={cplxArray.floor_image.localFile.childImageSharp.fluid} />
           </div>
           <div className="complex-plan-flats">
             <h3>Планировки квартир</h3>
             <div className="complex-plan-flats-wrapper">
-              {cplxArray.flats.map(flat => (
-                <div className="complex-plan-flats-item" key={flat.image.id}>
+              {flatsArr.map(flat => (
+                <div className="complex-plan-flats-item" key={flat.id}>
                   <div className="complex-plan-flats-item-image">
-                    <Img
-                      fluid={flat.image.childImageSharp.fluid}
-                    />
+                    <Img fluid={flat.image.localFile.childImageSharp.fluid} />
                   </div>
                   <button
                     className="button bordered"
                     onClick={() => handleItem(flat)}
                   >
-                    смотреть планировку {flat.promotion ? (<span>Акция -20%</span>) : null}
+                    смотреть планировку{" "}
+                    {flat.promotion ? <span>Акция -20%</span> : null}
                   </button>
                 </div>
               ))}

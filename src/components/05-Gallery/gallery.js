@@ -1,26 +1,39 @@
 import React from "react"
 
+import {orderBy} from 'lodash'
+import moment from 'moment'
+
 import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`
     query {
-      allGalleryJson {
-        nodes {
-          image {
+      directusGallery {
+        images {
+          localFile {
             id
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 720) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
-          alt
+          title
+          uploaded_on
         }
       }
     }
   `)
+  const imagesArr = orderBy(
+    data.directusGallery.images,
+    // eslint-disable-next-line
+    [object => new moment(object.uploaded_on)],
+    ['desc']
+  )
+
+
+
 
   return (
     <section className="section light gallery" id="gallery">
@@ -32,12 +45,15 @@ const Gallery = () => {
         </div>
         <div className="row v-center space-between">
           <div className="gallery-cards-container">
-            {data.allGalleryJson.nodes.map(galleryItem => (
-              <div className="gallery-card-wrapper" key={galleryItem.image.id}>
+            {imagesArr.map(galleryItem => (
+              <div
+                className="gallery-card-wrapper"
+                key={galleryItem.localFile.id}
+              >
                 <div className="gallery-card">
                   <Img
-                    fluid={galleryItem.image.childImageSharp.fluid}
-                    alt={galleryItem.alt}
+                    fluid={galleryItem.localFile.childImageSharp.fluid}
+                    alt={galleryItem.title + " | Green Plaza"}
                   />
                 </div>
               </div>

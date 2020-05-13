@@ -8,18 +8,19 @@ import { graphql, useStaticQuery } from "gatsby"
 const Tour = () => {
   const data = useStaticQuery(graphql`
     query {
-      toursJson {
-        flats {
-          link
-          title
-        }
-        front_door {
-          title
-          link
-        }
+      directusTour {
+        left_link
+        left_title_ru
+        right_link
+        right_title_ru
       }
     }
   `)
+
+  const leftLink = data.directusTour.left_link;
+  const leftTitle = data.directusTour.left_title_ru;
+  const rightLink = data.directusTour.right_link;
+  const rightTitle = data.directusTour.right_title_ru;
 
   return (
     <section className="section dark tour">
@@ -36,8 +37,14 @@ const Tour = () => {
           <div className="tour-wrapper">
             <div className="tour-cards-container">
               {/*{toursArray.map((tourItem, index) => (*/}
-                <TourCard title={data.toursJson.front_door.title} link={data.toursJson.front_door.link} />
-                <TourCard title={data.toursJson.flats.title} link={data.toursJson.flats.link} />
+              <TourCard
+                title={leftTitle}
+                link={leftLink}
+              />
+              <TourCard
+                title={rightTitle}
+                link={rightLink}
+              />
               {/*// ))}*/}
             </div>
             <div className="tour-info">

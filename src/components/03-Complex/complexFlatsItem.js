@@ -8,10 +8,10 @@ const ComplexItem = ({clicked, flat}) => {
         <div className="complex-flats-item-image">
           {/*<Image />*/}
           <Img
-            fluid={flat.image.childImageSharp.fluid}
+            fluid={flat.image.localFile.childImageSharp.fluid}
           />
           <div className="complex-flats-item-content">
-            <h3>{flat.title} {flat.quadrature}</h3>
+            <h3>{flat.rooms} ком. квартира {flat.quadrature}м²</h3>
             <button className="button line">
               смотреть планировку
             </button>

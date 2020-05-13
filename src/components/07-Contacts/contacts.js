@@ -1,108 +1,27 @@
 import React from "react"
-import { useLocalJsonForm, useGlobalJsonForm } from "gatsby-tinacms-json"
+// import { useLocalJsonForm, useGlobalJsonForm } from "gatsby-tinacms-json"
 
 import RhombusIcon from "../../icons/rhombus.svg"
 import { graphql, useStaticQuery } from "gatsby"
 
 const Contacts = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     contactsJson {
-  //       address {
-  //         link
-  //         title
-  //       }
-  //       phones
-  //       working_hours
-  //     }
-  //
-  //       rawJson
-  //       fileRelativePath
-  //   }
-  // `)
   const data = useStaticQuery(graphql`
     query {
-      contactsQuery: landingContentJson(pk: { eq: "contacts" }) {
-        contacts {
-          address {
-            id
-            link
-            title
-          }
-          phones {
-            phone_number
-            id
-          }
+      directusContact {
+        phones {
+          id
+          phone
         }
-
-        rawJson
-        fileRelativePath
+        addresses: addresses_ru {
+          id
+          name
+          link
+        }
+        working_hours: working_hours_ru
       }
     }
   `)
-
-  const formOptions = {
-    label: "RU",
-    fields: [
-      {
-        label: "Контакты",
-        name: "rawJson.contacts",
-        component: "group",
-        fields: [
-          {
-            label: "Телефоны",
-            name: "phones",
-            component: "group-list",
-            itemProps: item => ({
-              key: item.id,
-              label: item.phone_number,
-            }),
-            defaultItem: () => ({
-              phone_number: "+000000000000",
-              id: Math.random().toString(36).substr(2, 9),
-            }),
-            fields: [
-              {
-                label: "Номер телефона",
-                name: "phone_number",
-                component: "text",
-              },
-            ],
-          },
-          {
-            label: "Адреса",
-            name: "address",
-            component: "group-list",
-            itemProps: item => ({
-              key: item.id,
-              label: item.title,
-            }),
-            defaultItem: () => ({
-              id: Math.random().toString(36).substr(2, 9),
-            }),
-            fields: [
-              {
-                label: "Заголовок",
-                name: "title",
-                component: "text",
-              },
-              {
-                label: "Ссылка",
-                name: "link",
-                component: "text",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  }
-
-  const [{ contacts }] = useLocalJsonForm(data.contactsQuery, formOptions)
-
-  const { phones, address } = contacts
-
-  // console.log(dataTina);
+  const { phones, addresses, working_hours } = data.directusContact
 
   return (
     <section className="section light contacts">
@@ -125,9 +44,7 @@ const Contacts = () => {
               <ul className="contacts-item-list">
                 {phones.map(phone => (
                   <li key={phone.id}>
-                    <a href={"tel:" + phone.phone_number}>
-                      {phone.phone_number}
-                    </a>
+                    <a href={"tel:" + phone.phone}>{phone.phone}</a>
                   </li>
                 ))}
               </ul>
@@ -138,14 +55,14 @@ const Contacts = () => {
                 Местоположение
               </h3>
               <ul className="contacts-item-list">
-                {address.map(addressItem => (
+                {addresses.map(addressItem => (
                   <li key={addressItem.id}>
                     <a
                       href={addressItem.link}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {addressItem.title}
+                      {addressItem.name}
                     </a>
                   </li>
                 ))}
@@ -156,7 +73,8 @@ const Contacts = () => {
                 <RhombusIcon />
                 Режим работы
               </h3>
-              <ul className="contacts-item-list">
+              <ul className="contacts-item-list" dangerouslySetInnerHTML={{__html: working_hours}}>
+                {/*{working_hours}*/}
                 {/*{data.contactsJson.working_hours.map(hour => (*/}
                 {/*  <li key={hour}>*/}
                 {/*    <span>{hour}</span>*/}

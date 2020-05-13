@@ -1,31 +1,46 @@
 import React, { useState } from "react"
 
-import ComplexMoreTable from "../../icons/complex-more.svg"
 import Modal from "../modal"
 import ModalFos from "./modalFos"
 import Img from "gatsby-image"
+import moment from "moment"
+import { orderBy } from "lodash"
 
-const ComplexItemMore = ({state, disabled, clicked, flat, building}) => {
+const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
+  let title,
+    quadrature,
+    image,
+    promotion,
+    publicURL,
+    content,
+    data = 0
 
-  let title, quadrature, image, promotion, publicURL;
-
-  if(flat) {
-    title = flat.title
-    quadrature = flat.quadrature
-    image = flat.image
-    promotion = flat.promotion
-    publicURL = flat.pdf.publicURL
+  if (flat) {
+    title = `${flat.rooms} ком. квартира`
+    quadrature = `${flat.quadrature}м²`
+    image = flat.image.localFile
+    // promotion = flat.promotion
+    publicURL = flat.pdf.localFile.publicURL
+    content = orderBy(
+      flat.rooms_content_ru,
+      // eslint-disable-next-line
+      [object => new moment(object.sort)],
+      ["asc"]
+    )
+    content.map(el => {
+      data += parseFloat(el.quadrature)
+    })
   }
 
   const [stateFos, setStateFos] = useState({
     initial: false,
     clicked: null,
-  });
+  })
   const [disabledFos, setDisabledFos] = useState(false)
   const handleFos = () => {
-    disableFos();
+    disableFos()
     if (stateFos.initial === false) {
-      clicked();
+      clicked()
       setTimeout(() => {
         setStateFos({
           initial: null,
@@ -34,19 +49,19 @@ const ComplexItemMore = ({state, disabled, clicked, flat, building}) => {
       }, 700)
     } else if (stateFos.clicked === true) {
       setStateFos({
-        clicked: !stateFos.clicked
+        clicked: !stateFos.clicked,
       })
     } else if (stateFos.clicked === false) {
-      clicked();
+      clicked()
       setTimeout(() => {
         setStateFos({
-          clicked: !stateFos.clicked
+          clicked: !stateFos.clicked,
         })
       }, 700)
     }
   }
   const disableFos = () => {
-    document.querySelector('html').classList.toggle('lock-scroll');
+    document.querySelector("html").classList.toggle("lock-scroll")
     setDisabledFos(!disabledFos)
     setTimeout(() => {
       setDisabledFos(false)
@@ -55,36 +70,74 @@ const ComplexItemMore = ({state, disabled, clicked, flat, building}) => {
 
   return (
     <>
-    <Modal state={state} disabled={disabled} clicked={clicked}>
-      <div className="complex-more-photos">
-        <div className="modal-header-item">
-          <h2>{title} - {quadrature}</h2>
+      <Modal state={state} disabled={disabled} clicked={clicked}>
+        <div className="complex-more-photos">
+          <div className="modal-header-item">
+            <h2>
+              {title} - {quadrature}
+            </h2>
+          </div>
+          {flat ? <Img fluid={image.childImageSharp.fluid} /> : null}
         </div>
-        {flat ? (
-          <Img
-            fluid={image.childImageSharp.fluid}
-          />
-        ) : null}
-      </div>
-      <div className="complex-more-content">
-        <div className={"modal-header-item promotion" + (!promotion ? " hidden" : '')}>
-          <h2>АКЦИЯ -20%</h2>
+        <div className="complex-more-content">
+          <div
+            className={
+              "modal-header-item promotion" + (!promotion ? " hidden" : "")
+            }
+          >
+            <h2>АКЦИЯ -20%</h2>
+          </div>
+          <div className="complex-more-content-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Комната</th>
+                  <th>Площадь, м²</th>
+                </tr>
+              </thead>
+              <tbody>
+                {content
+                  ? content.map((el, index) => (
+                      <tr key={el.id}>
+                        <td>{index + 1}</td>
+                        <td>{el.title}</td>
+                        <td>{el.quadrature}</td>
+                      </tr>
+                    ))
+                  : null}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td>Итого общая</td>
+                  <td>{data}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div className="complex-more-content-buttons">
+            <button
+              className="button bordered main"
+              onClick={() => handleFos()}
+            >
+              связаться с менеджером
+            </button>
+            {}
+            <a href={publicURL} download className="button bordered">
+              скачать планировку
+            </a>
+          </div>
         </div>
-        <div className="complex-more-content-table">
-          <ComplexMoreTable />
-        </div>
-        <div className="complex-more-content-buttons">
-          <button className="button bordered main" onClick={() => handleFos()}>
-            связаться с менеджером
-          </button>
-          {}
-          <a href={publicURL} download className="button bordered">
-            скачать планировку
-          </a>
-        </div>
-      </div>
-    </Modal>
-      <ModalFos state={stateFos} disabled={disabledFos} clicked={() => handleFos()} title={title} quadrature={quadrature} building={building} />
+      </Modal>
+      <ModalFos
+        state={stateFos}
+        disabled={disabledFos}
+        clicked={() => handleFos()}
+        title={title}
+        quadrature={quadrature}
+        building={building}
+      />
     </>
   )
 }
