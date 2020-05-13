@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { EqualHeight, EqualHeightElement } from "react-equal-height"
+// import { EqualHeight, EqualHeightElement } from "react-equal-height"
 
 import AdvantagesCard from "./advantagesCard"
 
@@ -102,7 +102,7 @@ const Advantages = () => {
         </div>
         <div className="row v-center space-between">
           <div className="advantages-cards-container">
-            <EqualHeight>
+            {/*<EqualHeight>*/}
               {advantagesArray.map((advantageItem, index) => (
                 <AdvantagesCard
                   advantageItem={advantageItem}
@@ -111,7 +111,7 @@ const Advantages = () => {
                   icon={advantagesIcons[index]}
                 />
               ))}
-            </EqualHeight>
+            {/*</EqualHeight>*/}
           </div>
         </div>
       </div>
