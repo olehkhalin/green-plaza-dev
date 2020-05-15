@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 import Slider from "react-slick"
 import ArrowLeft from "../../icons/arrow-left.svg"
@@ -9,142 +9,9 @@ import ComplexFlatsFloor from "./complexFlatsFloor"
 import { graphql, useStaticQuery } from "gatsby"
 import moment from "moment"
 import { orderBy } from "lodash"
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
 const ComplexContent = ({ complex }) => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     f911141617Json {
-  //       numbers
-  //       floor {
-  //         childImageSharp {
-  //           fluid {
-  //             ...GatsbyImageSharpFluid
-  //           }
-  //         }
-  //       }
-  //       flats {
-  //         title
-  //         quadrature
-  //         promotion
-  //         image {
-  //           id
-  //           childImageSharp {
-  //             fluid {
-  //               ...GatsbyImageSharpFluid
-  //             }
-  //           }
-  //         }
-  //         pdf {
-  //           publicURL
-  //         }
-  //       }
-  //     }
-  //     f101519Json {
-  //       numbers
-  //       floor {
-  //         childImageSharp {
-  //           fluid {
-  //             ...GatsbyImageSharpFluid
-  //           }
-  //         }
-  //       }
-  //       flats {
-  //         title
-  //         quadrature
-  //         promotion
-  //         image {
-  //           id
-  //           childImageSharp {
-  //             fluid {
-  //               ...GatsbyImageSharpFluid
-  //             }
-  //           }
-  //         }
-  //         pdf {
-  //           publicURL
-  //         }
-  //       }
-  //     }
-  //     f1213Json {
-  //       numbers
-  //       floor {
-  //         childImageSharp {
-  //           fluid {
-  //             ...GatsbyImageSharpFluid
-  //           }
-  //         }
-  //       }
-  //       flats {
-  //         title
-  //         quadrature
-  //         promotion
-  //         image {
-  //           id
-  //           childImageSharp {
-  //             fluid {
-  //               ...GatsbyImageSharpFluid
-  //             }
-  //           }
-  //         }
-  //         pdf {
-  //           publicURL
-  //         }
-  //       }
-  //     }
-  //     f18Json {
-  //       numbers
-  //       floor {
-  //         childImageSharp {
-  //           fluid {
-  //             ...GatsbyImageSharpFluid
-  //           }
-  //         }
-  //       }
-  //       flats {
-  //         title
-  //         quadrature
-  //         promotion
-  //         image {
-  //           id
-  //           childImageSharp {
-  //             fluid {
-  //               ...GatsbyImageSharpFluid
-  //             }
-  //           }
-  //         }
-  //         pdf {
-  //           publicURL
-  //         }
-  //       }
-  //     }
-  //     f20Json {
-  //       numbers
-  //       floor {
-  //         childImageSharp {
-  //           fluid {
-  //             ...GatsbyImageSharpFluid
-  //           }
-  //         }
-  //       }
-  //       flats {
-  //         title
-  //         quadrature
-  //         promotion
-  //         image {
-  //           id
-  //           childImageSharp {
-  //             fluid {
-  //               ...GatsbyImageSharpFluid
-  //             }
-  //           }
-  //         }
-  //         pdf {
-  //           publicURL
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
 
   const data = useStaticQuery(graphql`
     query {
@@ -335,14 +202,6 @@ const ComplexContent = ({ complex }) => {
       }
     }
   `)
-  //
-  // const flatsArr = orderBy(
-  //   data.directusFlats911141617.flats,
-  //   // eslint-disable-next-line
-  //   [object => new moment(object.sort)],
-  //   ['asc']
-  // )
-  //
 
   let cplxArray, flatsArr
 
@@ -364,6 +223,13 @@ const ComplexContent = ({ complex }) => {
     ["asc"]
   )
 
+
+  let modal = null;
+
+  useEffect(() => {
+    modal = document.querySelector('.modal');
+  })
+
   const [state, setState] = useState({
     initial: false,
     clicked: null,
@@ -378,19 +244,24 @@ const ComplexContent = ({ complex }) => {
         clicked: true,
       })
       setCurrentFlat(flat)
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(modal);
     } else if (state.clicked === true) {
       setState({
         clicked: !state,
       })
+      enableBodyScroll(modal);
+      document.getElementsByTagName("html")[0].style = "";
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
       })
       setCurrentFlat(flat)
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(modal);
     }
   }
   const disableComplex = () => {
-    document.querySelector("html").classList.toggle("lock-scroll")
     setDisabled(!disabled)
     setTimeout(() => {
       setDisabled(false)
@@ -409,18 +280,23 @@ const ComplexContent = ({ complex }) => {
         initial: null,
         clicked: true,
       })
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(modal);
     } else if (stateFlats.clicked === true) {
       setStateFlats({
         clicked: !stateFlats,
       })
+      enableBodyScroll(modal);
+      document.getElementsByTagName("html")[0].style = "";
     } else if (stateFlats.clicked === false) {
       setStateFlats({
         clicked: !stateFlats.clicked,
       })
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(modal);
     }
   }
   const disableFlats = () => {
-    document.querySelector("html").classList.toggle("lock-scroll")
     setDisabledFlats(!disabledFlats)
     setTimeout(() => {
       setDisabledFlats(false)

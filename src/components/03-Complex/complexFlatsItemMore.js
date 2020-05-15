@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import Modal from "../modal"
 import ModalFos from "./modalFos"
 import Img from "gatsby-image"
 import moment from "moment"
 import { orderBy } from "lodash"
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
 const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
   let title,
@@ -32,6 +33,12 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
     })
   }
 
+  let modal = null
+
+  useEffect(() => {
+    modal = document.querySelector(".modal")
+  })
+
   const [stateFos, setStateFos] = useState({
     initial: false,
     clicked: null,
@@ -46,22 +53,27 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
           initial: null,
           clicked: true,
         })
+        document.getElementsByTagName("html")[0].style.overflow = "hidden"
+        disableBodyScroll(modal)
       }, 700)
     } else if (stateFos.clicked === true) {
       setStateFos({
         clicked: !stateFos.clicked,
       })
+      enableBodyScroll(modal)
+      document.getElementsByTagName("html")[0].style = ""
     } else if (stateFos.clicked === false) {
       clicked()
       setTimeout(() => {
         setStateFos({
           clicked: !stateFos.clicked,
         })
+        document.getElementsByTagName("html")[0].style.overflow = "hidden"
+        disableBodyScroll(modal)
       }, 700)
     }
   }
   const disableFos = () => {
-    document.querySelector("html").classList.toggle("lock-scroll")
     setDisabledFos(!disabledFos)
     setTimeout(() => {
       setDisabledFos(false)

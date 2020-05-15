@@ -3,7 +3,9 @@
 
 .error
 	&-page
-		height: 100vh
+		height: 100vh //fallback
+		height: calc(var(--vh, 1vh) * 100)
+		min-height: 500px
 	&-container
 		display: flex
 		flex-direction: column

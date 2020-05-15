@@ -1,13 +1,21 @@
 // import { Link } from "gatsby"
 // import PropTypes from "prop-types"
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import GreenPlazaLogo from "../icons/logo.svg"
 import Hamburger from "./00-Menu/hamburger"
 
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
 // const Header = ({ siteTitle }) => (
 const Header = () => {
+
+
+  let hamburger;
+  useEffect(() => {
+    hamburger = document.querySelector('.menu');
+  })
 
   const [headerStyle, setHeaderStyle] = useState({
     transition: "all 200ms ease-in",
@@ -48,21 +56,29 @@ const Header = () => {
         clicked: true,
         menuClass: "close",
       })
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(hamburger);
     } else if (state.clicked === true) {
       setState({
         clicked: !state.clicked,
         menuClass: "",
       })
+      enableBodyScroll(hamburger);
+      document.getElementsByTagName("html")[0].style = "";
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
         menuClass: "close",
       })
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(hamburger);
     }
   }
 
   const disableMenu = () => {
-    document.querySelector('html').classList.toggle('lock-scroll');
+    console.log(hamburger)
+    // document.querySelector('html').classList.toggle('lock-scroll');
+    // console.log(hamburger)
     setDisabled(!disabled)
     setTimeout(() => {
       setDisabled(false)

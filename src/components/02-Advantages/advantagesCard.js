@@ -1,24 +1,30 @@
-import React, { useState } from "react"
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
-} from "react-device-detect";
+import React, { useRef, useState } from "react"
+import { useMediaQuery } from "react-responsive"
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 // import { EqualHeightElement } from "react-equal-height"
 
 const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
+
+  let advToShow = useRef(null)
+
   const [shown, setShown] = useState(false)
 
   const handleClick = () => {
     setShown(!shown)
-    document.querySelector('html').classList.toggle('lock-scroll');
+    if(shown) {
+      enableBodyScroll(advToShow);
+      document.getElementsByTagName("html")[0].style = "";
+    } else {
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      disableBodyScroll(advToShow);
+    }
   }
 
   return (
     <>
       <div className={"advantages-card-wrapper" + (isFirst ? " full" : "")}>
-        <div className="advantages-card" onClick={() => handleClick()}>
+        <div className="advantages-card" onClick={isTabletOrMobile ? () => handleClick() : null}>
           <div className="advantages-card-inner">
             {/*<EqualHeightElement name="Name">*/}
             <div
@@ -37,8 +43,8 @@ const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
           </div>
         </div>
       </div>
-      {shown && isMobile ? (
-        <div className="advantages-card-mobile active" onClick={() => handleClick()}>
+      {shown && isTabletOrMobile ? (
+        <div className="advantages-card-mobile active" onClick={() => handleClick()} ref={el => (advToShow = el)}>
           <div
             className="advantages-card-back"
             dangerouslySetInnerHTML={{ __html: advantageItem.list }}
