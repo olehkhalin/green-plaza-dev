@@ -5,6 +5,15 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Open Sans, Montserrat"],
+          urls: ["/fonts/fonts.css"],
+        },
+      },
+    },
     'gatsby-plugin-netlify-cache',
     {
       // ...
