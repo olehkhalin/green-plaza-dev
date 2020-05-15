@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    'gatsby-plugin-netlify-cache',
     {
       // ...
       resolve: '@directus/gatsby-source-directus',
