@@ -18,7 +18,7 @@ const NotFoundPage = () => {
   }
 
   const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
+    height: null,
   })
 
   useEffect(() => {
