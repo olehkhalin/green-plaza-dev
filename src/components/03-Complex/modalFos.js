@@ -8,7 +8,7 @@ import MainForm from "../mainForm"
 const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
 
   return (
-    <Modal state={state} disabled={disabled} clicked={clicked}>
+    <Modal state={state} disabled={disabled} clicked={clicked} modalClass="fos">
       <div className="modal-header small">
         <div className="modal-header-item">
           <h2>Оставьте свои контактные данные и наш менеджер свяжется с вами <span>в течение 10 минут</span>!</h2>

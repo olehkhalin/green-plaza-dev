@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react"
 
 import gsap from "gsap/gsap-core"
 
-const Modal = ({state, disabled, clicked, children}) => {
+const Modal = ({state, disabled, clicked, children, modalClass = null}) => {
   let complex = useRef(null)
   let revealComplex = useRef(null)
   let revealComplexBackground = useRef(null)
@@ -50,7 +50,7 @@ const Modal = ({state, disabled, clicked, children}) => {
   }, [state])
 
   return (
-    <div className="modal" ref={el => (complex = el)}>
+    <div className={"modal " + modalClass } ref={el => (complex = el)}>
       <div className="modal-secondary-background-color" ref={el => (revealComplexBackground = el)}></div>
       <div className="modal-layer" ref={el => (revealComplex = el)}>
         <div className="container">

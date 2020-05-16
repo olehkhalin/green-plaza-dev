@@ -1,9 +1,17 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "react-responsive"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 // import { EqualHeightElement } from "react-equal-height"
 
+let scrollPosition = 0
+
 const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
+  let body = null
+
+  useEffect(() => {
+    body = document.querySelector("body")
+  })
+
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   let advToShow = useRef(null)
@@ -11,14 +19,22 @@ const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
   const [shown, setShown] = useState(false)
 
   const handleClick = () => {
-    setShown(!shown)
     if(shown) {
-      enableBodyScroll(advToShow);
-      document.getElementsByTagName("html")[0].style = "";
+      document.getElementsByTagName("html")[0].style = ""
+      body.style.removeProperty("overflow")
+      body.style.removeProperty("position")
+      body.style.removeProperty("top")
+      body.style.removeProperty("width")
+      window.scrollTo(0, scrollPosition)
     } else {
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(advToShow);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     }
+    setShown(!shown)
   }
 
   return (

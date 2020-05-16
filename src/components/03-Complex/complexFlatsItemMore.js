@@ -7,6 +7,7 @@ import moment from "moment"
 import { orderBy } from "lodash"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
+let scrollPosition = 0
 const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
   let title,
     quadrature,
@@ -33,10 +34,10 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
     })
   }
 
-  let modal = null
+  let body = null
 
   useEffect(() => {
-    modal = document.querySelector(".modal")
+    body = document.querySelector("body")
   })
 
   const [stateFos, setStateFos] = useState({
@@ -53,23 +54,35 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
           initial: null,
           clicked: true,
         })
+        scrollPosition = window.pageYOffset
         document.getElementsByTagName("html")[0].style.overflow = "hidden"
-        disableBodyScroll(modal)
+        body.style.overflow = "hidden"
+        body.style.position = "fixed"
+        body.style.top = `-${scrollPosition}px`
+        body.style.width = "100%"
       }, 700)
     } else if (stateFos.clicked === true) {
       setStateFos({
         clicked: !stateFos.clicked,
       })
-      enableBodyScroll(modal)
       document.getElementsByTagName("html")[0].style = ""
+      body.style.removeProperty("overflow")
+      body.style.removeProperty("position")
+      body.style.removeProperty("top")
+      body.style.removeProperty("width")
+      window.scrollTo(0, scrollPosition)
     } else if (stateFos.clicked === false) {
       clicked()
       setTimeout(() => {
         setStateFos({
           clicked: !stateFos.clicked,
         })
+        scrollPosition = window.pageYOffset
         document.getElementsByTagName("html")[0].style.overflow = "hidden"
-        disableBodyScroll(modal)
+        body.style.overflow = "hidden"
+        body.style.position = "fixed"
+        body.style.top = `-${scrollPosition}px`
+        body.style.width = "100%"
       }, 700)
     }
   }
@@ -82,7 +95,12 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
 
   return (
     <>
-      <Modal state={state} disabled={disabled} clicked={clicked}>
+      <Modal
+        state={state}
+        disabled={disabled}
+        clicked={clicked}
+        modalClass="complexFlatsItemMore"
+      >
         <div className="complex-more-photos">
           <div className="modal-header-item">
             <h2>

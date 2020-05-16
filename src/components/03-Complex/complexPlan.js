@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react"
 import ComplexPlanMore from "./complexPlanMore"
 
 import { useMediaQuery } from "react-responsive"
-import { enableBodyScroll, disableBodyScroll } from "body-scroll-lock"
+import {
+  enableBodyScroll,
+  disableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock"
+
+let scrollPosition = 0
 
 const ComplexPlan = () => {
-  let modal = null;
+  let body = null
 
   useEffect(() => {
-    modal = document.querySelector('.modal');
+    body = document.querySelector("body")
   })
 
   const [stateComplex, setStateComplex] = useState({
@@ -25,21 +31,33 @@ const ComplexPlan = () => {
         initial: null,
         clicked: true,
       })
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(modal);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     } else if (stateComplex.clicked === true) {
       setStateComplex({
         clicked: !stateComplex.clicked,
       })
-      enableBodyScroll(modal);
-      document.getElementsByTagName("html")[0].style = "";
+      document.getElementsByTagName("html")[0].style = ""
+      body.style.removeProperty("overflow")
+      body.style.removeProperty("position")
+      body.style.removeProperty("top")
+      body.style.removeProperty("width")
+      window.scrollTo(0, scrollPosition)
     } else if (stateComplex.clicked === false) {
       setComplexNumbers(complexNumbers)
       setStateComplex({
         clicked: !stateComplex.clicked,
       })
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(modal);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     }
   }
   const disableComplex = () => {

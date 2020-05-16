@@ -11,8 +11,9 @@ import moment from "moment"
 import { orderBy } from "lodash"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
-const ComplexContent = ({ complex }) => {
+let scrollPosition = 0
 
+const ComplexContent = ({ complex }) => {
   const data = useStaticQuery(graphql`
     query {
       directusFlats911141617 {
@@ -223,11 +224,10 @@ const ComplexContent = ({ complex }) => {
     ["asc"]
   )
 
-
-  let modal = null;
+  let body = null
 
   useEffect(() => {
-    modal = document.querySelector('.modal');
+    body = document.querySelector("body")
   })
 
   const [state, setState] = useState({
@@ -244,21 +244,33 @@ const ComplexContent = ({ complex }) => {
         clicked: true,
       })
       setCurrentFlat(flat)
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(modal);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     } else if (state.clicked === true) {
       setState({
         clicked: !state,
       })
-      enableBodyScroll(modal);
-      document.getElementsByTagName("html")[0].style = "";
+      document.getElementsByTagName("html")[0].style = ""
+      body.style.removeProperty("overflow")
+      body.style.removeProperty("position")
+      body.style.removeProperty("top")
+      body.style.removeProperty("width")
+      window.scrollTo(0, scrollPosition)
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
       })
       setCurrentFlat(flat)
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(modal);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     }
   }
   const disableComplex = () => {
@@ -280,20 +292,32 @@ const ComplexContent = ({ complex }) => {
         initial: null,
         clicked: true,
       })
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(modal);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     } else if (stateFlats.clicked === true) {
       setStateFlats({
         clicked: !stateFlats,
       })
-      enableBodyScroll(modal);
-      document.getElementsByTagName("html")[0].style = "";
+      document.getElementsByTagName("html")[0].style = ""
+      body.style.removeProperty("overflow")
+      body.style.removeProperty("position")
+      body.style.removeProperty("top")
+      body.style.removeProperty("width")
+      window.scrollTo(0, scrollPosition)
     } else if (stateFlats.clicked === false) {
       setStateFlats({
         clicked: !stateFlats.clicked,
       })
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(modal);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     }
   }
   const disableFlats = () => {
