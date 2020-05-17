@@ -5,7 +5,7 @@ import "../styles/styles.sass"
 
 // import Layout from "../components/layout"
 // import Image from "../components/image"
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
 import FirstScreen from "../components/01-FirstScreen/firstScreen"
 import Advantages from "../components/02-Advantages/advantages"
 import Complex from "../components/03-Complex/complex"
@@ -17,7 +17,7 @@ import Footer from "../components/footer"
 
 const IndexPage = () => (
   <>
-    {/*<div className="top-header"></div>*/}
+    <SEO title="Home" />
     <FirstScreen />
     <Advantages />
     <Complex />

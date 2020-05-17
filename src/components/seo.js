@@ -68,7 +68,9 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script src="//code-ya.jivosite.com/widget/9dOAbbckRm" async></script>
+    </Helmet>
   )
 }
 
