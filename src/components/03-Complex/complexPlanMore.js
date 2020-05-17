@@ -6,10 +6,6 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import moment from "moment"
 import { orderBy } from "lodash"
-import {
-  enableBodyScroll,
-  disableBodyScroll,
-} from "body-scroll-lock"
 
 let scrollPosition = 0
 const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {

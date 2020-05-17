@@ -9,7 +9,6 @@ import ComplexFlatsFloor from "./complexFlatsFloor"
 import { graphql, useStaticQuery } from "gatsby"
 import moment from "moment"
 import { orderBy } from "lodash"
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
 let scrollPosition = 0
 

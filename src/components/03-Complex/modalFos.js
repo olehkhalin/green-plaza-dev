@@ -1,7 +1,5 @@
 import React from "react"
 
-import { BrowserView, MobileView } from "react-device-detect"
-
 import Modal from "../modal"
 import MainForm from "../mainForm"
 

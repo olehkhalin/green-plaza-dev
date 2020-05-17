@@ -5,7 +5,6 @@ import ModalFos from "./modalFos"
 import Img from "gatsby-image"
 import moment from "moment"
 import { orderBy } from "lodash"
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
 let scrollPosition = 0
 const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
@@ -21,7 +20,6 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
     title = `${flat.rooms} ком. квартира`
     quadrature = `${flat.quadrature}м²`
     image = flat.image.localFile
-    // promotion = flat.promotion
     publicURL = flat.pdf.localFile.publicURL
     content = orderBy(
       flat.rooms_content_ru,

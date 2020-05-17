@@ -1,14 +1,12 @@
-// import { Link } from "gatsby"
-// import PropTypes from "prop-types"
-import React, { useEffect, useRef, useState } from "react"
+
+import React, { useEffect, useState } from "react"
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import GreenPlazaLogo from "../icons/logo.svg"
 import Hamburger from "./00-Menu/hamburger"
 
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-// const Header = ({ siteTitle }) => (
 const Header = () => {
 
 
