@@ -17,7 +17,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
     data = 0
 
   if (flat) {
-    title = flat.rooms + lang !== 'kk' ? 'ком. квартира' : 'бөлмелі пәтер'
+    title = flat.rooms + (lang !== 'kk' ? ' ком. квартира' : ' бөлмелі пәтер')
     quadrature = `${flat.quadrature}м²`
     image = flat.image.localFile
     publicURL = flat.pdf.localFile.publicURL
@@ -150,7 +150,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
                       <tr key={el.id}>
                         <td>{index + 1}</td>
                         <td>{el.title}</td>
-                        <td>{el.quadrature}</td>
+                        <td>{parseFloat(el.quadrature).toFixed(1)}</td>
                       </tr>
                     ))
                   : null}
@@ -159,7 +159,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
                 <tr>
                   <td></td>
                   <td>{sumTitle}</td>
-                  <td>{data}</td>
+                  <td>{data.toFixed(1)}</td>
                 </tr>
               </tfoot>
             </table>

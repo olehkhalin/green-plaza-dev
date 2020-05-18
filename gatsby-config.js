@@ -6,6 +6,16 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-segment-js`,
+      options: {
+        prodKey: `SEGMENT_PRODUCTION_WRITE_KEY`,
+        devKey: `SEGMENT_DEV_WRITE_KEY`,
+        trackPage: false,
+        delayLoad: false,
+        delayLoadTime: 1000
+      }
+    },
+    {
       resolve: 'gatsby-plugin-i18n',
       options: {
         langKeyDefault: 'ru',
