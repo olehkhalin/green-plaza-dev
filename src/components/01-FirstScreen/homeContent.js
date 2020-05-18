@@ -45,17 +45,17 @@ const HomeContent = ({ nxtBtnClk, prvBtnClk }) => {
               <ArrowRight />
             </button>
           </div>
-          {!isTabletOrMobile ? (
-            <div className="home-carousel-more">
-              <button
-                className="button arrow-only"
-                onClick={() => scrollTo("#flats")}
-              >
-                смотреть еще
-                <ButtonArrow />
-              </button>
-            </div>
-          ) : null}
+          {/*{!isTabletOrMobile ? (*/}
+          {/*  <div className="home-carousel-more">*/}
+          {/*    <button*/}
+          {/*      className="button arrow-only"*/}
+          {/*      onClick={() => scrollTo("#flats")}*/}
+          {/*    >*/}
+          {/*      смотреть еще*/}
+          {/*      <ButtonArrow />*/}
+          {/*    </button>*/}
+          {/*  </div>*/}
+          {/*) : null}*/}
         </div>
       </div>
     </div>

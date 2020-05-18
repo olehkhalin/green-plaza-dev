@@ -17,7 +17,7 @@ import Footer from "../components/footer"
 
 const IndexPage = () => (
   <>
-    <SEO title="Home" />
+    <SEO title="Home" lang="ru" />
     <FirstScreen />
     <Advantages />
     <Complex />

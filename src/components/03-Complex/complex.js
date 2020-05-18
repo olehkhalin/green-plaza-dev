@@ -3,6 +3,8 @@ import Media from "react-media"
 
 import Infrastructure from "../../icons/infrastructure.svg"
 import InfrastructureMobile from "../../icons/infrastructure-mobile.svg"
+import InfrastructureKZ from "../../icons/infrastructure_kz.svg"
+import InfrastructureMobileKZ from "../../icons/infrastructure-mobile_kz.svg"
 import ComplexFlats from "./complexFlats"
 import ComplexPlan from "./complexPlan"
 
@@ -29,6 +31,17 @@ const Complex = ({ lang }) => {
     )
   }
 
+  let infrastrMobile
+  let infrastrDesktop
+
+  if(lang !== 'kk') {
+    infrastrMobile = <InfrastructureMobile />
+    infrastrDesktop = <Infrastructure />
+  } else {
+    infrastrMobile = <InfrastructureMobileKZ />
+    infrastrDesktop = <InfrastructureKZ />
+  }
+
   return (
     <section className="section light complex">
       <div className="container">
@@ -39,10 +52,10 @@ const Complex = ({ lang }) => {
           <div className="complex-plans">
             <Media queries={{ small: { maxWidth: 768 } }}>
               {matches =>
-                matches.small ? <InfrastructureMobile /> : <Infrastructure />
+                matches.small ? infrastrMobile : infrastrDesktop
               }
             </Media>
-            <ComplexPlan />
+            <ComplexPlan lang={lang} />
           </div>
         </div>
         <div className="row">

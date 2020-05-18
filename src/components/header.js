@@ -7,9 +7,14 @@ import { Link } from 'gatsby'
 import GreenPlazaLogo from "../icons/logo.svg"
 import Hamburger from "./00-Menu/hamburger"
 
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+let scrollPosition = 0
 
 const Header = ({lang}) => {
+  let body = null
+
+  useEffect(() => {
+    body = document.querySelector("body")
+  })
 
 
   let hamburger;
@@ -56,34 +61,42 @@ const Header = ({lang}) => {
         clicked: true,
         menuClass: "close",
       })
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(hamburger);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     } else if (state.clicked === true) {
       setState({
         clicked: !state.clicked,
         menuClass: "",
       })
-      enableBodyScroll(hamburger);
-      document.getElementsByTagName("html")[0].style = "";
+      document.getElementsByTagName("html")[0].style = ""
+      body.style.removeProperty("overflow")
+      body.style.removeProperty("position")
+      body.style.removeProperty("top")
+      body.style.removeProperty("width")
+      window.scrollTo(0, scrollPosition)
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
         menuClass: "close",
       })
-      document.getElementsByTagName("html")[0].style.overflow = "hidden";
-      disableBodyScroll(hamburger);
+      scrollPosition = window.pageYOffset
+      document.getElementsByTagName("html")[0].style.overflow = "hidden"
+      body.style.overflow = "hidden"
+      body.style.position = "fixed"
+      body.style.top = `-${scrollPosition}px`
+      body.style.width = "100%"
     }
   }
 
   const disableMenu = () => {
-    console.log(hamburger)
-    // document.querySelector('html').classList.toggle('lock-scroll');
-    // console.log(hamburger)
     setDisabled(!disabled)
     setTimeout(() => {
       setDisabled(false)
     }, 1200)
-
   }
 
   return (
@@ -119,7 +132,7 @@ const Header = ({lang}) => {
           </div>
         </div>
       </div>
-      <Hamburger state={state} clicked={handleMenu} />
+      <Hamburger state={state} clicked={handleMenu} lang={lang} />
     </header>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react"
+import { Link } from "gatsby"
 import gsap from "gsap"
 import scrollTo from "gatsby-plugin-smoothscroll"
 
@@ -9,7 +10,7 @@ import menuImage4 from "../../images/menu_image4.jpg"
 
 import RhombusIcon from "../../icons/rhombus.svg"
 
-const Hamburger = ({ state, clicked }) => {
+const Hamburger = ({ state, clicked, lang }) => {
   let menu = useRef(null)
   let revealMenu = useRef(null)
   let revealMenuBackground = useRef(null)
@@ -112,12 +113,15 @@ const Hamburger = ({ state, clicked }) => {
   }
 
   const scrollToMenu = (e, id) => {
-    e.preventDefault();
-    clicked();
+    e.preventDefault()
+    clicked()
     setTimeout(() => {
+      scrollTo(id)
+    }, 600)
+  }
 
-      scrollTo(id);
-    }, 600);
+  const goToLang = () => {
+    clicked()
   }
 
   return (
@@ -200,13 +204,21 @@ const Hamburger = ({ state, clicked }) => {
               </div>
             </div>
             <div className="menu-languages">
-              <button disabled={true} className="menu-languages-item active">
+              <Link
+                onClick={() => goToLang()}
+                to={"/"}
+                className={"menu-languages-item " + (lang !== "kk" ? "active" : "")}
+              >
                 Русский
-              </button>
+              </Link>
               <span>|</span>
-              <button className="menu-languages-item">
+              <Link
+                onClick={() => goToLang()}
+                to={"/kk"}
+                className={"menu-languages-item " + (lang === "kk" ? "active" : "")}
+              >
                 Қазақ
-              </button>
+              </Link>
             </div>
           </div>
         </div>
