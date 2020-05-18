@@ -192,13 +192,10 @@ const Advantages = ({ lang }) => {
     <section className="section dark advantages" id="complex">
       <div className="container">
         <div className="row v-center space-between">
-          <h2>
-            {header}
-          </h2>
+          <h2>{header}</h2>
         </div>
         <div className="row v-center space-between">
           <div className="advantages-cards-container">
-            {/*<EqualHeight>*/}
             <Equalizer byRow={false}>
               {advantagesArray.map((advantageItem, index) => (
                 <AdvantagesCard
@@ -209,7 +206,6 @@ const Advantages = ({ lang }) => {
                 />
               ))}
             </Equalizer>
-            {/*</EqualHeight>*/}
           </div>
         </div>
       </div>

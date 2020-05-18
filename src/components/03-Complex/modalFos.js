@@ -16,7 +16,6 @@ const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
         <div className="modal-fos-form">
           <MainForm/>
         </div>
-        {/*<BrowserView>*/}
           <div className="modal-fos-form-plan">
           <div className="form-content-label plan">
             <span className="form-content-text">Вам понравилась эта планирвка</span>
@@ -25,7 +24,6 @@ const ModalFos = ({state, disabled, clicked, title, quadrature, building}) => {
             </div>
           </div>
         </div>
-        {/*</BrowserView>*/}
       </div>
     </Modal>
   )

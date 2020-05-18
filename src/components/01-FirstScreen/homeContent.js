@@ -1,12 +1,9 @@
 import React from "react"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import { useMediaQuery } from "react-responsive"
 import ArrowLeft from "../../icons/arrow-left.svg"
 import ArrowRight from "../../icons/arrow-right.svg"
-import ButtonArrow from "../../icons/button-arrow.svg"
 
 const HomeContent = ({ nxtBtnClk, prvBtnClk }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" })
 
   return (
     <div className="home-content">
@@ -45,17 +42,6 @@ const HomeContent = ({ nxtBtnClk, prvBtnClk }) => {
               <ArrowRight />
             </button>
           </div>
-          {/*{!isTabletOrMobile ? (*/}
-          {/*  <div className="home-carousel-more">*/}
-          {/*    <button*/}
-          {/*      className="button arrow-only"*/}
-          {/*      onClick={() => scrollTo("#flats")}*/}
-          {/*    >*/}
-          {/*      смотреть еще*/}
-          {/*      <ButtonArrow />*/}
-          {/*    </button>*/}
-          {/*  </div>*/}
-          {/*) : null}*/}
         </div>
       </div>
     </div>

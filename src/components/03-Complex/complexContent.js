@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 
 import Slider from "react-slick"
 import ArrowLeft from "../../icons/arrow-left.svg"
@@ -9,8 +9,7 @@ import ComplexFlatsFloor from "./complexFlatsFloor"
 import { graphql, useStaticQuery } from "gatsby"
 import moment from "moment"
 import { orderBy } from "lodash"
-
-let scrollPosition = 0
+import { disableScroll, enableScroll } from "../showHide"
 
 const ComplexContent = ({ complex, lang }) => {
   const data = useStaticQuery(graphql`
@@ -223,12 +222,6 @@ const ComplexContent = ({ complex, lang }) => {
     ["asc"]
   )
 
-  let body = null
-
-  useEffect(() => {
-    body = document.querySelector("body")
-  })
-
   const [state, setState] = useState({
     initial: false,
     clicked: null,
@@ -243,33 +236,18 @@ const ComplexContent = ({ complex, lang }) => {
         clicked: true,
       })
       setCurrentFlat(flat)
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     } else if (state.clicked === true) {
       setState({
         clicked: !state,
       })
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll()
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
       })
       setCurrentFlat(flat)
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     }
   }
   const disableComplex = () => {
@@ -291,32 +269,17 @@ const ComplexContent = ({ complex, lang }) => {
         initial: null,
         clicked: true,
       })
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     } else if (stateFlats.clicked === true) {
       setStateFlats({
         clicked: !stateFlats,
       })
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll()
     } else if (stateFlats.clicked === false) {
       setStateFlats({
         clicked: !stateFlats.clicked,
       })
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     }
   }
   const disableFlats = () => {

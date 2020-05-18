@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import Modal from "../modal"
 import ModalFos from "./modalFos"
 import Img from "gatsby-image"
 import moment from "moment"
 import { orderBy } from "lodash"
+import { disableScroll, enableScroll } from "../showHide"
 
-let scrollPosition = 0
 const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => {
   let title,
     quadrature,
@@ -32,12 +32,6 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
     })
   }
 
-  let body = null
-
-  useEffect(() => {
-    body = document.querySelector("body")
-  })
-
   const [stateFos, setStateFos] = useState({
     initial: false,
     clicked: null,
@@ -52,35 +46,20 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
           initial: null,
           clicked: true,
         })
-        scrollPosition = window.pageYOffset
-        document.getElementsByTagName("html")[0].style.overflow = "hidden"
-        body.style.overflow = "hidden"
-        body.style.position = "fixed"
-        body.style.top = `-${scrollPosition}px`
-        body.style.width = "100%"
+        disableScroll()
       }, 700)
     } else if (stateFos.clicked === true) {
       setStateFos({
         clicked: !stateFos.clicked,
       })
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll()
     } else if (stateFos.clicked === false) {
       clicked()
       setTimeout(() => {
         setStateFos({
           clicked: !stateFos.clicked,
         })
-        scrollPosition = window.pageYOffset
-        document.getElementsByTagName("html")[0].style.overflow = "hidden"
-        body.style.overflow = "hidden"
-        body.style.position = "fixed"
-        body.style.top = `-${scrollPosition}px`
-        body.style.width = "100%"
+        disableScroll()
       }, 700)
     }
   }

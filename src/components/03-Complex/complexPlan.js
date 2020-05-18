@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import ComplexPlanMore from "./complexPlanMore"
 
 import Media from 'react-media'
-
-let scrollPosition = 0
+import { disableScroll, enableScroll } from "../showHide"
 
 const ComplexPlan = ({lang}) => {
-  let body = null
-
-  useEffect(() => {
-    body = document.querySelector("body")
-  })
 
   const [stateComplex, setStateComplex] = useState({
     initial: false,
@@ -26,33 +20,18 @@ const ComplexPlan = ({lang}) => {
         initial: null,
         clicked: true,
       })
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     } else if (stateComplex.clicked === true) {
       setStateComplex({
         clicked: !stateComplex.clicked,
       })
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll()
     } else if (stateComplex.clicked === false) {
       setComplexNumbers(complexNumbers)
       setStateComplex({
         clicked: !stateComplex.clicked,
       })
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     }
   }
   const disableComplex = () => {

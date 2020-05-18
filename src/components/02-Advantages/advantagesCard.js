@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useMediaQuery } from "react-responsive"
 
-let scrollPosition = 0
+import {enableScroll, disableScroll} from "../showHide"
 
 const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
-  let body = null
-
-  useEffect(() => {
-    body = document.querySelector("body")
-  })
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" })
 
@@ -16,19 +11,9 @@ const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
 
   const handleClick = () => {
     if (shown) {
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll();
     } else {
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll();
     }
     setShown(!shown)
   }

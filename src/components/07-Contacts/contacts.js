@@ -120,12 +120,6 @@ const Contacts = ({lang}) => {
                 className="contacts-item-list"
                 dangerouslySetInnerHTML={{ __html: working_hours }}
               >
-                {/*{working_hours}*/}
-                {/*{data.contactsJson.working_hours.map(hour => (*/}
-                {/*  <li key={hour}>*/}
-                {/*    <span>{hour}</span>*/}
-                {/*  </li>*/}
-                {/*))}*/}
               </ul>
             </div>
           </div>

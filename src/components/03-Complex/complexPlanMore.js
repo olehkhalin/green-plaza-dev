@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import Modal from "../modal"
 import ComplexItemMore from "./complexFlatsItemMore"
@@ -6,8 +6,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import moment from "moment"
 import { orderBy } from "lodash"
+import { disableScroll, enableScroll } from "../showHide"
 
-let scrollPosition = 0
 const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -219,12 +219,6 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
     ["asc"]
   )
 
-  let body = null
-
-  useEffect(() => {
-    body = document.querySelector("body")
-  })
-
   const [stateItem, setStateItem] = useState({
     initial: false,
     clicked: null,
@@ -240,42 +234,26 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
           initial: null,
           clicked: true,
         })
-        scrollPosition = window.pageYOffset
-        document.getElementsByTagName("html")[0].style.overflow = "hidden"
-        body.style.overflow = "hidden"
-        body.style.position = "fixed"
-        body.style.top = `-${scrollPosition}px`
-        body.style.width = "100%"
+        disableScroll()
       }, 700)
       setCurrentFlat(flat)
     } else if (stateItem.clicked === true) {
       setStateItem({
         clicked: !stateItem.clicked,
       })
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll()
     } else if (stateItem.clicked === false) {
       clicked()
       setTimeout(() => {
         setStateItem({
           clicked: !stateItem.clicked,
         })
-        scrollPosition = window.pageYOffset
-        document.getElementsByTagName("html")[0].style.overflow = "hidden"
-        body.style.overflow = "hidden"
-        body.style.position = "fixed"
-        body.style.top = `-${scrollPosition}px`
-        body.style.width = "100%"
+        disableScroll()
       }, 700)
       setCurrentFlat(flat)
     }
   }
   const disableItem = () => {
-    // document.querySelector("html").classList.toggle("lock-scroll")
     setDisabledItem(!disabledItem)
     setTimeout(() => {
       setDisabledItem(false)
