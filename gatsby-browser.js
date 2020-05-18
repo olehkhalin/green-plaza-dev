@@ -5,5 +5,5 @@
  */
 
 // You can delete this file if you're not using it
-// import "typeface-montserrat"
-// import "typeface-open-sans"
+import "typeface-montserrat"
+import "typeface-open-sans"
