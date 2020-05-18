@@ -12,7 +12,7 @@ import { orderBy } from "lodash"
 
 let scrollPosition = 0
 
-const ComplexContent = ({ complex }) => {
+const ComplexContent = ({ complex, lang }) => {
   const data = useStaticQuery(graphql`
     query {
       directusFlats911141617 {
@@ -403,6 +403,7 @@ const ComplexContent = ({ complex }) => {
             key={flat.id}
             flat={flat}
             clicked={() => handleComplex(flat)}
+            lang={lang}
           />
         ))}
       </Slider>
@@ -417,6 +418,7 @@ const ComplexContent = ({ complex }) => {
         clicked={() => handleComplex()}
         flat={currentFlat}
         building={complex}
+        lang={lang}
       />
       <ComplexFlatsFloor
         state={stateFlats}

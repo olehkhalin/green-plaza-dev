@@ -3,8 +3,16 @@ import React from "react"
 
 import RhombusIcon from "../../icons/rhombus.svg"
 import { graphql, useStaticQuery } from "gatsby"
+import { YMaps, Map, Placemark } from "react-yandex-maps"
 
-const Contacts = () => {
+const mapData = {
+  center: [43.644378, 51.218551],
+  zoom: 12,
+}
+
+const coordinates = [43.675031, 51.137800]
+
+const Contacts = ({lang}) => {
   const data = useStaticQuery(graphql`
     query {
       directusContact {
@@ -12,34 +20,69 @@ const Contacts = () => {
           id
           phone
         }
-        addresses: addresses_ru {
+        addresses_ru {
           id
           name
           link
         }
-        working_hours: working_hours_ru
+        addresses_kz {
+          id
+          name
+          link
+        }
+        working_hours_ru
+        working_hours_kz
       }
     }
   `)
-  const { phones, addresses, working_hours } = data.directusContact
+  // const { phones, addresses, working_hours } = data.directusContact
+  const phones = data.directusContact.phones
+
+  let header
+  let addresses
+  let working_hours
+  let phoneTitle
+  let locationTitle
+  let hoursTitle
+  if (lang !== "kk") {
+    header = 'Контакты'
+    addresses = data.directusContact.addresses_ru
+    working_hours = data.directusContact.working_hours_ru
+    phoneTitle = `Телефоны`
+    locationTitle = `Местоположение`
+    hoursTitle = `Режим работы`
+  } else {
+    header = 'Байланыс'
+    addresses = data.directusContact.addresses_kz
+    working_hours = data.directusContact.working_hours_kz
+    phoneTitle = `Телефондар`
+    locationTitle = `Орналасуы`
+    hoursTitle = `Жұмыс тәртібі`
+  }
 
   return (
     <section className="section light contacts">
       <div className="container">
         <div className="row v-center space-between">
           <h2>
-            <span className="h2-line">Контакты</span>
+            <span className="h2-line">{header}</span>
           </h2>
         </div>
         <div className="row v-center space-between">
-          <div className="contacts-map"></div>
+          <div className="contacts-map">
+            <YMaps>
+              <Map defaultState={mapData} width="-1" height="100%">
+                <Placemark geometry={coordinates} />
+              </Map>
+            </YMaps>
+          </div>
         </div>
         <div className="row v-center space-between">
           <div className="contacts-info">
             <div className="contacts-item">
               <h3 className="contacts-item-header">
                 <RhombusIcon />
-                Телефоны
+                {phoneTitle}
               </h3>
               <ul className="contacts-item-list">
                 {phones.map(phone => (
@@ -52,7 +95,7 @@ const Contacts = () => {
             <div className="contacts-item">
               <h3 className="contacts-item-header">
                 <RhombusIcon />
-                Местоположение
+                {locationTitle}
               </h3>
               <ul className="contacts-item-list">
                 {addresses.map(addressItem => (
@@ -71,9 +114,12 @@ const Contacts = () => {
             <div className="contacts-item">
               <h3 className="contacts-item-header">
                 <RhombusIcon />
-                Режим работы
+                {hoursTitle}
               </h3>
-              <ul className="contacts-item-list" dangerouslySetInnerHTML={{__html: working_hours}}>
+              <ul
+                className="contacts-item-list"
+                dangerouslySetInnerHTML={{ __html: working_hours }}
+              >
                 {/*{working_hours}*/}
                 {/*{data.contactsJson.working_hours.map(hour => (*/}
                 {/*  <li key={hour}>*/}

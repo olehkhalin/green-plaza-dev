@@ -6,7 +6,7 @@ import HomePromotion from "./homePromotion"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-const FirstScreen = () => {
+const FirstScreen = ({lang}) => {
   const data = useStaticQuery(graphql`
     query {
       mainScreenJson {
@@ -136,7 +136,7 @@ const FirstScreen = () => {
 
   return (
     <div className="first-screen">
-      <Header />
+      <Header lang={lang} />
       <HomeContent
         nxtBtnClk={() => nextButtonClicked()}
         prvBtnClk={() => prevButtonClicked()}

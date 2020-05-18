@@ -7,7 +7,7 @@ import moment from "moment"
 import { orderBy } from "lodash"
 
 let scrollPosition = 0
-const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
+const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => {
   let title,
     quadrature,
     image,
@@ -17,7 +17,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
     data = 0
 
   if (flat) {
-    title = `${flat.rooms} ком. квартира`
+    title = flat.rooms + lang !== 'kk' ? 'ком. квартира' : 'бөлмелі пәтер'
     quadrature = `${flat.quadrature}м²`
     image = flat.image.localFile
     publicURL = flat.pdf.localFile.publicURL
@@ -91,6 +91,26 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
     }, 1200)
   }
 
+  let roomTitle
+  let quadratureTitle
+  let sumTitle
+  let managerButton
+  let planButton
+  if(lang !== 'kk') {
+    roomTitle = `Комната`
+    quadratureTitle = `Площадь`
+    sumTitle = `Итого общая`
+    managerButton = `связаться с менеджером`
+    planButton = `скачать планировку`
+  } else {
+    roomTitle = `Бөлме`
+    quadratureTitle = `Площадь`
+    sumTitle = `Жалпы ауданы`
+    managerButton = `связаться с менеджером`
+    planButton = `скачать планировку`
+  }
+
+
   return (
     <>
       <Modal
@@ -120,8 +140,8 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
               <thead>
                 <tr>
                   <th>№</th>
-                  <th>Комната</th>
-                  <th>Площадь, м²</th>
+                  <th>{roomTitle}</th>
+                  <th>{quadratureTitle}, м²</th>
                 </tr>
               </thead>
               <tbody>
@@ -138,7 +158,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
               <tfoot>
                 <tr>
                   <td></td>
-                  <td>Итого общая</td>
+                  <td>{sumTitle}</td>
                   <td>{data}</td>
                 </tr>
               </tfoot>
@@ -149,11 +169,11 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building }) => {
               className="button bordered main"
               onClick={() => handleFos()}
             >
-              связаться с менеджером
+              {managerButton}
             </button>
             {}
             <a href={publicURL} download className="button bordered">
-              скачать планировку
+              {planButton}
             </a>
           </div>
         </div>

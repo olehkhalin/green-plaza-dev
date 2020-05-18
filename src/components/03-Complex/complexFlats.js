@@ -12,7 +12,7 @@ const tabs = [
   `20`,
 ]
 
-const ComplexFlats = () => {
+const ComplexFlats = ({lang}) => {
   return (
     <Tabs className="complex-flats" id="flats">
       <div className="complex-flats-tabs-wrapper">
@@ -26,7 +26,7 @@ const ComplexFlats = () => {
 
       {tabs.map(cplx => (
         <TabPanel key={cplx}>
-            <ComplexContent complex={cplx}/>
+            <ComplexContent lang={lang} complex={cplx}/>
         </TabPanel>
       ))}
     </Tabs>

@@ -6,6 +6,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: 'ru',
+        langKeyForNull: 'ru',
+        useLangKeyLayout: false
+      }
+    },
+    {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         custom: {

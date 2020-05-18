@@ -6,20 +6,34 @@ import InfrastructureMobile from "../../icons/infrastructure-mobile.svg"
 import ComplexFlats from "./complexFlats"
 import ComplexPlan from "./complexPlan"
 
-const Complex = () => {
+const Complex = ({ lang }) => {
+  let header
+  if (lang !== "kk") {
+    header = (
+      <>
+        <span className="h2-line">Расположение домов и планировка квартир</span>
+        <span className="h2-line">
+          В ЖК <span className="h2-color">GREEN PLAZA</span>
+        </span>
+      </>
+    )
+  } else {
+    header = (
+      <>
+        <span className="h2-line">
+          <span className="h2-color">GREEN PLAZA</span>-да үйлердің орналасуы
+          және
+        </span>
+        <span className="h2-line">пәтерлердің орналасуы</span>
+      </>
+    )
+  }
 
   return (
     <section className="section light complex">
       <div className="container">
         <div className="row v-center space-between">
-          <h2>
-            <span className="h2-line">
-              Расположение домов и планировка квартир
-            </span>
-            <span className="h2-line">
-              В ЖК <span className="h2-color">GREEN PLAZA</span>
-            </span>
-          </h2>
+          <h2>{header}</h2>
         </div>
         <div className="row">
           <div className="complex-plans">
@@ -32,7 +46,7 @@ const Complex = () => {
           </div>
         </div>
         <div className="row">
-          <ComplexFlats />
+          <ComplexFlats lang={lang} />
         </div>
       </div>
     </section>

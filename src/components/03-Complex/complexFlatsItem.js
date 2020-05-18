@@ -1,7 +1,18 @@
 import React from "react"
 import Img from "gatsby-image"
 
-const ComplexItem = ({clicked, flat}) => {
+const ComplexItem = ({clicked, flat, lang}) => {
+
+  let roomTitle
+  let planTitle
+  if(lang !== 'kk') {
+    roomTitle = 'ком. квартира'
+    planTitle = 'смотреть планировку'
+  } else {
+    roomTitle = 'бөлмелі пәтер'
+    planTitle = 'смотреть планировку'
+  }
+
   return (
     <>
       <div
@@ -16,9 +27,9 @@ const ComplexItem = ({clicked, flat}) => {
           <Img fluid={flat.image.localFile.childImageSharp.fluid} />
           <div className="complex-flats-item-content">
             <h3>
-              {flat.rooms} ком. квартира <span>{flat.quadrature}м²</span>
+              {flat.rooms} {roomTitle} <span>{flat.quadrature}м²</span>
             </h3>
-            <button className="button line">смотреть планировку</button>
+            <button className="button line">{planTitle}</button>
           </div>
         </div>
       </div>

@@ -2,12 +2,14 @@
 import React, { useEffect, useState } from "react"
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
+import { Link } from 'gatsby'
+
 import GreenPlazaLogo from "../icons/logo.svg"
 import Hamburger from "./00-Menu/hamburger"
 
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-const Header = () => {
+const Header = ({lang}) => {
 
 
   let hamburger;
@@ -99,13 +101,13 @@ const Header = () => {
           </div>
           <div className="left-side">
             <div className="langs">
-              <a href="#" className="langs-item active">
+              <Link to="/" className={"langs-item " + (lang !== 'kk' ? 'active' : '')}>
                 Ru
-              </a>
+              </Link>
               <span>|</span>
-              <a href="#" className="langs-item">
+              <Link to={"/kk"} className={"langs-item " + (lang === 'kk' ? 'active' : '')}>
                 Kz
-              </a>
+              </Link>
             </div>
             <div className="nav-toggle">
               <button disabled={disabled} className={"hamburger-menu " + state.menuClass} onClick={() => handleMenu()}>

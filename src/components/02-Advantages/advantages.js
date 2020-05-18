@@ -27,7 +27,7 @@ const advantagesIcons = [
   <CleaningIcon />,
 ]
 
-const Advantages = () => {
+const Advantages = ({ lang }) => {
   const data = useStaticQuery(graphql`
     query {
       directusAdvantage {
@@ -49,48 +49,109 @@ const Advantages = () => {
         security_list_ru
         cleaning_title_ru
         cleaning_list_ru
+        location_title_kz
+        location_list_kz
+        ecology_title_kz
+        ecology_list_kz
+        architecture_title_kz
+        architecture_list_kz
+        engineering_title_kz
+        engineering_list_kz
+        parking_title_kz
+        parking_list_kz
+        children_title_kz
+        children_list_kz
+        sport_title_kz
+        sport_list_kz
+        security_title_kz
+        security_list_kz
+        cleaning_title_kz
+        cleaning_list_kz
       }
     }
   `)
 
-  const advantagesArray = [
-    {
-      title: data.directusAdvantage.location_title_ru,
-      list: data.directusAdvantage.location_list_ru,
-    },
-    {
-      title: data.directusAdvantage.ecology_title_ru,
-      list: data.directusAdvantage.ecology_list_ru,
-    },
-    {
-      title: data.directusAdvantage.architecture_title_ru,
-      list: data.directusAdvantage.architecture_list_ru,
-    },
-    {
-      title: data.directusAdvantage.engineering_title_ru,
-      list: data.directusAdvantage.engineering_list_ru,
-    },
-    {
-      title: data.directusAdvantage.parking_title_ru,
-      list: data.directusAdvantage.parking_list_ru,
-    },
-    {
-      title: data.directusAdvantage.children_title_ru,
-      list: data.directusAdvantage.children_list_ru,
-    },
-    {
-      title: data.directusAdvantage.sport_title_ru,
-      list: data.directusAdvantage.sport_list_ru,
-    },
-    {
-      title: data.directusAdvantage.security_title_ru,
-      list: data.directusAdvantage.security_list_ru,
-    },
-    {
-      title: data.directusAdvantage.cleaning_title_ru,
-      list: data.directusAdvantage.cleaning_list_ru,
-    },
-  ]
+  let advantagesArray = []
+
+  if (lang !== "kk") {
+    advantagesArray = [
+      {
+        title: data.directusAdvantage.location_title_ru,
+        list: data.directusAdvantage.location_list_ru,
+      },
+      {
+        title: data.directusAdvantage.ecology_title_ru,
+        list: data.directusAdvantage.ecology_list_ru,
+      },
+      {
+        title: data.directusAdvantage.architecture_title_ru,
+        list: data.directusAdvantage.architecture_list_ru,
+      },
+      {
+        title: data.directusAdvantage.engineering_title_ru,
+        list: data.directusAdvantage.engineering_list_ru,
+      },
+      {
+        title: data.directusAdvantage.parking_title_ru,
+        list: data.directusAdvantage.parking_list_ru,
+      },
+      {
+        title: data.directusAdvantage.children_title_ru,
+        list: data.directusAdvantage.children_list_ru,
+      },
+      {
+        title: data.directusAdvantage.sport_title_ru,
+        list: data.directusAdvantage.sport_list_ru,
+      },
+      {
+        title: data.directusAdvantage.security_title_ru,
+        list: data.directusAdvantage.security_list_ru,
+      },
+      {
+        title: data.directusAdvantage.cleaning_title_ru,
+        list: data.directusAdvantage.cleaning_list_ru,
+      },
+    ]
+  } else {
+    advantagesArray = [
+      {
+        title: data.directusAdvantage.location_title_kz,
+        list: data.directusAdvantage.location_list_kz,
+      },
+      {
+        title: data.directusAdvantage.ecology_title_kz,
+        list: data.directusAdvantage.ecology_list_kz,
+      },
+      {
+        title: data.directusAdvantage.architecture_title_kz,
+        list: data.directusAdvantage.architecture_list_kz,
+      },
+      {
+        title: data.directusAdvantage.engineering_title_kz,
+        list: data.directusAdvantage.engineering_list_kz,
+      },
+      {
+        title: data.directusAdvantage.parking_title_kz,
+        list: data.directusAdvantage.parking_list_kz,
+      },
+      {
+        title: data.directusAdvantage.children_title_kz,
+        list: data.directusAdvantage.children_list_kz,
+      },
+      {
+        title: data.directusAdvantage.sport_title_kz,
+        list: data.directusAdvantage.sport_list_kz,
+      },
+      {
+        title: data.directusAdvantage.security_title_kz,
+        list: data.directusAdvantage.security_list_kz,
+      },
+      {
+        title: data.directusAdvantage.cleaning_title_kz,
+        list: data.directusAdvantage.cleaning_list_kz,
+      },
+    ]
+  }
 
   useEffect(() => {
     const cards = document.querySelectorAll(".advantages-card-inner .header")
@@ -108,13 +169,32 @@ const Advantages = () => {
     })
   }, [])
 
+  let header
+
+  if (lang !== "kk") {
+    header = (
+      <>
+        <span className="h2-line">Преимущества жилого комплекса</span>
+        <span className="h2-line h2-color">GREEN PLAZA</span>
+      </>
+    )
+  } else {
+    header = (
+      <>
+        <span className="h2-line">
+          <span className="h2-color">GREEN PLAZA</span> тұрғын үй кешенінің
+        </span>
+        <span className="h2-line">артықшылықтары</span>
+      </>
+    )
+  }
+
   return (
     <section className="section dark advantages" id="complex">
       <div className="container">
         <div className="row v-center space-between">
           <h2>
-            <span className="h2-line">Преимущества жилого комплекса</span>
-            <span className="h2-line h2-color">GREEN PLAZA</span>
+            {header}
           </h2>
         </div>
         <div className="row v-center space-between">

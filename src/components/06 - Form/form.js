@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 import MainForm from "../mainForm"
 import { graphql, useStaticQuery } from "gatsby"
 
-const Form = () => {
+const Form = ({ lang }) => {
   const data = useStaticQuery(graphql`
     query {
       allFormJson {
@@ -24,15 +24,33 @@ const Form = () => {
     }
   `)
 
+  let header
+  if (lang !== "kk") {
+    header = (
+      <>
+        <span className="h2-line">
+          <span className="h2-color">Оставьте заявку</span> на консультацию
+        </span>
+        <span className="h2-line">и мы перезвоним вам</span>
+      </>
+    )
+  } else {
+    header = (
+      <>
+        <span className="h2-line">
+          Консультацияға (кеңес беруге) <span className="h2-color">өтініш қалдырыңыз</span>,
+        </span>
+        <span className="h2-line">біз сізге қоңырау шаламыз</span>
+      </>
+    )
+  }
+
   return (
     <section className="section dark form" id="contacts">
       <div className="container">
         <div className="row v-center space-between">
           <h2>
-            <span className="h2-line">
-              <span className="h2-color">Оставьте заявку</span> на консультацию
-            </span>
-            <span className="h2-line">и мы перезвоним вам</span>
+            {header}
           </h2>
         </div>
         <div className="row v-center space-between">
@@ -59,7 +77,7 @@ const Form = () => {
             </div>
             <div className="form-content">
               <div className="form-wrapper">
-                <MainForm />
+                <MainForm lang={lang} />
               </div>
               {/*<form>*/}
               {/*  <label htmlFor="name" className="form-content-label name">*/}
