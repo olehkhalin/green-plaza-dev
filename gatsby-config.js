@@ -13,16 +13,16 @@ module.exports = {
         useLangKeyLayout: false
       }
     },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        custom: {
-          families: ["Open Sans, Montserrat"],
-          urls: ["/fonts/fonts.css"],
-        },
-      },
-    },
-    'gatsby-plugin-netlify-cache',
+    // {
+    //   resolve: "gatsby-plugin-web-font-loader",
+    //   options: {
+    //     custom: {
+    //       families: ["Open Sans, Montserrat"],
+    //       urls: ["/fonts/fonts.css"],
+    //     },
+    //   },
+    // },
+    // 'gatsby-plugin-netlify-cache',
     {
       // ...
       resolve: '@directus/gatsby-source-directus',
