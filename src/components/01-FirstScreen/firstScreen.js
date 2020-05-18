@@ -18,7 +18,7 @@ const FirstScreen = ({lang}) => {
           image {
             id
             childImageSharp {
-              fluid {
+              fluid(maxWidth: 450) {
                 ...GatsbyImageSharpFluid
               }
             }
