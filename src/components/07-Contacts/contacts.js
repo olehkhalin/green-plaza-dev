@@ -10,9 +10,9 @@ const mapData = {
   zoom: 12,
 }
 
-const coordinates = [43.675031, 51.137800]
+const coordinates = [43.675031, 51.1378]
 
-const Contacts = ({lang}) => {
+const Contacts = ({ lang }) => {
   const data = useStaticQuery(graphql`
     query {
       directusContact {
@@ -45,14 +45,14 @@ const Contacts = ({lang}) => {
   let locationTitle
   let hoursTitle
   if (lang !== "kk") {
-    header = 'Контакты'
+    header = "Контакты"
     addresses = data.directusContact.addresses_ru
     working_hours = data.directusContact.working_hours_ru
     phoneTitle = `Телефоны`
     locationTitle = `Местоположение`
     hoursTitle = `Режим работы`
   } else {
-    header = 'Байланыс'
+    header = "Байланыс"
     addresses = data.directusContact.addresses_kz
     working_hours = data.directusContact.working_hours_kz
     phoneTitle = `Телефондар`
@@ -116,11 +116,7 @@ const Contacts = ({lang}) => {
                 <RhombusIcon />
                 {hoursTitle}
               </h3>
-              <ul
-                className="contacts-item-list"
-                dangerouslySetInnerHTML={{ __html: working_hours }}
-              >
-              </ul>
+              <div dangerouslySetInnerHTML={{ __html: working_hours }}></div>
             </div>
           </div>
         </div>

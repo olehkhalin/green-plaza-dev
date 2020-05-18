@@ -31,10 +31,10 @@ const Complex = ({ lang }) => {
     )
   }
 
-  let infrastrMobile
-  let infrastrDesktop
+  let infrastrMobile = <InfrastructureMobile />
+  let infrastrDesktop = <Infrastructure />
 
-  if(lang !== 'kk') {
+  if (lang !== "kk") {
     infrastrMobile = <InfrastructureMobile />
     infrastrDesktop = <Infrastructure />
   } else {
@@ -51,9 +51,7 @@ const Complex = ({ lang }) => {
         <div className="row">
           <div className="complex-plans">
             <Media queries={{ small: { maxWidth: 768 } }}>
-              {matches =>
-                matches.small ? infrastrMobile : infrastrDesktop
-              }
+              {matches => (matches.small ? infrastrMobile : infrastrDesktop)}
             </Media>
             <ComplexPlan lang={lang} />
           </div>
