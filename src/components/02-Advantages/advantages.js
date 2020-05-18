@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Equalizer from "react-equalizer"
-// import { EqualHeight, EqualHeightElement } from "react-equal-height"
 
 import AdvantagesCard from "./advantagesCard"
 

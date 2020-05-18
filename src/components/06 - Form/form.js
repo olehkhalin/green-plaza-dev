@@ -8,18 +8,29 @@ import { graphql, useStaticQuery } from "gatsby"
 const Form = ({ lang }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFormJson {
-        nodes {
-          image {
-            base
+      directusFormImage {
+        top_image {
+          localFile {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 400) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
-          alt
         }
+        top_alt_ru
+        top_alt_kz
+        bottom_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 250) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        bottom_alt_ru
+        bottom_alt_kz
       }
     }
   `)
@@ -38,7 +49,8 @@ const Form = ({ lang }) => {
     header = (
       <>
         <span className="h2-line">
-          Консультацияға (кеңес беруге) <span className="h2-color">өтініш қалдырыңыз</span>,
+          Консультацияға (кеңес беруге){" "}
+          <span className="h2-color">өтініш қалдырыңыз</span>,
         </span>
         <span className="h2-line">біз сізге қоңырау шаламыз</span>
       </>
@@ -49,9 +61,7 @@ const Form = ({ lang }) => {
     <section className="section dark form" id="contacts">
       <div className="container">
         <div className="row v-center space-between">
-          <h2>
-            {header}
-          </h2>
+          <h2>{header}</h2>
         </div>
         <div className="row v-center space-between">
           <div className="form-container">
@@ -60,17 +70,17 @@ const Form = ({ lang }) => {
                 <div className="form-images-top">
                   <Img
                     fluid={
-                      data.allFormJson.nodes[0].image.childImageSharp.fluid
+                      data.directusFormImage.top_image.localFile.childImageSharp.fluid
                     }
-                    alt={data.allFormJson.nodes[0].alt}
+                    alt={lang !== 'kk' ? data.directusFormImage.top_alt_ru : data.directusFormImage.top_alt_kz}
                   />
                 </div>
                 <div className="form-images-bottom">
                   <Img
                     fluid={
-                      data.allFormJson.nodes[1].image.childImageSharp.fluid
+                      data.directusFormImage.bottom_image.localFile.childImageSharp.fluid
                     }
-                    alt={data.allFormJson.nodes[1].alt}
+                    alt={lang !== 'kk' ? data.directusFormImage.bottom_alt_ru : data.directusFormImage.bottom_alt_kz}
                   />
                 </div>
               </div>
