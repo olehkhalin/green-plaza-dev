@@ -124,6 +124,22 @@ const Hamburger = ({ state, clicked, lang }) => {
     clicked()
   }
 
+  let about
+  let plans
+  let gallery
+  let contacts
+  if (lang !== "kk") {
+    about = `О комплексе`
+    plans = `Планировки`
+    gallery = `Галерея`
+    contacts = `Контакты`
+  } else {
+    about = `Кешен жайлы`
+    plans = `Жоспарлар`
+    gallery = `Галерея`
+    contacts = `Байланыс`
+  }
+
   return (
     <div className="menu" ref={el => (menu = el)}>
       <div
@@ -156,7 +172,7 @@ const Hamburger = ({ state, clicked, lang }) => {
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#complex")}
                         >
-                          О комплексе
+                          {about}
                         </button>
                       </div>
                     </li>
@@ -169,7 +185,7 @@ const Hamburger = ({ state, clicked, lang }) => {
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#flats")}
                         >
-                          Планировки
+                          {plans}
                         </button>
                       </div>
                     </li>
@@ -182,7 +198,7 @@ const Hamburger = ({ state, clicked, lang }) => {
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#gallery")}
                         >
-                          Галерея
+                          {gallery}
                         </button>
                       </div>
                     </li>
@@ -195,7 +211,7 @@ const Hamburger = ({ state, clicked, lang }) => {
                           onMouseLeave={handleItemReturn}
                           onClick={e => scrollToMenu(e, "#contacts")}
                         >
-                          Контакты
+                          {contacts}
                         </button>
                       </div>
                     </li>

@@ -10,7 +10,7 @@ const ComplexItem = ({clicked, flat, lang}) => {
     planTitle = 'смотреть планировку'
   } else {
     roomTitle = 'бөлмелі пәтер'
-    planTitle = 'смотреть планировку'
+    planTitle = 'жоспарларды қарау'
   }
 
   return (

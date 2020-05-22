@@ -5,7 +5,7 @@ const Footer = ({lang}) => {
   if (lang !== "kk") {
     text = `Все права защищены`
   } else {
-    text = `Все права защищены`
+    text = `Барлық құқық қорғалған`
   }
 
   return(

@@ -344,6 +344,13 @@ const ComplexContent = ({ complex, lang }) => {
     slider1.current.slickPrev()
   }
 
+  let floorPlan
+  if (lang !== "kk") {
+    floorPlan = `планировка этажа`
+  } else {
+    floorPlan = `қабаттың жоспары`
+  }
+
   return (
     <div className="complex-flats-items-wrapper">
       <div className="complex-flats-items-arrows">
@@ -372,7 +379,7 @@ const ComplexContent = ({ complex, lang }) => {
       </Slider>
       <div className="button-wrapper">
         <button className="button bordered" onClick={() => handleFlats()}>
-          планировка этажа
+          {floorPlan}
         </button>
       </div>
       <ComplexItemMore

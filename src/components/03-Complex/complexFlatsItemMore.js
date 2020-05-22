@@ -85,8 +85,8 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
     roomTitle = `Бөлме`
     quadratureTitle = `Площадь`
     sumTitle = `Жалпы ауданы`
-    managerButton = `связаться с менеджером`
-    planButton = `скачать планировку`
+    managerButton = `менеджермен байланысу`
+    planButton = `жоспарды жүктеп алу`
   }
 
 
@@ -164,6 +164,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
         title={title}
         quadrature={quadrature}
         building={building}
+        lang={lang}
       />
     </>
   )

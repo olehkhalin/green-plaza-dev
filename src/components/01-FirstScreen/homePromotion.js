@@ -40,7 +40,7 @@ const HomePromotion = () => {
         />
       </div>
       <div className="home-promotion-content">
-        <h4>Акция</h4>
+        <h4>Науқандар</h4>
         <p>
           {data.mainScreenJson.promotion.body.title}{" "}
           <span>{data.mainScreenJson.promotion.body.amount}%</span>
