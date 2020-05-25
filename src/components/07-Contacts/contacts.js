@@ -3,14 +3,14 @@ import React from "react"
 
 import RhombusIcon from "../../icons/rhombus.svg"
 import { graphql, useStaticQuery } from "gatsby"
-// import { YMaps, Map, Placemark } from "react-yandex-maps"
+import { YMaps, Map, Placemark } from "react-yandex-maps"
 
-// const mapData = {
-//   center: [43.644378, 51.218551],
-//   zoom: 12,
-// }
-//
-// const coordinates = [43.675031, 51.1378]
+const mapData = {
+  center: [43.644378, 51.218551],
+  zoom: 12,
+}
+
+const coordinates = [43.675031, 51.1378]
 
 const Contacts = ({ lang }) => {
   const data = useStaticQuery(graphql`
@@ -70,11 +70,11 @@ const Contacts = ({ lang }) => {
         </div>
         <div className="row v-center space-between">
           <div className="contacts-map">
-            {/*<YMaps>*/}
-            {/*  <Map defaultState={mapData} width="-1" height="100%">*/}
-            {/*    <Placemark geometry={coordinates} />*/}
-            {/*  </Map>*/}
-            {/*</YMaps>*/}
+            <YMaps>
+              <Map defaultState={mapData} width="-1" height="100%">
+                <Placemark geometry={coordinates} />
+              </Map>
+            </YMaps>
           </div>
         </div>
         <div className="row v-center space-between">

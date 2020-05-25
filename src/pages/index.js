@@ -24,7 +24,7 @@ const IndexPage = () => (
     />
     <FirstScreen />
     <Advantages />
-    <Complex />
+    {/*<Complex />*/}
     <Tour />
     <Gallery />
     <Form />
