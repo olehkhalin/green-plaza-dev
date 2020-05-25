@@ -56,11 +56,11 @@ const MainForm = ({ lang }) => {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
-      message: formData.get("message"),
+      comment: formData.get("message"),
       to: "380673356942"
     }
     axios
-      .get("https://jsonplaceholder.typicode.com/users", { params: dataToSend })
+      .get("http://64.225.107.47:8080/send", { params: dataToSend })
       .then(res => {
         console.log(res)
         setTimeout(() => {
@@ -156,8 +156,7 @@ const MainForm = ({ lang }) => {
           preferredCountries={['kz','ru','ua']}
           inputProps={{
             name: 'phone',
-            required: false,
-            autoFocus: true
+            required: false
           }}
 
         />
