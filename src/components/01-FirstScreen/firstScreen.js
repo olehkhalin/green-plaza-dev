@@ -57,8 +57,13 @@ const FirstScreen = ({lang}) => {
         direction = nextSlide - currentSlide > 0 ? "left" : "right"
       }
 
-      // progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
-      // startProgressbar();
+      progressBarCurrent = document.querySelector(
+        ".home-carousel-progress-num.current"
+      )
+      if (progressBarCurrent) {
+        progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
+        startProgressbar()
+      }
 
       if (direction === "right") {
         document
@@ -101,8 +106,10 @@ const FirstScreen = ({lang}) => {
 
     progressBarAll = document.querySelector(".home-carousel-progress-num.last")
     allSlidesCount = slider1.current.props.children.length
-    progressBarAll.innerText =
-      allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount
+    if(progressBarAll) {
+      progressBarAll.innerText =
+        allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount
+    }
 
     progressBarCurrent = document.querySelector(
       ".home-carousel-progress-num.current"
@@ -121,16 +128,26 @@ const FirstScreen = ({lang}) => {
   const interval = () => {
     if (isPause === false) {
       percentTime += 1 / (time + 0.1)
-      progressBar.style.height = `${percentTime}%`
+
+      progressBar = document.querySelector(
+        ".home-carousel-progress-bar-inner.dark"
+      )
+      if(progressBar)
+        progressBar.style.height = `${percentTime}%`
       if (percentTime >= 100) {
-        // slider1.current.slickNext()
+        slider1.current.slickNext()
         startProgressbar()
       }
     }
   }
 
   const resetProgressbar = () => {
-    progressBar.style.height = `0%`
+    progressBar = document.querySelector(
+      ".home-carousel-progress-bar-inner.dark"
+    )
+    if(progressBar) {
+      progressBar.style.height = `0%`
+    }
     clearTimeout(timer)
   }
 
@@ -143,12 +160,6 @@ const FirstScreen = ({lang}) => {
       />
       <div
         className="home-carousel"
-        onMouseEnter={() => {
-          isPause = true
-        }}
-        onMouseLeave={() => {
-          isPause = false
-        }}
       >
         <Slider {...settings} ref={slider => (slider1.current = slider)}>
           {data.mainScreenJson.images.map(image => (

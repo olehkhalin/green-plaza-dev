@@ -69,7 +69,7 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <script src="//code-ya.jivosite.com/widget/9dOAbbckRm" async></script>
+      <script src="//code-ya.jivosite.com/widget/5jLDCvZM5e" async></script>
       <script src="https://unpkg.com/react-yandex-maps/dist/production/react-yandex-maps.umd.js" async></script>
     </Helmet>
   )
