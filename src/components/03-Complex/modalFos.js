@@ -44,7 +44,7 @@ const ModalFos = ({
       </div>
       <div className="modal-fos-form-wrapper">
         <div className="modal-fos-form">
-          <MainForm lang={lang} />
+          <MainForm lang={lang} plan={house + " № " + building + ". " + title + " - " + quadrature} />
         </div>
         <div className="modal-fos-form-plan">
           <div className="form-content-label plan">

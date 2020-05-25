@@ -10,7 +10,7 @@ const data = {
   password: "green-pass-302$5-pl",
 }
 
-const MainForm = ({ lang }) => {
+const MainForm = ({ lang, plan }) => {
   const [showButton, setShowButton] = useState(true)
   const [animateSuccess, setAnimateSuccess] = useState(false)
   const [phone, setPhone] = useState()
@@ -59,6 +59,9 @@ const MainForm = ({ lang }) => {
       comment: formData.get("message"),
       to: "380673356942"
     }
+    if(plan) {
+      dataToSend.plan = plan
+    }
     axios
       .get("http://64.225.107.47:8080/send", { params: dataToSend })
       .then(res => {
@@ -73,6 +76,13 @@ const MainForm = ({ lang }) => {
       })
       .catch(err => {
         console.log(err)
+        setTimeout(() => {
+          form.reset()
+          setAnimateSuccess(false)
+          setTimeout(() => {
+            setShowButton(true)
+          }, 300)
+        }, 3000)
       })
     // console.log(dataToSend)
     // setServerState({ submitting: true });

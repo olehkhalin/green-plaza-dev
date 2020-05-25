@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React  from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Equalizer from "react-equalizer"
 
@@ -151,22 +151,6 @@ const Advantages = ({ lang }) => {
       },
     ]
   }
-
-  useEffect(() => {
-    const cards = document.querySelectorAll(".advantages-card-inner .header")
-    console.log(cards)
-    let maxHeight = 0
-
-    cards.forEach(card => {
-      const newHeight = card.offsetHeight
-      if (newHeight > maxHeight) maxHeight = newHeight
-      console.log(maxHeight)
-    })
-
-    cards.forEach(card => {
-      card.height = `${maxHeight}px`
-    })
-  }, [])
 
   let header
 

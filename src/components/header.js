@@ -1,27 +1,15 @@
 
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import { Link } from 'gatsby'
 
 import GreenPlazaLogo from "../icons/logo.svg"
 import Hamburger from "./00-Menu/hamburger"
+import { disableScroll, enableScroll } from "./showHide"
 
-let scrollPosition = 0
 
 const Header = ({lang}) => {
-  let body = null
-
-  useEffect(() => {
-    body = document.querySelector("body")
-  })
-
-
-  let hamburger;
-  useEffect(() => {
-    hamburger = document.querySelector('.menu');
-  })
-
   const [headerStyle, setHeaderStyle] = useState({
     transition: "all 200ms ease-in",
   })
@@ -61,34 +49,19 @@ const Header = ({lang}) => {
         clicked: true,
         menuClass: "close",
       })
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     } else if (state.clicked === true) {
       setState({
         clicked: !state.clicked,
         menuClass: "",
       })
-      document.getElementsByTagName("html")[0].style = ""
-      body.style.removeProperty("overflow")
-      body.style.removeProperty("position")
-      body.style.removeProperty("top")
-      body.style.removeProperty("width")
-      window.scrollTo(0, scrollPosition)
+      enableScroll()
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
         menuClass: "close",
       })
-      scrollPosition = window.pageYOffset
-      document.getElementsByTagName("html")[0].style.overflow = "hidden"
-      body.style.overflow = "hidden"
-      body.style.position = "fixed"
-      body.style.top = `-${scrollPosition}px`
-      body.style.width = "100%"
+      disableScroll()
     }
   }
 
@@ -136,13 +109,5 @@ const Header = ({lang}) => {
     </header>
   )
 }
-
-// Header.propTypes = {
-//   siteTitle: PropTypes.string,
-// }
-//
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
 
 export default Header
