@@ -3,48 +3,56 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-const HomePromotion = () => {
+const HomePromotion = ({ lang }) => {
   const data = useStaticQuery(graphql`
     query {
-      mainScreenJson {
-        promotion {
-          body {
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+      directusHome {
+        promotion_text
+        promotion_text_kz
+        promotion_amount
+        promotion_date
+        promotion_date_kz
+        promotion_photo {
+          localFile {
+            childImageSharp {
+              fluid(maxHeight: 165) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
-            title
-            amount
-            term
           }
         }
       }
     }
   `)
 
+  let title
+  let date
+  let promotion
+  if (lang !== "kk") {
+    promotion = `Акция`
+    title = data.directusHome.promotion_text
+    date = data.directusHome.promotion_date
+  } else {
+    promotion = `Науқандар`
+    title = data.directusHome.promotion_text_kz
+    date = data.directusHome.promotion_date_kz
+  }
+
   return (
     <div className="home-promotion">
       <div className="home-promotion-image">
         <Img
-          fluid={data.mainScreenJson.promotion.body.image.childImageSharp.fluid}
-          alt={
-            data.mainScreenJson.promotion.body.title +
-            ` ` +
-            data.mainScreenJson.promotion.body.amount +
-            `% ` +
-            data.mainScreenJson.promotion.body.term
+          fluid={
+            data.directusHome.promotion_photo.localFile.childImageSharp.fluid
           }
+          alt={title + ` ` + data.directusHome.promotion_amount + `% ` + date}
         />
       </div>
       <div className="home-promotion-content">
-        <h4>Науқандар</h4>
+        <h4>{promotion}</h4>
         <p>
-          {data.mainScreenJson.promotion.body.title}{" "}
-          <span>{data.mainScreenJson.promotion.body.amount}%</span>
-          <br /> {data.mainScreenJson.promotion.body.term}
+          {title} <span>{data.directusHome.promotion_amount}%</span>
+          <br /> {date}
         </p>
       </div>
     </div>
