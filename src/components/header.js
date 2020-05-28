@@ -13,31 +13,40 @@ const Header = ({lang}) => {
   const [headerStyle, setHeaderStyle] = useState({
     transition: "all 200ms ease-in",
   })
-  useScrollPosition(
-    ({ prevPos, currPos }) => {
-      const isVisible = currPos.y > prevPos.y || currPos.y > -50
-
-      const shouldBeStyle = {
-        transition: `all 200ms ${isVisible ? "ease-in" : "ease-out"}`,
-        transform: isVisible
-          ? "none"
-          : `translate(0, -${
-            document.querySelector(".header").offsetHeight
-          }px)`,
-      }
-
-      if (JSON.stringify(shouldBeStyle) === JSON.stringify(headerStyle)) return
-
-      setHeaderStyle(shouldBeStyle)
-    },
-    [headerStyle]
-  )
 
   const [state, setState] = useState({
     initial: false,
     clicked: null,
     menuClass: "",
   })
+
+  const [menuClosed, setMenuClosed] = useState(false)
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isVisible = currPos.y > prevPos.y || currPos.y > -50
+      if (state.clicked !== true) {
+        setTimeout(() => {
+          const shouldBeStyle = {
+            transition: `all 200ms ${isVisible ? "ease-in" : "ease-out"}`,
+            transform: isVisible
+              ? "none"
+              : `translate(0, -${
+                document.querySelector(".header").offsetHeight
+              }px)`,
+          }
+
+          if (JSON.stringify(shouldBeStyle) === JSON.stringify(headerStyle)) return
+
+          if (menuClosed) {
+            setMenuClosed(false)
+          }
+          setHeaderStyle(shouldBeStyle)
+        }, menuClosed ? 1000 : 0)
+      }
+    },
+    [headerStyle, state]
+  )
 
   const [disabled, setDisabled] = useState(false)
 
@@ -50,11 +59,18 @@ const Header = ({lang}) => {
         menuClass: "close",
       })
       disableScroll()
+      const shouldBeStyle = {
+        transition: `all 200ms ease-in`,
+        transform: "none",
+        top: '0px'
+      }
+      setHeaderStyle(shouldBeStyle)
     } else if (state.clicked === true) {
       setState({
         clicked: !state.clicked,
         menuClass: "",
       })
+      setMenuClosed(true)
       enableScroll()
     } else if (state.clicked === false) {
       setState({
@@ -62,6 +78,12 @@ const Header = ({lang}) => {
         menuClass: "close",
       })
       disableScroll()
+      const shouldBeStyle = {
+        transition: `all 200ms ease-in`,
+        transform: "none",
+        top: '0px'
+      }
+      setHeaderStyle(shouldBeStyle)
     }
   }
 

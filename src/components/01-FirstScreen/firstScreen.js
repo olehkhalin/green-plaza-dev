@@ -194,7 +194,6 @@ const FirstScreen = ({ lang }) => {
         <Slider {...settings} ref={el => (slider1.current = el)}>
           {imagesArr.map(item => (
             <div className="home-carousel-item" key={item.id}>
-              {console.log(item)}
               <div className="home-carousel-item-image">
                 <Img
                   fluid={item.localFile.childImageSharp.fluid}

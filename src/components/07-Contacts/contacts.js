@@ -6,7 +6,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 
 const mapData = {
-  center: [43.644378, 51.218551],
+  center: [43.675031, 51.1378],
   zoom: 12,
 }
 
@@ -70,7 +70,12 @@ const Contacts = ({ lang }) => {
         </div>
         <div className="row v-center space-between">
           <div className="contacts-map">
-            <YMaps>
+            <YMaps
+              enterprise
+              query={{
+                apikey: '0de5a7fd-4f3d-446c-a194-8901955249b9',
+              }}
+            >
               <Map defaultState={mapData} width="-1" height="100%">
                 <Placemark geometry={coordinates} />
               </Map>

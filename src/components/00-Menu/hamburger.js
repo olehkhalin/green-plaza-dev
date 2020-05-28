@@ -76,7 +76,7 @@ const Hamburger = ({ state, clicked, lang }) => {
       duration: 0,
       opacity: 1,
       delay: 0.4,
-      background: `url(${image}) center center`,
+      backgroundImage: `url(${image})`,
     })
     gsap.to(backgroundImageInner, {
       duration: 0.4,

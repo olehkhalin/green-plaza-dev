@@ -360,6 +360,8 @@ h2
 				width: 100%
 				height: 100%
 				transform: scale(1.4)
+				background-size: cover
+				background-position: center center
 			&-inner
 				position: absolute
 				top: 0
@@ -558,7 +560,7 @@ h2
 		@include media("<=tablet")
 			bottom: 85px
 		@include media("<=phone")
-			top: 410px
+			top: 375px
 			right: 50%
 			transform: translateX(50%)
 	&-arrow
@@ -1739,6 +1741,8 @@ h2
 				color: rgba(40, 40, 40, 0.6)
 .react-tel-input
 	height: 63px
+	@include media("<=phone")
+		height: 38px
 	.form-control
 		width: 100%
 		height: 100%
