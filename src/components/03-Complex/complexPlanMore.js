@@ -8,7 +8,13 @@ import moment from "moment"
 import { orderBy } from "lodash"
 import { disableScroll, enableScroll } from "../showHide"
 
-const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
+const ComplexPlanMore = ({
+  state,
+  disabled,
+  clicked,
+  complexNumbers,
+  lang,
+}) => {
   const data = useStaticQuery(graphql`
     query {
       directusFlats911141617 {
@@ -26,6 +32,8 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -41,6 +49,12 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -63,6 +77,8 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -78,6 +94,12 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -100,6 +122,8 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -115,6 +139,12 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -137,6 +167,8 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -152,6 +184,12 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -174,6 +212,8 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -194,12 +234,19 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
             title
             quadrature
           }
+          rooms_content_kz {
+            id
+            sort
+            title
+            quadrature
+          }
         }
       }
     }
   `)
 
-  let cplxArray = data.directusFlats911141617, flatsArr
+  let cplxArray = data.directusFlats911141617,
+    flatsArr
 
   if (complexNumbers === `9, 11, 14, 16, 17`) {
     cplxArray = data.directusFlats911141617
@@ -260,21 +307,45 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
     }, 1200)
   }
 
+  let promotionText
+  let floorPlan
+  let flatsPlan
+  let flatText
+  let seePlan
+  if (lang !== "kk") {
+    promotionText = "Акция"
+    floorPlan = "Планировка этажа"
+    flatsPlan = <h2>Планировка квартир домов № {complexNumbers}</h2>
+    flatText = "Планировки квартир"
+    seePlan = "смотреть планировку"
+  } else {
+    promotionText = "Науқандар"
+    floorPlan = "Қабаттың жоспары"
+    flatsPlan = <h2>№ {complexNumbers} үйлердің қабаттарының жоспары</h2>
+    flatText = "Еден жоспарлары"
+    seePlan = "жоспарларды қарау"
+  }
+
   return (
     <>
-      <Modal state={state} disabled={disabled} clicked={clicked} modalClass="complexPlanMore">
+      <Modal
+        state={state}
+        disabled={disabled}
+        clicked={clicked}
+        modalClass="complexPlanMore"
+      >
         <div className="modal-header">
-          <div className="modal-header-item">
-            <h2>Планировка квартир домов № {complexNumbers}</h2>
-          </div>
+          <div className="modal-header-item">{flatsPlan}</div>
         </div>
         <div className="complex-plan-container">
           <div className="complex-plan-floor">
-            <h3>Планировка этажа</h3>
-            <Img fluid={cplxArray.floor_image.localFile.childImageSharp.fluid} />
+            <h3>{floorPlan}</h3>
+            <Img
+              fluid={cplxArray.floor_image.localFile.childImageSharp.fluid}
+            />
           </div>
           <div className="complex-plan-flats">
-            <h3>Планировки квартир</h3>
+            <h3>{flatText}</h3>
             <div className="complex-plan-flats-wrapper">
               {flatsArr.map(flat => (
                 <div className="complex-plan-flats-item" key={flat.id}>
@@ -285,8 +356,12 @@ const ComplexPlanMore = ({ state, disabled, clicked, complexNumbers }) => {
                     className="button bordered"
                     onClick={() => handleItem(flat)}
                   >
-                    смотреть планировку{" "}
-                    {flat.promotion ? <span>Акция -20%</span> : null}
+                    {seePlan}{" "}
+                    {flat.is_promotion ? (
+                      <span>
+                        {promotionText} {flat.promotion_amount}%
+                      </span>
+                    ) : null}
                   </button>
                 </div>
               ))}

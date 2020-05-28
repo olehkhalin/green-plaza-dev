@@ -5,12 +5,15 @@ const ComplexItem = ({clicked, flat, lang}) => {
 
   let roomTitle
   let planTitle
+  let promotion
   if(lang !== 'kk') {
     roomTitle = 'ком. квартира'
     planTitle = 'смотреть планировку'
+    promotion = 'Акция'
   } else {
     roomTitle = 'бөлмелі пәтер'
     planTitle = 'жоспарларды қарау'
+    promotion = 'Науқандар'
   }
 
   return (
@@ -31,6 +34,10 @@ const ComplexItem = ({clicked, flat, lang}) => {
             </h3>
             <button className="button line">{planTitle}</button>
           </div>
+          {flat.is_promotion ?
+          <div className="complex-flats-item-promotion">
+            {promotion} {flat.promotion_amount}%
+          </div> : null }
         </div>
       </div>
     </>

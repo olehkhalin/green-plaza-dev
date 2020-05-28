@@ -676,12 +676,14 @@ h2
 
 .home-promotion
 	min-width: 600px
-	cursor: default
+	cursor: pointer
 	width: 50%
 	border: 1px solid $adobe
 	border-left: none
 	display: flex
 	margin-top: -73px
+	z-index: 5
+	position: relative
 	@include media("<=phone")
 		border: none
 		width: 100%
@@ -916,7 +918,17 @@ h2
 		&s
 			>div:first-child
 				margin-bottom: 60px
-
+	&s
+		.svgDesktop
+		display: block
+		.svgMobile
+			display: none
+	@include media("<=tablet")
+		&s
+			.svgDesktop
+				display: none
+			.svgMobile
+				display: block
 	&-container
 		display: flex
 		flex-direction: column
@@ -1214,12 +1226,13 @@ h2
 				padding: 15px 0
 				text-align: center
 				text-transform: uppercase
-				background-color: $white
+				background-color: $black
 				font-family: Montserrat
 				font-weight: 600
 				font-size: 20px
 				line-height: 24px
-				color: $pale-brown
+				color: $white
+				//border: 1px solid $white
 				transition: margin-left .3s
 
 .modal

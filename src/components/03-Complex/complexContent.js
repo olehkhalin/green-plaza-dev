@@ -29,6 +29,8 @@ const ComplexContent = ({ complex, lang }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -44,6 +46,12 @@ const ComplexContent = ({ complex, lang }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -66,6 +74,8 @@ const ComplexContent = ({ complex, lang }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -81,6 +91,12 @@ const ComplexContent = ({ complex, lang }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -103,6 +119,8 @@ const ComplexContent = ({ complex, lang }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -118,6 +136,12 @@ const ComplexContent = ({ complex, lang }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -140,6 +164,8 @@ const ComplexContent = ({ complex, lang }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -155,6 +181,12 @@ const ComplexContent = ({ complex, lang }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title
@@ -177,6 +209,8 @@ const ComplexContent = ({ complex, lang }) => {
           sort
           rooms
           quadrature
+          is_promotion
+          promotion_amount
           image {
             localFile {
               childImageSharp {
@@ -192,6 +226,12 @@ const ComplexContent = ({ complex, lang }) => {
             }
           }
           rooms_content_ru {
+            id
+            sort
+            title
+            quadrature
+          }
+          rooms_content_kz {
             id
             sort
             title

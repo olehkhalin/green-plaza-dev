@@ -12,6 +12,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
     quadrature,
     image,
     promotion,
+    promotionAmount,
     publicURL,
     content,
     data = 0
@@ -21,15 +22,29 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
     quadrature = `${flat.quadrature}м²`
     image = flat.image.localFile
     publicURL = flat.pdf.localFile.publicURL
-    content = orderBy(
-      flat.rooms_content_ru,
-      // eslint-disable-next-line
-      [object => new moment(object.sort)],
-      ["asc"]
-    )
-    content.map(el => {
-      data += parseFloat(el.quadrature)
-    })
+    promotion = flat.is_promotion
+    promotionAmount = flat.promotion_amount
+    if (lang !== 'kk') {
+      content = orderBy(
+        flat.rooms_content_ru,
+        // eslint-disable-next-line
+        [object => new moment(object.sort)],
+        ["asc"]
+      )
+      content.map(el => {
+        data += parseFloat(el.quadrature)
+      })
+    } else {
+      content = orderBy(
+        flat.rooms_content_kz,
+        // eslint-disable-next-line
+        [object => new moment(object.sort)],
+        ["asc"]
+      )
+      content.map(el => {
+        data += parseFloat(el.quadrature)
+      })
+    }
   }
 
   const [stateFos, setStateFos] = useState({
@@ -75,18 +90,21 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
   let sumTitle
   let managerButton
   let planButton
+  let promotionText
   if(lang !== 'kk') {
     roomTitle = `Комната`
     quadratureTitle = `Площадь`
     sumTitle = `Итого общая`
     managerButton = `связаться с менеджером`
     planButton = `скачать планировку`
+    promotionText = `Акция`
   } else {
     roomTitle = `Бөлме`
     quadratureTitle = `Площадь`
     sumTitle = `Жалпы ауданы`
     managerButton = `менеджермен байланысу`
     planButton = `жоспарды жүктеп алу`
+    promotionText = `Науқандар`
   }
 
 
@@ -112,7 +130,7 @@ const ComplexItemMore = ({ state, disabled, clicked, flat, building, lang }) => 
               "modal-header-item promotion" + (!promotion ? " hidden" : "")
             }
           >
-            <h2>АКЦИЯ -20%</h2>
+            <h2>{promotionText} {promotionAmount}%</h2>
           </div>
           <div className="complex-more-content-table">
             <table>

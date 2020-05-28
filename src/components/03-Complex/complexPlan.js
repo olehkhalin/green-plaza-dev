@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import ComplexPlanMore from "./complexPlanMore"
 
-import Media from "react-media"
+// import Media from "react-media"
 import { disableScroll, enableScroll } from "../showHide"
 
 const ComplexPlan = ({ lang }) => {
@@ -45,6 +45,7 @@ const ComplexPlan = ({ lang }) => {
   if (lang !== "kk") {
     mobileSVG = (
       <svg
+        className='svgMobile'
         width="346"
         height="838"
         viewBox="0 0 346 838"
@@ -857,6 +858,7 @@ const ComplexPlan = ({ lang }) => {
     )
     desktopSVG = (
       <svg
+        className='svgDesktop'
         width="1643"
         height="1058"
         viewBox="0 0 1643 1058"
@@ -1679,6 +1681,7 @@ const ComplexPlan = ({ lang }) => {
   } else {
     mobileSVG = (
       <svg
+        className='svgMobile'
         width="346"
         height="870"
         viewBox="0 0 346 870"
@@ -2492,6 +2495,7 @@ const ComplexPlan = ({ lang }) => {
     )
     desktopSVG = (
       <svg
+        className='svgDesktop'
         width="1643"
         height="1075"
         viewBox="0 0 1643 1075"
@@ -3299,11 +3303,11 @@ const ComplexPlan = ({ lang }) => {
 
   return (
     <>
-      <Media queries={{ small: { maxWidth: 768 } }}>
-        {matches => (matches.small ? mobileSVG : desktopSVG)}
-      </Media>
+      {mobileSVG}
+      {desktopSVG}
       {stateComplex.initial !== false && (
         <ComplexPlanMore
+          lang={lang}
           state={stateComplex}
           disabled={disabledComplex}
           clicked={() => handleComplex()}
