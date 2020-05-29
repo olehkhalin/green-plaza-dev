@@ -370,6 +370,7 @@ const ComplexPlanMore = ({
         </div>
       </Modal>
       <ComplexItemMore
+        lang={lang}
         state={stateItem}
         disabled={disabledItem}
         clicked={() => handleItem()}
