@@ -1,4 +1,4 @@
-import React  from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Equalizer from "react-equalizer"
 
@@ -71,6 +71,8 @@ const Advantages = ({ lang }) => {
   `)
 
   let advantagesArray = []
+  let maxLength = 0
+  let listMaxLength = 0
 
   if (lang !== "kk") {
     advantagesArray = [
@@ -111,6 +113,12 @@ const Advantages = ({ lang }) => {
         list: data.directusAdvantage.cleaning_list_ru,
       },
     ]
+    advantagesArray.forEach(el => {
+      if (el.list.length > maxLength) {
+        maxLength = el.list.length
+        listMaxLength = el.list
+      }
+    })
   } else {
     advantagesArray = [
       {
@@ -150,6 +158,12 @@ const Advantages = ({ lang }) => {
         list: data.directusAdvantage.cleaning_list_kz,
       },
     ]
+    advantagesArray.forEach(el => {
+      if (el.list.length > maxLength) {
+        maxLength = el.list.length
+        listMaxLength = el.list
+      }
+    })
   }
 
   let header
@@ -180,16 +194,15 @@ const Advantages = ({ lang }) => {
         </div>
         <div className="row v-center space-between">
           <div className="advantages-cards-container">
-            {/*<Equalizer byRow={false}>*/}
-              {advantagesArray.map((advantageItem, index) => (
-                <AdvantagesCard
-                  advantageItem={advantageItem}
-                  key={index}
-                  isFirst={index === 0}
-                  icon={advantagesIcons[index]}
-                />
-              ))}
-            {/*</Equalizer>*/}
+            {advantagesArray.map((advantageItem, index) => (
+              <AdvantagesCard
+                advantageItem={advantageItem}
+                key={index}
+                isFirst={index === 0}
+                icon={advantagesIcons[index]}
+                listMaxLength={listMaxLength}
+              />
+            ))}
           </div>
         </div>
       </div>

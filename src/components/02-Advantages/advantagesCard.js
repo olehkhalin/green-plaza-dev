@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { enableScroll, disableScroll } from "../showHide"
 
-const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
+const AdvantagesCard = ({ advantageItem, icon, isFirst = false, listMaxLength }) => {
   const [shown, setShown] = useState(false)
 
   const handleClick = () => {
@@ -29,7 +29,7 @@ const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
           <div className="advantages-card-inner">
             <div
               className="hidden"
-              dangerouslySetInnerHTML={{ __html: advantageItem.list }}
+              dangerouslySetInnerHTML={{ __html: listMaxLength }}
             ></div>
             <div className="advantages-card-front">
               <div className="advantages-card-icon">{icon}</div>
