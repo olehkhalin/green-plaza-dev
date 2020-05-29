@@ -2,12 +2,10 @@ import React, { useState } from "react"
 
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import Modal from "../modal"
 import ComplexItemMore from "../03-Complex/complexFlatsItemMore"
 import { disableScroll, enableScroll } from "../showHide"
 
 const HomePromotion = ({ lang }) => {
-
   const data = useStaticQuery(graphql`
     query {
       allDirectusFlatsArray(filter: { is_promotion: { eq: true } }) {
@@ -101,7 +99,13 @@ const HomePromotion = ({ lang }) => {
 
   return (
     <>
-      <div className="home-promotion" onClick={() => handleComplex()}>
+      <div
+        className="home-promotion"
+        onClick={() => handleComplex()}
+        onKeyDown={() => handleComplex()}
+        tabIndex={0}
+        role="button"
+      >
         <div className="home-promotion-image">
           <Img
             fluid={flat.image.localFile.childImageSharp.fluid}

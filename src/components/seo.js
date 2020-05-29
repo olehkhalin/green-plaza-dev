@@ -5,13 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { site, ogImageDefault } = useStaticQuery(
     graphql`
       query {
         site {
@@ -21,11 +21,27 @@ function SEO({ description, lang, meta, title }) {
             author
           }
         }
+        ogImageDefault: file(relativePath: { eq: "greenplaza.jpg" }) {
+          base
+          childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
       }
     `
   )
 
   const metaDescription = description || site.siteMetadata.description
+  // const ogImage = "ogImageDefault.childImageSharp.fixed.src"
+  // console.log(ogImageDefault)
+  const ogImage = ogImageDefault.childImageSharp.fixed.src
+
+  const [loc, setLoc] = useState()
+  useEffect(() => {
+    setLoc(window.location.origin)
+  }, [])
 
   return (
     <Helmet
@@ -52,6 +68,10 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: ogImage,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -66,6 +86,14 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image:src`,
+          content: loc + ogImage,
+        },
+        {
+          property: `image`,
+          content: ogImage,
         },
       ].concat(meta)}
     >

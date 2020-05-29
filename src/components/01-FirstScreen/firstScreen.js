@@ -38,18 +38,6 @@ const FirstScreen = ({ lang }) => {
   )
 
   const slider1 = useRef()
-  // const progressBar = useRef()
-
-  const time = 3
-  // let isPause
-  let timer
-  let percentTime
-  // let progressBar
-  // let progressBarCurrent
-  // let progressBarAll
-  // let allSlidesCount
-
-  // const [progress, setProgress] = useState(0)
 
   const settings = {
     infinite: true,
@@ -72,15 +60,7 @@ const FirstScreen = ({ lang }) => {
         direction = nextSlide - currentSlide > 0 ? "left" : "right"
       }
 
-      // progressBarCurrent = document.querySelector(
-      //   ".home-carousel-progress-num.current"
-      // )
-      // if (progressBarCurrent) {
-      //   progressBarCurrent.innerText = nextSlide+1 < 10 ? `0${nextSlide+1}` : nextSlide+1;
-      //   startProgressbar()
-      // }
       setCurrentSlide(nextSlide + 1 < 10 ? `0${nextSlide + 1}` : nextSlide + 1)
-      // startProgressbar()
 
       if (direction === "right") {
         document
@@ -116,53 +96,12 @@ const FirstScreen = ({ lang }) => {
     slider1.current.slickPrev()
   }
 
-  // const startProgressbar = () => {
-  //   resetProgressbar()
-  //   percentTime = 0
-  // //   isPause = false
-  //   timer = setInterval(interval, 10)
-  // }
-  // //
-  // const interval = () => {
-  // //   if (isPause === false) {
-  //   if (percentTime <= 100) {
-  //     percentTime += 1 / (time + 0.1)
-  //     setProgress(percentTime)
-  //   }
-  //     // if (percentTime >= 100) {
-  // //       slider1.current.slickNext()
-  // //       startProgressbar()
-  // //     }
-  // //   }
-  // }
-  // //
-  // const resetProgressbar = () => {
-  //   setProgress(0)
-  //   clearTimeout(timer)
-  // }
-
   const [currentSlide, setCurrentSlide] = useState("01")
   const [allSLides, setAllSLides] = useState("00")
 
   useEffect(() => {
-    // progressBar = document.querySelector(
-    //   ".home-carousel-progress-bar-inner.dark"
-    // )
-    // progressBarAll = document.querySelector(".home-carousel-progress-num.last")
-
     const allSlidesCount = slider1.current.props.children.length
     setAllSLides(allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount)
-
-    // if(progressBarAll) {
-    //   progressBarAll.innerText =
-    //     allSlidesCount < 10 ? `0${allSlidesCount}` : allSlidesCount
-    // }
-    //
-    // progressBarCurrent = document.querySelector(
-    //   ".home-carousel-progress-num.current"
-    // )
-
-    // startProgressbar()
   }, [])
 
   return (

@@ -1,21 +1,19 @@
 import React, { useState } from "react"
-import { useMediaQuery } from "react-responsive"
 
-import {enableScroll, disableScroll} from "../showHide"
+import { enableScroll, disableScroll } from "../showHide"
 
 const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
-
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" })
-
   const [shown, setShown] = useState(false)
 
   const handleClick = () => {
-    if (shown) {
-      enableScroll();
-    } else {
-      disableScroll();
+    if (window.innerWidth <= 768) {
+      if (shown) {
+        enableScroll()
+      } else {
+        disableScroll()
+      }
+      setShown(!shown)
     }
-    setShown(!shown)
   }
 
   return (
@@ -23,8 +21,8 @@ const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
       <div className={"advantages-card-wrapper" + (isFirst ? " full" : "")}>
         <div
           className="advantages-card"
-          onClick={isTabletOrMobile ? () => handleClick() : null}
-          onKeyDown={isTabletOrMobile ? () => handleClick() : null}
+          onClick={() => handleClick()}
+          onKeyDown={() => handleClick()}
           tabIndex={0}
           role="button"
         >
@@ -44,10 +42,13 @@ const AdvantagesCard = ({ advantageItem, icon, isFirst = false }) => {
           </div>
         </div>
       </div>
-      {shown && isTabletOrMobile ? (
+      {shown ? (
         <div
           className="advantages-card-mobile active"
           onClick={() => handleClick()}
+          onKeyDown={() => handleClick()}
+          tabIndex={0}
+          role="button"
         >
           <div
             className="advantages-card-back"

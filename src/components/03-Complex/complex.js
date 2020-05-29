@@ -1,5 +1,4 @@
 import React from "react"
-import Media from "react-media"
 
 import Infrastructure from "../../icons/infrastructure.svg"
 import InfrastructureMobile from "../../icons/infrastructure-mobile.svg"
@@ -34,10 +33,7 @@ const Complex = ({ lang }) => {
   let infrastrMobile = <InfrastructureMobile />
   let infrastrDesktop = <Infrastructure />
 
-  if (lang !== "kk") {
-    infrastrMobile = <InfrastructureMobile />
-    infrastrDesktop = <Infrastructure />
-  } else {
+  if (lang === "kk") {
     infrastrMobile = <InfrastructureMobileKZ />
     infrastrDesktop = <InfrastructureKZ />
   }
@@ -50,9 +46,8 @@ const Complex = ({ lang }) => {
         </div>
         <div className="row">
           <div className="complex-plans">
-            <Media queries={{ small: { maxWidth: 768 } }}>
-              {matches => (matches.small ? infrastrMobile : infrastrDesktop)}
-            </Media>
+            {infrastrMobile}
+            {infrastrDesktop}
             <ComplexPlan lang={lang} />
           </div>
         </div>
