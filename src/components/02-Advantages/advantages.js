@@ -180,7 +180,7 @@ const Advantages = ({ lang }) => {
         </div>
         <div className="row v-center space-between">
           <div className="advantages-cards-container">
-            <Equalizer byRow={false}>
+            {/*<Equalizer byRow={false}>*/}
               {advantagesArray.map((advantageItem, index) => (
                 <AdvantagesCard
                   advantageItem={advantageItem}
@@ -189,7 +189,7 @@ const Advantages = ({ lang }) => {
                   icon={advantagesIcons[index]}
                 />
               ))}
-            </Equalizer>
+            {/*</Equalizer>*/}
           </div>
         </div>
       </div>
