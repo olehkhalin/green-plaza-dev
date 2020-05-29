@@ -1,6 +1,5 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Equalizer from "react-equalizer"
 
 import AdvantagesCard from "./advantagesCard"
 
